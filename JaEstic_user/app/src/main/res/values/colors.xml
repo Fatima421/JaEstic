@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <color name="black">#FF000000</color>
+    <color name="greyBlue">#555B6E</color>
+    <color name="darkGreen">#89B0AE</color>
+    <color name="lightGreen">#BEE3DB</color>
+    <color name="almostWhite">#FAF9F9</color>
+    <color name="apricot">#FFD6BA</color>
+    <color name="black">#000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="grey">#555B6E</color>
-    <color name="grey_light">#A4A4A4</color>
-
-
-    <color name="ping_cream">#FFD6BA</color>
-    <color name="ping_ice">#FAF9F9</color>
-    <color name="green_tea">#BEE3DB</color>
-    <color name="green_light">#89B0AE</color>
 </resources>
