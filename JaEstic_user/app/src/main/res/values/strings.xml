@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">JaEstic_user</string>
-    <string name="button_signin">SIGN IN</string>
+    <string name="methodEmail">Continue with email</string>
+    <string name="button_signin">Login</string>
     <string name="mail">Email</string>
     <string name="user_password">Password</string>
+    <string name="txtRememberPassword">Forgot your password?</string>
+    <string name="txtRegister">Not registered yet?</string>
+    <string name="txtRegister2">Register</string>
+    <string name="or">or</string>
+    <string name="loginGoogle">Continue with Google</string>
+    <string name="loginFacebook">Continue with Facebook</string>
+
+
+
 </resources>
