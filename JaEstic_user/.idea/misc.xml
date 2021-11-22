@@ -5,8 +5,10 @@
       <map>
         <entry key="..\:/Users/miquel.masso/Desktop/DAM2/JaEstic/usuari_grup2/JaEstic_user/app/src/main/res/drawable/ic_cart.xml" value="0.2703125" />
         <entry key="..\:/Users/miquel.masso/Desktop/DAM2/JaEstic/usuari_grup2/JaEstic_user/app/src/main/res/drawable/ic_home.xml" value="0.2703125" />
-        <entry key="..\:/Users/miquel.masso/Desktop/DAM2/JaEstic/usuari_grup2/JaEstic_user/app/src/main/res/layout/activity_main.xml" value="0.16893115942028986" />
-        <entry key="..\:/Users/miquel.masso/Desktop/DAM2/JaEstic/usuari_grup2/JaEstic_user/app/src/main/res/layout/mainscreen.xml" value="0.4" />
+        <entry key="..\:/Users/miquel.masso/Desktop/DAM2/JaEstic/usuari_grup2/JaEstic_user/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/miquel.masso/Desktop/DAM2/JaEstic/usuari_grup2/JaEstic_user/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/miquel.masso/Desktop/DAM2/JaEstic/usuari_grup2/JaEstic_user/app/src/main/res/layout/fragment_mainscreen.xml" value="0.264" />
+        <entry key="..\:/Users/miquel.masso/Desktop/DAM2/JaEstic/usuari_grup2/JaEstic_user/app/src/main/res/layout/mainscreen.xml" value="0.264" />
         <entry key="..\:/Users/miquel.masso/Desktop/DAM2/JaEstic/usuari_grup2/JaEstic_user/app/src/main/res/menu/bottom_navigation.xml" value="0.25416666666666665" />
       </map>
     </option>
