@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/background.xml" value="0.36615384615384616" />
+        <entry key="app/src/main/res/drawable/custom_mail_icon.xml" value="0.371875" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.36615384615384616" />
+        <entry key="app/src/main/res/drawable/rounded_button.xml" value="0.371875" />
+        <entry key="app/src/main/res/drawable/rounded_edittext.xml" value="0.371875" />
+        <entry key="app/src/main/res/font/helvetica_rounded.xml" value="0.3859375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3697916666666667" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.33" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

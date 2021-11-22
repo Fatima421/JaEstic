@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JaEstic_usuario</string>
+    <string name="button_signin">INICIAR SESIÓN</string>
+    <string name="mail">Correo</string>
+    <string name="user_password">Contraseña</string>
+</resources>
