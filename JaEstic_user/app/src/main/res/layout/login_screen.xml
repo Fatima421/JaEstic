@@ -53,7 +53,7 @@
         android:id="@+id/txtRememberPassword2"
         android:layout_width="39dp"
         android:layout_height="25dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="82dp"
         android:fontFamily="@font/helvetica_rounded"
         android:gravity="center"
         android:text="@string/or"
