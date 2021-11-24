@@ -1,17 +1,19 @@
 package com.grup2.jaestic_user.Models;
 
-public class Dish {
+import java.io.Serializable;
+
+public class Dish implements Serializable {
     // Properties
-    int id, imgId;
-    String name, description, price;
+    int id;
+    String name, description, price, imgUrl;
     Category category;
 
     // Constructors
     public Dish() { }
 
-    public Dish(int id, int imgId, String name, String description, String price, Category category) {
+    public Dish(int id, String imgUrl, String name, String description, String price, Category category) {
         this.id = id;
-        this.imgId = imgId;
+        this.imgUrl = imgUrl;
         this.name = name;
         this.description = description;
         this.price = price;
@@ -20,7 +22,7 @@ public class Dish {
 
     // Getters
     public int getId() { return id; }
-    public int getImgId() { return imgId; }
+    public String getImgUrl() { return imgUrl; }
     public String getName() { return name; }
     public String getDescription() { return description; }
     public String getPrice() { return price; }
@@ -28,7 +30,7 @@ public class Dish {
 
     // Setters
     public void setId(int id) { this.id = id; }
-    public void setImgId(int imgId) { this.imgId = imgId; }
+    public void setImgId(String imgUrl) { this.imgUrl = imgUrl; }
     public void setName(String name) { this.name = name; }
     public void setDescription(String description) { this.description = description; }
     public void setCategory(Category category) { this.category = category; }
