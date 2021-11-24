@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "780057458197",
-    "project_id": "jaesticuser",
-    "storage_bucket": "jaesticuser.appspot.com"
+    "project_number": "942078009683",
+    "firebase_url": "https://adminjusteat-default-rtdb.firebaseio.com",
+    "project_id": "adminjusteat",
+    "storage_bucket": "adminjusteat.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:780057458197:android:b614d266fbea51bbc0c01c",
+        "mobilesdk_app_id": "1:942078009683:android:d2d029b38abc7a2cc881a6",
         "android_client_info": {
-          "package_name": "com.grup2.jaestic_user"
+          "package_name": "com.grup2.jaestic_admin"
         }
       },
       "oauth_client": [
         {
-          "client_id": "780057458197-v64j8l48t3o49fq73l7foquqk3155gj5.apps.googleusercontent.com",
+          "client_id": "942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAgLAo7BNMevqDcxGT0xKObM9tl2D0_E0w"
+          "current_key": "AIzaSyDZBHLj9DN24_k3_4Z5EkixFbLeeuSy57g"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "780057458197-v64j8l48t3o49fq73l7foquqk3155gj5.apps.googleusercontent.com",
+              "client_id": "942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

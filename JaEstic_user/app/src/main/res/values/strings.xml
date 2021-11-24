@@ -11,6 +11,7 @@
     <string name="loginGoogle">Continue with Google</string>
     <string name="loginFacebook">Continue with Facebook</string>
 
+    <string name="default_web_client_id">942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com</string>
 
 
 </resources>

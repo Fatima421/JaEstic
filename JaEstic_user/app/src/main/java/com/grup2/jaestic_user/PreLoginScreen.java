@@ -15,7 +15,7 @@ public class PreLoginScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.prelogin_screen);
         Intent redirect = new Intent(this, LoginScreen.class);
-        Intent redirect2 = new Intent(this, RegisterScreen.class);
+       // Intent redirect2 = new Intent(this, RegisterScreen.class);
 
         Button btnsignin = findViewById(R.id.btnsignin);
         Button btnsignup = findViewById(R.id.btnsignup);
@@ -26,10 +26,12 @@ public class PreLoginScreen extends AppCompatActivity {
             }
         });
 
+/*
         btnsignup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(redirect2);
             }
         });
+*/
     }
 }
