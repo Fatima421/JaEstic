@@ -7,10 +7,18 @@
         <entry key="app/src/main/res/font/heebo.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3203125" />
         <entry key="app/src/main/res/layout/fragment_mainscreen.xml" value="0.3203125" />
-        <entry key="app/src/main/res/layout/login_screen.xml" value="0.3203125" />
         <entry key="app/src/main/res/layout/mainscreen.xml" value="0.3203125" />
+        <entry key="app/src/main/res/drawable/background.xml" value="0.36615384615384616" />
+        <entry key="app/src/main/res/drawable/custom_mail_icon.xml" value="0.371875" />
+        <entry key="app/src/main/res/drawable/gradient_background.xml" value="0.5" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.36615384615384616" />
+        <entry key="app/src/main/res/drawable/rounded_button.xml" value="0.371875" />
+        <entry key="app/src/main/res/drawable/rounded_edittext.xml" value="0.371875" />
+        <entry key="app/src/main/res/font/helvetica_rounded.xml" value="0.3859375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3697916666666667" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/login_screen.xml" value="0.22" />
         <entry key="app/src/main/res/layout/prelogin_screen.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/register_screen.xml" value="0.3203125" />
       </map>
     </option>
   </component>

@@ -10,7 +10,7 @@
     AppCompat
 
     <Button
-        android:id="@+id/btnloginGoogle"
+        android:id="@+id/signInGoogleBtn"
         android:layout_width="303dp"
         android:layout_height="35dp"
         android:background="@drawable/rounded_button"
@@ -51,8 +51,8 @@
 
     <TextView
         android:id="@+id/txtRememberPassword2"
-        android:layout_width="39dp"
-        android:layout_height="25dp"
+        android:layout_width="27dp"
+        android:layout_height="21dp"
         android:layout_marginTop="82dp"
         android:fontFamily="@font/helvetica_rounded"
         android:gravity="center"
@@ -61,17 +61,19 @@
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
+        app:layout_constraintTop_toBottomOf="@+id/LoginBtn" />
 
     <View
+        android:id="@+id/view2"
         android:layout_width="190dp"
         android:layout_height="1dp"
         android:layout_marginTop="82dp"
         android:layout_marginBottom="66dp"
         android:background="@color/greyBlue"
         app:layout_constraintBottom_toTopOf="@+id/btnloginFacebook"
+        app:layout_constraintEnd_toStartOf="@+id/txtRememberPassword2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
+        app:layout_constraintTop_toBottomOf="@+id/LoginBtn" />
 
     <View
         android:id="@+id/view"
@@ -82,17 +84,18 @@
         android:background="@color/greyBlue"
         app:layout_constraintBottom_toTopOf="@+id/btnloginFacebook"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
+        app:layout_constraintStart_toEndOf="@+id/txtRememberPassword2"
+        app:layout_constraintTop_toBottomOf="@+id/LoginBtn" />
 
     <TextView
         android:id="@+id/titleLogin"
-        android:layout_width="222dp"
+        android:layout_width="360dp"
         android:layout_height="62dp"
         android:layout_marginTop="40dp"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/helvetica_rounded"
         android:gravity="center"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="@color/greyBlue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -168,13 +171,13 @@
         app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
     <Button
-        android:id="@+id/btnlogin"
+        android:id="@+id/LoginBtn"
         android:layout_width="232dp"
         android:layout_height="35dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/helvetica_rounded"
-        android:text="@string/button_signin"
+        android:text="@string/login"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="13sp"
@@ -188,31 +191,35 @@
         android:id="@+id/txtregister"
         android:layout_width="185dp"
         android:layout_height="21dp"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="4dp"
         android:gravity="end"
         android:text="@string/txtRegister"
-        android:textSize="13sp"
         android:textColor="@color/greyBlue"
+        android:textSize="13sp"
 
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
+        app:layout_constraintTop_toBottomOf="@+id/LoginBtn"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/txtregister2"
-        android:layout_width="146dp"
+        android:layout_width="132dp"
         android:layout_height="21dp"
         android:layout_marginStart="3dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/helvetica_rounded"
         android:gravity="start"
         android:text="@string/txtRegister2"
-        android:textSize="13sp"
         android:textColor="@color/greyBlue"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/txtregister"
-        app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
+        app:layout_constraintTop_toBottomOf="@+id/LoginBtn"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

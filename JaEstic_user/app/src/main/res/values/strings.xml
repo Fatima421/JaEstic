@@ -5,7 +5,7 @@
     <string name="signUp">Sign up</string>
     <string name="default_web_client_id_manual" translatable="false">942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com</string>
     <string name="methodEmail">Continue with email</string>
-    <string name="button_signin">Login</string>
+    <string name="login">Login</string>
     <string name="mail">Email</string>
     <string name="user_password">Password</string>
     <string name="txtRememberPassword">Forgot your password?</string>
@@ -14,7 +14,5 @@
     <string name="or">or</string>
     <string name="loginGoogle">Continue with Google</string>
     <string name="loginFacebook">Continue with Facebook</string>
-
-
 
 </resources>
