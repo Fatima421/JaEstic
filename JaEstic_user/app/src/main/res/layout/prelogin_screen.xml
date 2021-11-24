@@ -11,7 +11,9 @@
         android:id="@+id/imageView"
         android:layout_width="412dp"
         android:layout_height="162dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
@@ -20,40 +22,42 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
         android:fontFamily="@font/heebo_regular"
-        android:text="Welcome to JaEstic, feel free to order, Fot-li!"
+        android:text="@string/welcomeToJaEstic"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
-        android:id="@+id/btnsignin"
+        android:id="@+id/signInBtn"
         android:layout_width="232dp"
         android:layout_height="48dp"
         android:layout_marginBottom="12dp"
         android:backgroundTint="@color/greyBlue"
         android:fontFamily="@font/heebo_regular"
-        android:text="Sign in"
+        android:text="@string/signIn"
         android:textAllCaps="false"
 
         android:textColor="@color/white"
         android:textStyle="bold"
         app:cornerRadius="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnsignup"
+        app:layout_constraintBottom_toTopOf="@+id/signUpBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnsignup"
+        android:id="@+id/signUpBtn"
         android:layout_width="232dp"
         android:layout_height="48dp"
         android:layout_marginBottom="100dp"
         android:backgroundTint="@color/almostWhite"
         android:fontFamily="@font/heebo_regular"
-        android:text="Sign up"
+        android:text="@string/signUp"
         android:textAllCaps="false"
 
         android:textColor="@color/black"
