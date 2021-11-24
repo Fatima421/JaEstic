@@ -10,7 +10,7 @@
     AppCompat
 
     <Button
-        android:id="@+id/btnloginGoogle"
+        android:id="@+id/signInGoogleBtn"
         android:layout_width="303dp"
         android:layout_height="35dp"
         android:background="@drawable/rounded_button"
@@ -61,7 +61,7 @@
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
+        app:layout_constraintTop_toBottomOf="@+id/LoginBtn" />
 
     <View
         android:id="@+id/view2"
@@ -73,7 +73,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnloginFacebook"
         app:layout_constraintEnd_toStartOf="@+id/txtRememberPassword2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
+        app:layout_constraintTop_toBottomOf="@+id/LoginBtn" />
 
     <View
         android:id="@+id/view"
@@ -85,17 +85,17 @@
         app:layout_constraintBottom_toTopOf="@+id/btnloginFacebook"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtRememberPassword2"
-        app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
+        app:layout_constraintTop_toBottomOf="@+id/LoginBtn" />
 
     <TextView
         android:id="@+id/titleLogin"
-        android:layout_width="222dp"
+        android:layout_width="360dp"
         android:layout_height="62dp"
         android:layout_marginTop="40dp"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/helvetica_rounded"
         android:gravity="center"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="@color/greyBlue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -171,13 +171,13 @@
         app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
     <Button
-        android:id="@+id/btnlogin"
+        android:id="@+id/LoginBtn"
         android:layout_width="232dp"
         android:layout_height="35dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/helvetica_rounded"
-        android:text="@string/button_signin"
+        android:text="@string/login"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="13sp"
@@ -200,7 +200,7 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnlogin"
+        app:layout_constraintTop_toBottomOf="@+id/LoginBtn"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -218,7 +218,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/txtregister"
-        app:layout_constraintTop_toBottomOf="@+id/btnlogin"
+        app:layout_constraintTop_toBottomOf="@+id/LoginBtn"
         app:layout_constraintVertical_bias="0.0" />
 
 

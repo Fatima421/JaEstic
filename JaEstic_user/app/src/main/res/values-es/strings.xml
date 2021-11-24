@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">JaEstic_usuario</string>
+    <string name="welcomeToJaEstic">¡Bienvenido a JaEstic, siéntase libre de hacer un pedido, Fot-li!</string>
+    <string name="signIn">Iniciar Sesión</string>
+    <string name="signUp">Registrarse</string>
+
     <string name="methodEmail">Continuar con email</string>
-    <string name="button_signin">Iniciar Sesión</string>
+    <string name="login">Iniciar Sesión</string>
     <string name="mail">Correo</string>
     <string name="user_password">Contraseña</string>
     <string name="txtRememberPassword">¿Ha olvidado su contraseña?</string>
@@ -12,6 +16,5 @@
     <string name="loginGoogle">Continuar con Google</string>
     <string name="loginFacebook">Continuar con Facebook</string>
 
-    <string name="default_web_client_id">942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com</string>
 
 </resources>
