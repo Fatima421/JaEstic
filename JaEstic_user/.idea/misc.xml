@@ -3,13 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/miquel.masso/Desktop/DAM2/JaEstic/usuari_grup2/JaEstic_user/app/src/main/res/drawable/ic_cart.xml" value="0.2703125" />
-        <entry key="..\:/Users/miquel.masso/Desktop/DAM2/JaEstic/usuari_grup2/JaEstic_user/app/src/main/res/drawable/ic_home.xml" value="0.2703125" />
-        <entry key="..\:/Users/miquel.masso/Desktop/DAM2/JaEstic/usuari_grup2/JaEstic_user/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
-        <entry key="..\:/Users/miquel.masso/Desktop/DAM2/JaEstic/usuari_grup2/JaEstic_user/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/miquel.masso/Desktop/DAM2/JaEstic/usuari_grup2/JaEstic_user/app/src/main/res/layout/fragment_mainscreen.xml" value="0.264" />
-        <entry key="..\:/Users/miquel.masso/Desktop/DAM2/JaEstic/usuari_grup2/JaEstic_user/app/src/main/res/layout/mainscreen.xml" value="0.264" />
-        <entry key="..\:/Users/miquel.masso/Desktop/DAM2/JaEstic/usuari_grup2/JaEstic_user/app/src/main/res/menu/bottom_navigation.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/font/heebo.xml" value="0.23703703703703705" />
+        <entry key="app/src/main/res/layout/prelogin_screen.xml" value="0.33" />
       </map>
     </option>
   </component>
