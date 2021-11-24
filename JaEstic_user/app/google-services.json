@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "942078009683",
+    "firebase_url": "https://adminjusteat-default-rtdb.firebaseio.com",
+    "project_id": "adminjusteat",
+    "storage_bucket": "adminjusteat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942078009683:android:32a2e04ceb3dd622c881a6",
+        "android_client_info": {
+          "package_name": "com.example.admin_justeat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZBHLj9DN24_k3_4Z5EkixFbLeeuSy57g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942078009683:android:cb4709ac2318d96ac881a6",
+        "android_client_info": {
+          "package_name": "com.grup2.jaestic_user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZBHLj9DN24_k3_4Z5EkixFbLeeuSy57g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942078009683:android:f176f87970c39522c881a6",
+        "android_client_info": {
+          "package_name": "com.proyecto.justeat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZBHLj9DN24_k3_4Z5EkixFbLeeuSy57g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
