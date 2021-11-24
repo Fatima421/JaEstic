@@ -15,7 +15,6 @@ public class PreLoginScreen extends AppCompatActivity {
 
     // Global properties
     private FirebaseAuth mAuth;
-    Intent goToRegisterScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,17 +23,28 @@ public class PreLoginScreen extends AppCompatActivity {
 
         // Properties
         Button signUpBtn = findViewById(R.id.signUpBtn);
+        Button signInBtn = findViewById(R.id.signInBtn);
+
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
         // Creating an intent to be able to go to another screen
-        goToRegisterScreen = new Intent(this, RegisterScreen.class);
+        Intent goToRegisterScreen = new Intent(this, RegisterScreen.class);
+        Intent goToLoginScreen = new Intent(this, LoginScreen.class);
 
-        // If signUp button is clicked changed to register screen
+        // If signUp button is clicked change to register screen
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(goToRegisterScreen);
+            }
+        });
+
+        // If signIn button is clicked then change to MainScreen
+        signInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(goToLoginScreen);
             }
         });
     }
@@ -42,10 +52,13 @@ public class PreLoginScreen extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+        // Create an Intent to go to main screen
+        Intent goToMainScreen = new Intent(this, MainActivity.class);
+
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            startActivity(goToRegisterScreen);
+            startActivity(goToMainScreen);
         }
     }
 }

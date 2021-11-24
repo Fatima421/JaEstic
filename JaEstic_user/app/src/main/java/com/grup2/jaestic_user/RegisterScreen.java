@@ -30,6 +30,7 @@ public class RegisterScreen extends AppCompatActivity {
     // Global properties
     private FirebaseAuth mFirebaseAuth;
     private GoogleSignInClient mGoogleSignInClient;
+    private static final String TAG = "SignInActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +43,6 @@ public class RegisterScreen extends AppCompatActivity {
         EditText nameText = findViewById(R.id.nameTxt);
         EditText emailText = findViewById(R.id.emailTxt);
         EditText pwdText = findViewById(R.id.pwdTxt);
-
-        // Initialize Firebase Auth
-        mFirebaseAuth = FirebaseAuth.getInstance();
 
         // If Sign Up button is clicked
         signUpBtn.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +80,9 @@ public class RegisterScreen extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(RegisterScreen.this, gso);
 
+        // Initialize Firebase Auth
+        mFirebaseAuth = FirebaseAuth.getInstance();
+
         // If Sign up with google button is clicked
         signUpGoogleBtn.setOnClickListener(new View.OnClickListener() {
 
@@ -106,7 +107,7 @@ public class RegisterScreen extends AppCompatActivity {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
-                //Log.w(TAG, "Google sign in failed", e);
+                Log.w(TAG, "Google sign in failed", e);
             }
         }
     }
@@ -117,9 +118,9 @@ public class RegisterScreen extends AppCompatActivity {
                 .addOnSuccessListener(this, authResult -> {
                     startActivity(new Intent(RegisterScreen.this, MainActivity.class));
                     finish();
-                });
-               // .addOnFailureListener(this, e -> Toast.makeText(SignInActivity.this, "Authentication failed.",
-               //         Toast.LENGTH_SHORT).show());
+                })
+               .addOnFailureListener(this, e -> Toast.makeText(RegisterScreen.this, "Authentication failed.",
+                       Toast.LENGTH_SHORT).show());
     }
 
     // Get User Name

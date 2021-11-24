@@ -42,9 +42,9 @@
     <EditText
         android:id="@+id/nameTxt"
         android:layout_width="348dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="36dp"
-        android:background="@color/white"
+        android:background="@drawable/rounded_button"
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
@@ -57,9 +57,9 @@
     <EditText
         android:id="@+id/emailTxt"
         android:layout_width="342dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="40dp"
-        android:background="@color/white"
+        android:background="@drawable/rounded_button"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
@@ -72,9 +72,9 @@
     <EditText
         android:id="@+id/pwdTxt"
         android:layout_width="342dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="40dp"
-        android:background="@color/white"
+        android:background="@drawable/rounded_button"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPersonName"
@@ -116,6 +116,8 @@
         app:layout_constraintBottom_toTopOf="@+id/signUpGoogleBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pwdTxt"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
