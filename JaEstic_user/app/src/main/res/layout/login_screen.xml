@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/gradient_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginScreen">
+    AppCompat
+
+    <Button
+        android:id="@+id/btnloginGoogle"
+        android:layout_width="303dp"
+        android:layout_height="35dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/helvetica_rounded"
+        android:text="@string/loginGoogle"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        app:backgroundTint="@null"
+        app:icon="@drawable/google_icon"
+        app:iconSize="19dp"
+        app:iconTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnloginFacebook"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <Button
+        android:id="@+id/btnloginFacebook"
+        android:layout_width="303dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/helvetica_rounded"
+        android:text="@string/loginFacebook"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:backgroundTint="@color/blue"
+        app:icon="@drawable/facebook_icon"
+        app:iconSize="19dp"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtRememberPassword2" />
+
+    <TextView
+        android:id="@+id/txtRememberPassword2"
+        android:layout_width="39dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="82dp"
+        android:fontFamily="@font/helvetica_rounded"
+        android:gravity="center"
+        android:text="@string/or"
+        android:textColor="@color/greyBlue"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
+
+    <View
+        android:layout_width="190dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="82dp"
+        android:layout_marginBottom="66dp"
+        android:background="@color/greyBlue"
+        app:layout_constraintBottom_toTopOf="@+id/btnloginFacebook"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="190dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="82dp"
+        android:layout_marginBottom="66dp"
+        android:background="@color/greyBlue"
+        app:layout_constraintBottom_toTopOf="@+id/btnloginFacebook"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
+
+    <TextView
+        android:id="@+id/titleLogin"
+        android:layout_width="222dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="40dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/helvetica_rounded"
+        android:gravity="center"
+        android:text="Login"
+        android:textColor="@color/greyBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/methodEmail"
+        android:layout_width="200dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="12dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/helvetica_rounded"
+        android:gravity="center"
+        android:text="@string/methodEmail"
+        android:textColor="@color/greyBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleLogin" />
+
+    <EditText
+        android:id="@+id/txtMail"
+        android:layout_width="303dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/rounded_button"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:fontFamily="@font/helvetica_rounded"
+        android:hint="@string/mail"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:paddingStart="18dp"
+        android:textColorHint="@color/lightGrey"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/methodEmail" />
+
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="303dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/rounded_button"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:fontFamily="@font/helvetica_rounded"
+        android:hint="@string/user_password"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:paddingStart="20dp"
+        android:textColorHint="@color/lightGrey"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMail" />
+
+    <TextView
+        android:id="@+id/txtRememberPassword"
+        android:layout_width="302dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/txtRememberPassword"
+        android:textColor="@color/greyBlue"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+
+    <Button
+        android:id="@+id/btnlogin"
+        android:layout_width="232dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/helvetica_rounded"
+        android:text="@string/button_signin"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:backgroundTint="@color/greyBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtRememberPassword" />
+
+    <TextView
+        android:id="@+id/txtregister"
+        android:layout_width="185dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="4dp"
+        android:gravity="end"
+        android:text="@string/txtRegister"
+        android:textSize="13sp"
+        android:textColor="@color/greyBlue"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
+
+    <TextView
+        android:id="@+id/txtregister2"
+        android:layout_width="146dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/helvetica_rounded"
+        android:gravity="start"
+        android:text="@string/txtRegister2"
+        android:textSize="13sp"
+        android:textColor="@color/greyBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toEndOf="@+id/txtregister"
+        app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
