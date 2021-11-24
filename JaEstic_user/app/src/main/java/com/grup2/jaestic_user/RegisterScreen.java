@@ -115,10 +115,19 @@ public class RegisterScreen extends AppCompatActivity {
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mFirebaseAuth.signInWithCredential(credential)
                 .addOnSuccessListener(this, authResult -> {
-                    startActivity(new Intent(RegisterScreen.this, PreLoginScreen.class));
+                    startActivity(new Intent(RegisterScreen.this, MainActivity.class));
                     finish();
                 });
                // .addOnFailureListener(this, e -> Toast.makeText(SignInActivity.this, "Authentication failed.",
                //         Toast.LENGTH_SHORT).show());
+    }
+
+    // Get User Name
+    private String getUserName() {
+        FirebaseUser user = mFirebaseAuth.getCurrentUser();
+        if (user != null) {
+            return user.getDisplayName();
+        }
+        return "anonymous";
     }
 }
