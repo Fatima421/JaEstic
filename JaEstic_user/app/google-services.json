@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "780057458197",
+    "project_id": "jaesticuser",
+    "storage_bucket": "jaesticuser.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780057458197:android:b614d266fbea51bbc0c01c",
+        "android_client_info": {
+          "package_name": "com.grup2.jaestic_user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780057458197-v64j8l48t3o49fq73l7foquqk3155gj5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgLAo7BNMevqDcxGT0xKObM9tl2D0_E0w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780057458197-v64j8l48t3o49fq73l7foquqk3155gj5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
