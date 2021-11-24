@@ -1,0 +1,11 @@
+
+I
+java:S1948
+",Make "favourites" transient or serializable.(ã£˜à8î™Õ/
+„
+java:S1319"iThe type of "favorites" should be an interface such as "List" rather than the implementation "ArrayList".(Ô·¨àÿÿÿÿÿ
+†
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¦À®å
+€
+java:S1319"jThe type of "favourites" should be an interface such as "List" rather than the implementation "ArrayList".(€ç¼à
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ÿ®¬õÿÿÿÿÿ
