@@ -52,7 +52,7 @@ public class PreLoginScreen extends AppCompatActivity {
         });
     }
 
-    @Override
+    /*@Override
     public void onStart() {
         super.onStart();
         // Create an Intent to go to main screen
@@ -63,5 +63,5 @@ public class PreLoginScreen extends AppCompatActivity {
         if(currentUser != null){
             startActivity(goToMainScreen);
         }
-    }
+    } */
 }
