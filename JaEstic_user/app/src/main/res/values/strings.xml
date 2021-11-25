@@ -14,5 +14,7 @@
     <string name="or">or</string>
     <string name="loginGoogle">Continue with Google</string>
     <string name="loginFacebook">Continue with Facebook</string>
+    <string name="authFail">Authentication failed</string>
+    <string name="authSuccess">Successfully Logged In</string>
 
 </resources>

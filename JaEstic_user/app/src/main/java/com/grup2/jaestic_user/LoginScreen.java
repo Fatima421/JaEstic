@@ -1,11 +1,16 @@
 package com.grup2.jaestic_user;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +29,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.Calendar;
+
 public class LoginScreen extends AppCompatActivity {
     // Global properties
     private FirebaseAuth mFirebaseAuth;
@@ -34,23 +41,92 @@ public class LoginScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
 
+        // Creating an intent to be able to go to RegisterScreen
+        Intent goToRegisterScreen = new Intent(this, RegisterScreen.class);
+        Intent goToMainScreen = new Intent(this, MainScreen.class);
+
+
         // Properties
         Button signInGoogleBtn = findViewById(R.id.signInGoogleBtn);
-        Button signInFacebookBtn = findViewById(R.id.signInGoogleBtn);
+        Button signInFacebookBtn = findViewById(R.id.signInFacebookBtn);
         Button signInBtn = findViewById(R.id.LoginBtn);
-        EditText nameText = findViewById(R.id.nameTxt);
-        EditText emailText = findViewById(R.id.emailTxt);
-        EditText pwdText = findViewById(R.id.pwdTxt);
+        EditText emailText = findViewById(R.id.txtMail);
+        EditText pwdText = findViewById(R.id.txtPassword);
+        TextView registerTextView = findViewById(R.id.txtregister2);
+        TextView rememberPasswordTextView = findViewById(R.id.txtRememberPassword);
+
 
         // Initialize Firebase Auth
         mFirebaseAuth = FirebaseAuth.getInstance();
         createRequest();
 
-        // If Sign In button is clicked
+        // If Sign In with Google button is clicked
         signInGoogleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 signIn();
+
+            }
+        });
+
+        // If Sign In with email button is clicked
+        signInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = emailText.getText().toString();
+                String password = pwdText.getText().toString();
+
+                if (!email.equals("") && !password.equals("")) {
+                    mFirebaseAuth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(LoginScreen.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // Sign in success, update UI with the signed-in user's information
+                                        Toast.makeText(LoginScreen.this, getString(R.string.authSuccess),
+                                                Toast.LENGTH_LONG).show();
+
+                                        startActivity(goToMainScreen);
+                                        finish();
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+                                        Toast.makeText(LoginScreen.this, getString(R.string.authFail),
+                                                Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                    });
+                }
+            }
+        });
+        // If RememberPassword TextView is clicked
+        rememberPasswordTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mFirebaseAuth.sendPasswordResetEmail(emailText.toString())
+                    .addOnCompleteListener(LoginScreen.this, new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(LoginScreen.this, "Reset link sent to your email",
+                                        Toast.LENGTH_LONG).show();
+
+                                startActivity(goToMainScreen);
+                                finish();
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(LoginScreen.this, "Unable to send reset mail",
+                                        Toast.LENGTH_LONG).show();
+                            }
+                        }
+                });
+            }
+        });
+
+        // If register TextView is clicked
+        registerTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(goToRegisterScreen);
             }
         });
     }
