@@ -6,5 +6,7 @@
     <color name="almostWhite">#FAF9F9</color>
     <color name="apricot">#FFD6BA</color>
     <color name="black">#000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="backgroundCell">#90FFFFFF</color>
 </resources>
