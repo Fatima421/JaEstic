@@ -55,13 +55,10 @@ public class PreLoginScreen extends AppCompatActivity {
     /*@Override
     public void onStart() {
         super.onStart();
-        // Create an Intent to go to main screen
-        Intent goToMainScreen = new Intent(this, MainActivity.class);
-
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            startActivity(goToMainScreen);
+            startActivity(goToRegisterScreen);
         }
     } */
 }
