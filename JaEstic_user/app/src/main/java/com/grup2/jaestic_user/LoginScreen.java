@@ -39,7 +39,7 @@ public class LoginScreen extends AppCompatActivity {
 
         // Creating an intent to be able to go to RegisterScreen
         Intent goToRegisterScreen = new Intent(this, RegisterScreen.class);
-        Intent goToMainScreen = new Intent(this, MainScreen.class);
+        Intent goToMainScreen = new Intent(this, NavigationActivity.class);
 
 
         // Properties
@@ -137,19 +137,9 @@ public class LoginScreen extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
     }
 
-    // START on_start_check_user
-    @Override
-    public void onStart() {
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
-        if(currentUser != null){
-            updateUI(currentUser);
-        }
-        super.onStart();
-    }
-    // END on_start_check_user
 
-    // START onactivityresult
+
+    // START on activity result
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -200,7 +190,7 @@ public class LoginScreen extends AppCompatActivity {
 
     // END signin
     private void updateUI(FirebaseUser user) {
-        Intent goToMainScreen = new Intent(this, MainScreen.class);
+        Intent goToMainScreen = new Intent(this, NavigationActivity.class);
         startActivity(goToMainScreen);
         LoginScreen.this.finish();
     }

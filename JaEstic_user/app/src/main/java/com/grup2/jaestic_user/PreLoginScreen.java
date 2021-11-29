@@ -52,13 +52,22 @@ public class PreLoginScreen extends AppCompatActivity {
         });
     }
 
-    /*@Override
+    // START on_start_check_user
+
+    @Override
     public void onStart() {
-        super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            startActivity(goToRegisterScreen);
+            updateUI(currentUser);
         }
-    } */
+        super.onStart();
+    }
+
+    // END signin
+    private void updateUI(FirebaseUser user) {
+        Intent goToMainScreen = new Intent(this, NavigationActivity.class);
+        startActivity(goToMainScreen);
+        PreLoginScreen.this.finish();
+    }
 }

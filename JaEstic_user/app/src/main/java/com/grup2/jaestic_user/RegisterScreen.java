@@ -67,19 +67,14 @@ public class RegisterScreen extends AppCompatActivity {
                 if (email.isEmpty()) {
                     emailText.setError("email is required");
                     emailText.requestFocus();
-                    //emailText.setCompoundDrawablesWithIntrinsicBounds(0,0, R.drawable.error,0);
-                    //emailText.setCompoundDrawablePadding(5);
                 }
 
                 if (password.isEmpty()) {
                     pwdText.setError("password is required");
                     pwdText.requestFocus();
-                    //pwdText.setCompoundDrawablesWithIntrinsicBounds(0,0, R.drawable.error,0);
-                    //pwdText.setCompoundDrawablePadding(5);
                 }
 
-       //         progressBar.setVisibility(View.VISIBLE);
-
+                // If fields are empty create a user
                 if (!email.isEmpty() && !password.isEmpty()) {
                     mFirebaseAuth.createUserWithEmailAndPassword(email, password)
                             .addOnCompleteListener(RegisterScreen.this, new OnCompleteListener<AuthResult>() {
@@ -126,56 +121,54 @@ public class RegisterScreen extends AppCompatActivity {
         });
     }
 
+    // Sign in
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+    // Checks if google sign in was succesful or not
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
+                // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
+                Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
+                firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
+                // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e);
             }
         }
     }
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+    // Asks for google credentials
+    private void firebaseAuthWithGoogle(String idToken) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mFirebaseAuth.signInWithCredential(credential)
-                .addOnSuccessListener(this, authResult -> {
-                    startActivity(new Intent(RegisterScreen.this, RegisterScreen.class));
-                    finish();
-                })
-               .addOnFailureListener(this, e -> Toast.makeText(RegisterScreen.this, "Authentication failed.",
-                       Toast.LENGTH_SHORT).show());
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success");
+                            FirebaseUser user = mFirebaseAuth.getCurrentUser();
+                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            updateUI(null);
+                        }
+                    }
+                });
     }
 
-    // Get User Name
-    private String getUserName() {
-        FirebaseUser user = mFirebaseAuth.getCurrentUser();
-        if (user != null) {
-            return user.getDisplayName();
-        }
-        return "anonymous";
-    }
-/*
-    @Override
-    public void onStart() {
-        FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
-        if (currentUser != null) {
-            updateUI(currentUser);
-        }
-        super.onStart();
-    }
-    
- */
-
+    // Moves you to the next screen
     private void updateUI(FirebaseUser user) {
         Intent goToMainScreen = new Intent(this, NavigationActivity.class);
         startActivity(goToMainScreen);
