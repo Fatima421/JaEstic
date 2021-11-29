@@ -116,7 +116,7 @@ public class RegisterScreen extends AppCompatActivity {
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mFirebaseAuth.signInWithCredential(credential)
                 .addOnSuccessListener(this, authResult -> {
-                    startActivity(new Intent(RegisterScreen.this, MainActivity.class));
+                    startActivity(new Intent(RegisterScreen.this, MainScreen.class));
                     finish();
                 })
                .addOnFailureListener(this, e -> Toast.makeText(RegisterScreen.this, "Authentication failed.",

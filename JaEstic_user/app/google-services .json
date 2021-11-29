@@ -8,13 +8,21 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:942078009683:android:32a2e04ceb3dd622c881a6",
+        "mobilesdk_app_id": "1:942078009683:android:b6dfc40cc8af3c97c881a6",
         "android_client_info": {
           "package_name": "com.example.admin_justeat"
         }
       },
       "oauth_client": [
         {
+          "client_id": "942078009683-7kdo9ng0qovg1bc2bukpandtjhu718aa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.admin_justeat",
+            "certificate_hash": "07038f6fddf672c12cc9fb0f5a5f4533c7f5493d"
+          }
+        },
+        {
           "client_id": "942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -37,41 +45,57 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:942078009683:android:cb4709ac2318d96ac881a6",
+        "mobilesdk_app_id": "1:942078009683:android:d2d029b38abc7a2cc881a6",
+        "android_client_info": {
+          "package_name": "com.grup2.jaestic_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942078009683-r25febfjtbp0evasitbiud7unu72hrc5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grup2.jaestic_admin",
+            "certificate_hash": "07038f6fddf672c12cc9fb0f5a5f4533c7f5493d"
+          }
+        },
+        {
+          "client_id": "942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZBHLj9DN24_k3_4Z5EkixFbLeeuSy57g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942078009683:android:b7b574f92079daadc881a6",
         "android_client_info": {
           "package_name": "com.grup2.jaestic_user"
         }
       },
       "oauth_client": [
         {
-          "client_id": "942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDZBHLj9DN24_k3_4Z5EkixFbLeeuSy57g"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:942078009683:android:f176f87970c39522c881a6",
-        "android_client_info": {
-          "package_name": "com.proyecto.justeat"
-        }
-      },
-      "oauth_client": [
+          "client_id": "942078009683-k68jaoq6rmqt9cdvf75ugukiapt8vkc4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grup2.jaestic_user",
+            "certificate_hash": "0f1a81bdf6c5510574e96597e9bb995fcd51d100"
+          }
+        },
         {
           "client_id": "942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com",
           "client_type": 3
