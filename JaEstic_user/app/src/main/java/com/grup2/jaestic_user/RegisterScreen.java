@@ -34,6 +34,7 @@ public class RegisterScreen extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
     private GoogleSignInClient mGoogleSignInClient;
     private static final String TAG = "SignInActivity";
+    private static final int RC_SIGN_IN = 101;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +89,7 @@ public class RegisterScreen extends AppCompatActivity {
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d(TAG, "createUserWithEmail:success");
                                         FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                                        startActivity(new Intent(RegisterScreen.this, MainActivity.class));
+                                        startActivity(new Intent(RegisterScreen.this, NavigationActivity.class));
                                         //updateUI(user);
                                     } else {
                                         // If sign in fails, display a message to the user.
@@ -127,13 +128,13 @@ public class RegisterScreen extends AppCompatActivity {
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, 1);
+        startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
+        if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
@@ -148,7 +149,7 @@ public class RegisterScreen extends AppCompatActivity {
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mFirebaseAuth.signInWithCredential(credential)
                 .addOnSuccessListener(this, authResult -> {
-                    startActivity(new Intent(RegisterScreen.this, MainActivity.class));
+                    startActivity(new Intent(RegisterScreen.this, RegisterScreen.class));
                     finish();
                 })
                .addOnFailureListener(this, e -> Toast.makeText(RegisterScreen.this, "Authentication failed.",
@@ -162,5 +163,22 @@ public class RegisterScreen extends AppCompatActivity {
             return user.getDisplayName();
         }
         return "anonymous";
+    }
+/*
+    @Override
+    public void onStart() {
+        FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
+        if (currentUser != null) {
+            updateUI(currentUser);
+        }
+        super.onStart();
+    }
+    
+ */
+
+    private void updateUI(FirebaseUser user) {
+        Intent goToMainScreen = new Intent(this, NavigationActivity.class);
+        startActivity(goToMainScreen);
+        RegisterScreen.this.finish();
     }
 }
