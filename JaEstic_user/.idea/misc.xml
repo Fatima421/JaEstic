@@ -3,6 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/layout/activity_navigation.xml" value="0.25" />
+        <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/layout/cart.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/layout/category.xml" value="0.215625" />
+        <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/layout/dish.xml" value="0.215625" />
+        <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/layout/fragment_cart.xml" value="0.25" />
+        <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/layout/fragment_categories_list.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/layout/fragment_dish_details.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/layout/fragment_dishes_list.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/layout/fragment_main.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/layout/prelogin_screen.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/layout/activity_main.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/layout/activity_navigation.xml" value="0.22239583333333332" />
         <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/layout/category.xml" value="0.23645833333333333" />
