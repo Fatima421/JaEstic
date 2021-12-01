@@ -17,6 +17,6 @@
     <string name="loginFacebook">Continuar con Facebook</string>
     <string name="authFail">Autentificación fallida</string>
     <string name="authSuccess">Se inició sesión correctamente</string>
-
+    <string name="orders">Pedidos</string>
 
 </resources>
