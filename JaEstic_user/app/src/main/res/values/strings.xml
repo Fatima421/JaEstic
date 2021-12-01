@@ -1,6 +1,20 @@
 <resources>
     <string name="app_name">JaEstic_user</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcomeToJaEstic">Welcome to JaEstic, feel free to order, Fot-li!</string>
+    <string name="signIn">Sign in</string>
+    <string name="signUp">Sign up</string>
+    <string name="default_web_client_id_manual" translatable="false">942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com</string>
+    <string name="methodEmail">Continue with email</string>
+    <string name="login">Login</string>
+    <string name="mail">Email</string>
+    <string name="user_password">Password</string>
+    <string name="txtRememberPassword">Forgot your password?</string>
+    <string name="txtRegister">Not registered yet?</string>
+    <string name="txtRegister2">Register</string>
+    <string name="or">or</string>
+    <string name="loginGoogle">Continue with Google</string>
+    <string name="loginFacebook">Continue with Facebook</string>
+    <string name="authFail">Authentication failed</string>
+    <string name="authSuccess">Successfully Logged In</string>
 
 </resources>
