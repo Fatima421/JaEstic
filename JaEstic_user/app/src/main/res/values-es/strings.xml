@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JaEstic_usuario</string>
+    <string name="welcomeToJaEstic">¡Bienvenido a JaEstic, siéntase libre de hacer un pedido, Fot-li!</string>
+    <string name="signIn">Iniciar Sesión</string>
+    <string name="signUp">Registrarse</string>
+
+    <string name="methodEmail">Continuar con email</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="mail">Correo</string>
+    <string name="user_password">Contraseña</string>
+    <string name="txtRememberPassword">¿Ha olvidado su contraseña?</string>
+    <string name="txtRegister">¿Aún no estás registrado?</string>
+    <string name="txtRegister2">Registrarse</string>
+    <string name="or">o</string>
+    <string name="loginGoogle">Continuar con Google</string>
+    <string name="loginFacebook">Continuar con Facebook</string>
+    <string name="authFail">Autentificación fallida</string>
+    <string name="authSuccess">Se inició sesión correctamente</string>
+
+
+</resources>
