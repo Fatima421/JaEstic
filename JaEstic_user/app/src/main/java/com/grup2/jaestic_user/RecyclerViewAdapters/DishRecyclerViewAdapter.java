@@ -2,6 +2,7 @@ package com.grup2.jaestic_user.RecyclerViewAdapters;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +21,7 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
     Context context;
 
     // Constructor
-    public DishRecyclerViewAdapter(Context context, ArrayList<Dish> arrayDishes){
-        this.context = context;
+    public DishRecyclerViewAdapter(ArrayList<Dish> arrayDishes) {
         this.arrayDishes = arrayDishes;
     }
 
@@ -44,6 +44,8 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
         // Sets text inside TextViews
         Dish dish = arrayDishes.get(i);
         holder.name.setText(dish.getName());
+        holder.description.setText(dish.getDescription());
+        holder.price.setText(dish.getPrice() + "€");
 
         // Adds item object to bundle and sent to Item Details fragments
         bundle.putSerializable("Dish", dish);
@@ -62,10 +64,12 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
 
     // Initializes Layout properties that will link with RecyclerView (through Holder)
     public class DishViewHolder extends RecyclerView.ViewHolder{
-        TextView name;
+        TextView name, description, price;
         public DishViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.lbl_nameDishList);
+            name = itemView.findViewById(R.id.listDishName);
+            description = itemView.findViewById(R.id.listDishDescription);
+            price = itemView.findViewById(R.id.listDishPrice);
         }
     }
 

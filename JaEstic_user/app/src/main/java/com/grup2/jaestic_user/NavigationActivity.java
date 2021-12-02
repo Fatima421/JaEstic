@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.grup2.jaestic_user.Fragments.CartFragment;
 import com.grup2.jaestic_user.Fragments.CategoriesListFragment;
+import com.grup2.jaestic_user.Fragments.DishesListFragment;
 import com.grup2.jaestic_user.Fragments.MainFragment;
 
 public class NavigationActivity extends AppCompatActivity {
@@ -17,10 +18,10 @@ public class NavigationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_navigation);
-
         BottomNavigationView bottomNav = findViewById(R.id.main_menu);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DishesListFragment()).commit();
 
-        bottomNav.setOnNavigationItemSelectedListener(item -> {
+        bottomNav.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = null;
 
             switch (item.getItemId()) {
