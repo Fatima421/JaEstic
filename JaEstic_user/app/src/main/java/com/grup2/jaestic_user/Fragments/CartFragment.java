@@ -7,8 +7,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.grup2.jaestic_user.Models.Category;
+import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +67,19 @@ public class CartFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cart, container, false);
+        View cartView = inflater.inflate(R.layout.fragment_cart, container, false);
+
+        ArrayList<Dish> arrayCart = new ArrayList<>();
+        arrayCart.add(new Dish(1, "", "Peix", "Loremipsum", "13", new Category()));
+
+        TextView txtEmptyCart = cartView.findViewById(R.id.empty_view);
+
+        if(arrayCart.isEmpty()){
+            txtEmptyCart.setVisibility(View.VISIBLE);
+        }else{
+            txtEmptyCart.setVisibility(View.GONE);
+        }
+
+        return cartView;
     }
 }

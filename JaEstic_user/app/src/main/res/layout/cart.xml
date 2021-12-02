@@ -3,66 +3,108 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
+    android:layout_height="130dp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_margin="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:cardBackgroundColor="@color/almostWhite"
-            app:cardCornerRadius="15dp">
-
+            android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="135dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left" />
-
-            <TextView
-                android:id="@+id/DishName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:id="@+id/cell"
+                android:layout_width="0dp"
+                android:layout_height="99dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="11dp"
-                android:fontFamily="@font/helvetica_rounded"
-                android:text="Dish"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/custom_border_cell" />
+
+            <ImageView
+                android:id="@+id/listDishImage"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/cell"
+                app:layout_constraintStart_toStartOf="@+id/cell"
+                app:layout_constraintTop_toTopOf="@+id/cell"
+                app:srcCompat="@drawable/example_dish" />
 
             <TextView
-                android:id="@+id/DishPrice"
-                android:layout_width="wrap_content"
+                android:id="@+id/listDishName"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/heebo_regular"
-                android:text="Price"
-                android:textSize="15sp" />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/helvetica_rounded"
+                android:text="TextView"
+                android:textColor="@color/greyBlue"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toStartOf="@+id/imgHeart"
+                app:layout_constraintStart_toEndOf="@+id/listDishImage"
+                app:layout_constraintTop_toTopOf="@+id/cell" />
 
             <TextView
-                android:id="@+id/DishDescription"
+                android:id="@+id/listDishDescription"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/heebo"
+                android:text="TextView"
+                android:textColor="@color/greyBlue"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toTopOf="@+id/listDishPrice"
+                app:layout_constraintEnd_toStartOf="@+id/imgHeart"
+                app:layout_constraintStart_toEndOf="@+id/listDishImage"
+                app:layout_constraintTop_toBottomOf="@+id/listDishName" />
+
+            <TextView
+                android:id="@+id/listDishPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/helvetica_rounded"
+                android:text="TextView"
+                android:textColor="@color/greyBlue"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="@+id/cell"
+                app:layout_constraintEnd_toStartOf="@+id/imgCart"
+                app:layout_constraintStart_toEndOf="@+id/listDishImage" />
+
+            <ImageView
+                android:id="@+id/imgHeart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/helvetica_rounded"
-                android:text="Description"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </androidx.cardview.widget.CardView>
-    </RelativeLayout>
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/cell"
+                app:layout_constraintTop_toTopOf="@+id/cell"
+                app:srcCompat="@drawable/ic_circle_unselected"
+                app:tint="@color/greyBlue" />
 
+            <ImageView
+                android:id="@+id/imgCart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/cell"
+                app:layout_constraintEnd_toEndOf="@+id/cell"
+                app:srcCompat="@drawable/ic_circle_unselected"
+                app:tint="@color/greyBlue" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

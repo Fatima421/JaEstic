@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/drawable/error.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/drawable/gradient_background.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/drawable/ic_cart.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/drawable/ic_circle_unselected.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/drawable/ic_food.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/drawable/rounded_button.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/layout/activity_navigation.xml" value="0.25" />
         <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/layout/cart.xml" value="0.5" />
         <entry key="..\:/Users/John/Documents/GitHub/usuari_grup2/JaEstic_user/app/src/main/res/layout/category.xml" value="0.215625" />
