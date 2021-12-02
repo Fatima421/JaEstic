@@ -5,30 +5,42 @@ import java.util.ArrayList;
 
 public class Category implements Serializable {
     // Properties
-    int id;
-    String name, imgUrl;
-    ArrayList<Dish> dishes;
+    String description;
+    String imagePath;
+    String name;
 
-    // Constructors
-    public Category() { }
+    // Default constructor
+    public Category() {}
 
-    public Category(int id, String imgUrl, String name, ArrayList<Dish> dishes) {
-        this.id = id;
-        this.imgUrl = imgUrl;
+    // Specific Constructor
+    public Category(String description, String imagePath, String name) {
+        this.imagePath = imagePath;
         this.name = name;
-        this.dishes = dishes;
+        this.description = description;
     }
 
-    // Getters
-    public int getId() { return id; }
-    public String getImgUrl() { return imgUrl; }
-    public String getName() { return name; }
-    public ArrayList<Dish> getDishes() { return dishes; }
+    // Getters and Setters
+    public String getDescription() {
+        return description;
+    }
 
-    // Setters
-    public void setId(int id) { this.id = id; }
-    public void setImgUrl(String imgUrl) { this.imgUrl = imgUrl; }
-    public void setName(String name) { this.name = name; }
-    public void setDishes(ArrayList<Dish> dishes) { this.dishes = dishes; }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
