@@ -18,5 +18,5 @@
     <string name="authFail">Autentificación fallida</string>
     <string name="authSuccess">Se inició sesión correctamente</string>
     <string name="orders">Pedidos</string>
-
+    <string name="cart_empty">Tu carrito esta vació</string>
 </resources>

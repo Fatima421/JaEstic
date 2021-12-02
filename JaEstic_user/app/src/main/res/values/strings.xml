@@ -17,4 +17,5 @@
     <string name="authFail">Authentication failed</string>
     <string name="authSuccess">Successfully Logged In</string>
     <string name="orders">Orders</string>
+    <string name="cart_empty">Your cart is empty</string>
 </resources>
