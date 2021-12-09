@@ -6,6 +6,7 @@
     <string name="signUp">Registrarse</string>
 
     <string name="methodEmail">Continuar con email</string>
+    <string name="detail">Detalles</string>
     <string name="login">Iniciar Sesión</string>
     <string name="mail">Correo</string>
     <string name="user_password">Contraseña</string>
@@ -17,6 +18,8 @@
     <string name="loginFacebook">Continuar con Facebook</string>
     <string name="authFail">Autentificación fallida</string>
     <string name="authSuccess">Se inició sesión correctamente</string>
+    <string name="addtocart">AÑADIR AL PEDIDO</string>
+    <string name="quantity">Cantidad:</string>
     <string name="categoriesTitle">Categorías</string>
 
 </resources>

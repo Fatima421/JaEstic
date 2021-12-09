@@ -89,11 +89,35 @@
       },
       "oauth_client": [
         {
+          "client_id": "942078009683-a8o2m7oo9upg0ip6vrcb6v8ci7m3eoqj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grup2.jaestic_user",
+            "certificate_hash": "ca68fb375eb3beef3d71ea418afd4b0cb19e6a8b"
+          }
+        },
+        {
+          "client_id": "942078009683-ce23vpt1sqbi3g9kh9nidstkl0hpkj42.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grup2.jaestic_user",
+            "certificate_hash": "61c2d5ea095cb8bcb311b7db9fd3d4b4e6fde5a7"
+          }
+        },
+        {
           "client_id": "942078009683-k68jaoq6rmqt9cdvf75ugukiapt8vkc4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.grup2.jaestic_user",
             "certificate_hash": "0f1a81bdf6c5510574e96597e9bb995fcd51d100"
+          }
+        },
+        {
+          "client_id": "942078009683-uabc5bfv4q20st1i7i364o09m8pp0cku.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grup2.jaestic_user",
+            "certificate_hash": "dfa65cd4be8507cabe2b2a462c67892b530eec41"
           }
         },
         {

@@ -5,6 +5,7 @@
     <string name="signUp">Sign up</string>
     <string name="default_web_client_id_manual" translatable="false">942078009683-oma2vsfasofealpeuk0hv8qu2m2tsi01.apps.googleusercontent.com</string>
     <string name="methodEmail">Continue with email</string>
+    <string name="detail">Details</string>
     <string name="login">Login</string>
     <string name="mail">Email</string>
     <string name="user_password">Password</string>
@@ -16,5 +17,7 @@
     <string name="loginFacebook">Continue with Facebook</string>
     <string name="authFail">Authentication failed</string>
     <string name="authSuccess">Successfully Logged In</string>
+    <string name="addtocart">ADD TO CART</string>
+    <string name="quantity">Quantity:</string>
     <string name="categoriesTitle">Categories</string>
 </resources>
