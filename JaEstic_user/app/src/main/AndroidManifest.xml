@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JaEstic_user">
         <activity
-            android:name=".NavigationActivity"
+            android:name=".PreLoginScreen"
             android:exported="false" />
         <activity
-            android:name=".PreLoginScreen"
+            android:name=".NavigationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

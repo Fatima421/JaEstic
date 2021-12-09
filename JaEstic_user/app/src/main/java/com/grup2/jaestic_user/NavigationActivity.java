@@ -20,7 +20,7 @@ public class NavigationActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.main_menu);
 
-        bottomNav.setOnNavigationItemSelectedListener(item -> {
+        bottomNav.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = null;
 
             switch (item.getItemId()) {
