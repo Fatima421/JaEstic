@@ -80,7 +80,6 @@ public class CategoriesListFragment extends Fragment {
                     Category category=di.getValue(Category.class);
                     categories.add(category);
                     Log.i("IMAGE", "onDataChange: "+category.getImagePath());
-                  //  Log.i("value received in string", "onDataChange: "+di.getValue().toString());
                 }
                 CategoryRecyclerViewAdapter adapter = new CategoryRecyclerViewAdapter(categories, getContext());
                 recyclerView.setAdapter(adapter);

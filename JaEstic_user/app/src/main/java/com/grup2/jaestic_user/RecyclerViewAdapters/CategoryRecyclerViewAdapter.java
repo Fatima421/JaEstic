@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Registry;
 import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.module.AppGlideModule;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -63,24 +64,14 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
         // Sets text inside TextViews
         Category category = arrayCategories.get(i);
 
-        // Create a storage reference from our app
-
-        // Reference to an image file in Cloud Storage
-
-
-        // ArrayList<String> images = storageReference.child("CategoryImages/").listAll();
-
         // Reference to an image file in Cloud Storage
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-
-        Task<ListResult> images = storageReference.child("CategoryImages/").listAll();
-
-        storageReference.child("CategoryImages/asian.png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        storageReference.child(category.getImagePath()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Log.i("IMAGE", ":::::::::::::::::::::::::::::::::::" + uri.toString());
                 Glide.with(context)
                         .load(uri.toString())
+                        .diskCacheStrategy(DiskCacheStrategy.DATA)
                         .into(holder.image);
             }
         }).addOnFailureListener(new OnFailureListener() {
