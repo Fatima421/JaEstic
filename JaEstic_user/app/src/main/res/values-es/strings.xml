@@ -6,6 +6,7 @@
     <string name="signUp">Registrarse</string>
 
     <string name="methodEmail">Continuar con email</string>
+    <string name="detail">Detalles</string>
     <string name="login">Iniciar Sesión</string>
     <string name="mail">Correo</string>
     <string name="user_password">Contraseña</string>
@@ -19,4 +20,7 @@
     <string name="authSuccess">Se inició sesión correctamente</string>
     <string name="orders">Pedidos</string>
     <string name="cart_empty">Tu carrito esta vació</string>
+    <string name="addtocart">AÑADIR AL PEDIDO</string>
+    <string name="quantity">Cantidad:</string>
+
 </resources>
