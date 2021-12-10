@@ -7,14 +7,16 @@ public class Category implements Serializable {
     // Properties
     String description;
     String imagePath;
+    String imagePathUsers;
     String name;
 
     // Default constructor
     public Category() {}
 
     // Specific Constructor
-    public Category(String description, String imagePath, String name) {
+    public Category(String description, String imagePath, String imagePathUsers, String name) {
         this.imagePath = imagePath;
+        this.imagePathUsers = imagePathUsers;
         this.name = name;
         this.description = description;
     }
@@ -35,6 +37,10 @@ public class Category implements Serializable {
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
+
+    public String getImagePathUsers() { return imagePathUsers; }
+
+    public void setImagePathUsers(String imagePathUsers) { this.imagePathUsers = imagePathUsers; }
 
     public String getName() {
         return name;

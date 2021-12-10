@@ -48,17 +48,6 @@ public class CategoriesListFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_categories_list, container, false);
 
-
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-
-        //Adding elements
-        /*
-        ArrayList<Category> categories = new ArrayList<Category>();
-        categories.add(new Category(getActivity().getResources().getDrawable(R.drawable.junk_food).toString()));
-        categories.add(new Category(getActivity().getResources().getDrawable(R.drawable.junk_food).toString()));
-        categories.add(new Category(getActivity().getResources().getDrawable(R.drawable.junk_food).toString()));
-        categories.add(new Category(getActivity().getResources().getDrawable(R.drawable.junk_food).toString()));
-*/
         // Create the RecyclerView
         recyclerView = v.findViewById(R.id.categoryRecyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
