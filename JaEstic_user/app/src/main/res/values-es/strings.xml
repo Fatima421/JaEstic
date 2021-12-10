@@ -20,5 +20,6 @@
     <string name="authSuccess">Se inició sesión correctamente</string>
     <string name="addtocart">AÑADIR AL PEDIDO</string>
     <string name="quantity">Cantidad:</string>
+    <string name="categoriesTitle">Categorías</string>
 
 </resources>

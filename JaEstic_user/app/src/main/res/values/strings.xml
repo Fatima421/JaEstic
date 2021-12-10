@@ -19,5 +19,5 @@
     <string name="authSuccess">Successfully Logged In</string>
     <string name="addtocart">ADD TO CART</string>
     <string name="quantity">Quantity:</string>
-
+    <string name="categoriesTitle">Categories</string>
 </resources>
