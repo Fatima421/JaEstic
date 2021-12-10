@@ -9,16 +9,18 @@ public class Category implements Serializable {
     String imagePath;
     String imagePathUsers;
     String name;
+    ArrayList<Dish> foods;
 
     // Default constructor
-    public Category() {}
+    public Category() { }
 
     // Specific Constructor
-    public Category(String description, String imagePath, String imagePathUsers, String name) {
+    public Category(String description, String imagePath, String imagePathUsers, String name, ArrayList<Dish> foods) {
         this.imagePath = imagePath;
         this.imagePathUsers = imagePathUsers;
         this.name = name;
         this.description = description;
+        this.foods = foods;
     }
 
     // Getters and Setters
