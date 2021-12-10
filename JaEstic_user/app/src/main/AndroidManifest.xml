@@ -6,13 +6,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.JaEstic_user" >
+        android:theme="@style/SplashTheme" >
         <activity
             android:name=".LoginScreen"
             android:exported="false"
@@ -21,10 +21,7 @@
             android:name=".RegisterScreen"
             android:exported="false"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".NavigationActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name=".PreLoginScreen"
             android:exported="true" >
@@ -34,6 +31,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".NavigationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
