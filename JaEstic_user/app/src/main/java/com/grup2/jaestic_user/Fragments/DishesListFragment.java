@@ -23,8 +23,10 @@ import com.grup2.jaestic_user.RecyclerViewAdapters.DishRecyclerViewAdapter;
 import java.util.ArrayList;
 
 public class DishesListFragment extends Fragment {
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference dishes = database.getReference("Categories").child("2").child("Foods");
+    Bundle bundle;
+    Category category;
+    private DatabaseReference dishes;
+    private ArrayList<Dish> arrayDishes =  new ArrayList<Dish>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,9 @@ public class DishesListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dishes_list, container, false);
-        ArrayList<Dish> arrayDishes =  new ArrayList<Dish>();
+        bundle = getArguments();
+        category = (Category) bundle.getSerializable("Category");
+        dishes = FirebaseDatabase.getInstance().getReference("Categories").child(category.getFirebaseKey()).child("Foods");
 
         dishes.addValueEventListener(new ValueEventListener() {
             @Override
@@ -49,10 +53,9 @@ public class DishesListFragment extends Fragment {
                 }
                 // Creates Recycler View
                 RecyclerView recyclerView = view.findViewById(R.id.dishRecyclerView);
-                DishRecyclerViewAdapter adapter = new DishRecyclerViewAdapter(arrayDishes);
+                DishRecyclerViewAdapter adapter = new DishRecyclerViewAdapter(arrayDishes, getContext());
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
 
             }
 

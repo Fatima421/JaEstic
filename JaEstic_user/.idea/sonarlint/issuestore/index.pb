@@ -1,8 +1,6 @@
 
 i
 9app/src/main/java/com/grup2/jaestic_user/Models/User.java,9\9\990e66a2692dfb21efef2d39989eb5ceb21007cd
-~
-Napp/src/main/java/com/grup2/jaestic_user/Fragments/CategoriesListFragment.java,9\3\93ed4f323e3da83231b8e00587936e950160cdff
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 @

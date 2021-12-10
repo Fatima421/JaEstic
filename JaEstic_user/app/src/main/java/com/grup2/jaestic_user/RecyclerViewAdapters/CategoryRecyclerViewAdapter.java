@@ -79,7 +79,7 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
         // When user clicks on item, will navigation to item details fragment
         holder.itemView.setOnClickListener(v -> {
             AppCompatActivity app = (AppCompatActivity) v.getContext();
-            app.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, dishesListFragment, "Dish").commit();
+            app.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, dishesListFragment, "Category").commit();
         });
     }
 

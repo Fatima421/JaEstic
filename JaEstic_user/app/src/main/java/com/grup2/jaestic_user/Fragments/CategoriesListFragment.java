@@ -67,6 +67,7 @@ public class CategoriesListFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot di:dataSnapshot.getChildren()){
                     Category category=di.getValue(Category.class);
+                    category.setFirebaseKey(di.getKey());
                     categories.add(category);
                     Log.i("IMAGE", "onDataChange: "+category.getImagePath());
                 }

@@ -1,25 +1,12 @@
 package com.grup2.jaestic_user;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.grup2.jaestic_user.Fragments.CartFragment;
 import com.grup2.jaestic_user.Fragments.CategoriesListFragment;
-import com.grup2.jaestic_user.Fragments.DishesListFragment;
 import com.grup2.jaestic_user.Fragments.MainFragment;
 
 public class NavigationActivity extends AppCompatActivity {
@@ -31,7 +18,6 @@ public class NavigationActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_navigation);
         BottomNavigationView bottomNav = findViewById(R.id.main_menu);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DishesListFragment()).commit();
 
         bottomNav.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = null;
