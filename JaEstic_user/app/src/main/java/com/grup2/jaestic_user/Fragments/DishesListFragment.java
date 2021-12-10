@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class DishesListFragment extends Fragment {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference dishes = database.getReference("Foods");
+    private DatabaseReference dishes = database.getReference("Categories").child("2").child("Foods");
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,8 @@ public class DishesListFragment extends Fragment {
                 DishRecyclerViewAdapter adapter = new DishRecyclerViewAdapter(arrayDishes);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
             }
 
             @Override

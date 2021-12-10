@@ -1,8 +1,6 @@
 
 i
 9app/src/main/java/com/grup2/jaestic_user/Models/User.java,9\9\990e66a2692dfb21efef2d39989eb5ceb21007cd
-m
-=app/src/main/java/com/grup2/jaestic_user/Models/Category.java,9\0\90b318efb3aeee51c7343d7781b1277b1827cb9c
 ~
 Napp/src/main/java/com/grup2/jaestic_user/Fragments/CategoriesListFragment.java,9\3\93ed4f323e3da83231b8e00587936e950160cdff
 <
@@ -15,5 +13,3 @@ l
 <app/src/main/java/com/grup2/jaestic_user/PreLoginScreen.java,4\8\48ccfd03d615aa18332345f93527875280a0d1e4
 {
 Kapp/src/main/java/com/grup2/jaestic_user/Fragments/DishDetailsFragment.java,0\c\0c943f220fa2be62fa511fdeba26e243d1318af5
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e

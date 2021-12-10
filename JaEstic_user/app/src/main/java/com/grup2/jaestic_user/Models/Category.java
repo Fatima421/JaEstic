@@ -5,30 +5,29 @@ import java.util.ArrayList;
 
 public class Category implements Serializable {
     // Properties
-    int id;
-    String name, imgUrl;
-    ArrayList<Dish> dishes;
+    String description, imagePath, name;
+    ArrayList<Dish> foods;
 
     // Constructors
     public Category() { }
 
-    public Category(int id, String imgUrl, String name, ArrayList<Dish> dishes) {
-        this.id = id;
-        this.imgUrl = imgUrl;
+    public Category(String description, String imagePath, String name, ArrayList<Dish> foods) {
+        this.description = description;
+        this.imagePath = imagePath;
         this.name = name;
-        this.dishes = dishes;
+        this.foods = foods;
     }
 
     // Getters
-    public int getId() { return id; }
-    public String getImgUrl() { return imgUrl; }
+    public String getDescription() { return description; }
+    public String getImagePath() { return imagePath; }
     public String getName() { return name; }
-    public ArrayList<Dish> getDishes() { return dishes; }
+    public ArrayList<Dish> getFoods() { return foods; }
 
     // Setters
-    public void setId(int id) { this.id = id; }
-    public void setImgUrl(String imgUrl) { this.imgUrl = imgUrl; }
+    public void setDescription(String description) { this.description = description; }
+    public void setImagePath(String imagePath) { this.imagePath = imagePath; }
     public void setName(String name) { this.name = name; }
-    public void setDishes(ArrayList<Dish> dishes) { this.dishes = dishes; }
+    public void setFoods(ArrayList<Dish> dishes) { this.foods = foods; }
 
 }

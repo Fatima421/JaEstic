@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +19,8 @@ import java.util.ArrayList;
 public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerViewAdapter.DishViewHolder> {
     // Properties
     private ArrayList<Dish> arrayDishes;
-    Context context;
+    boolean heartPressed = false;
+    boolean cartPressed = false;
 
     // Constructor
     public DishRecyclerViewAdapter(ArrayList<Dish> arrayDishes) {
@@ -47,6 +49,7 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
         holder.description.setText(dish.getDescription());
         holder.price.setText(dish.getPrice() + "€");
 
+
         // Adds item object to bundle and sent to Item Details fragments
         bundle.putSerializable("Dish", dish);
         dishDetailsFragment.setArguments(bundle);
@@ -55,6 +58,17 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
         holder.itemView.setOnClickListener(v -> {
             AppCompatActivity app = (AppCompatActivity) v.getContext();
             app.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, dishDetailsFragment, "Dish").commit();
+        });
+
+        holder.favorite.setOnClickListener(v -> {
+            AppCompatActivity app = (AppCompatActivity) v.getContext();
+            int current = (heartPressed == true) ? R.drawable.ic_heart : R.drawable.ic_heart_empty;
+            holder.favorite.setImageResource(current);
+        });
+        holder.cart.setOnClickListener(v -> {
+            AppCompatActivity app = (AppCompatActivity) v.getContext();
+            int current = (cartPressed == true) ? R.drawable.ic_cart : R.drawable.ic_cart_empty;
+            holder.favorite.setImageResource(current);
         });
     }
 
@@ -65,11 +79,14 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
     // Initializes Layout properties that will link with RecyclerView (through Holder)
     public class DishViewHolder extends RecyclerView.ViewHolder{
         TextView name, description, price;
+        ImageView favorite, cart;
         public DishViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.listDishName);
             description = itemView.findViewById(R.id.listDishDescription);
             price = itemView.findViewById(R.id.listDishPrice);
+            favorite = itemView.findViewById(R.id.imgHeart);
+            cart = itemView.findViewById(R.id.imgCart);
         }
     }
 
