@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -26,6 +27,8 @@ public class NavigationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SystemClock.sleep(1000);
+        setTheme(R.style.Theme_JaEstic_user);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_navigation);
