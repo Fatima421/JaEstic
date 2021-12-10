@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">JaEstic_usuario</string>
+    <string name="app_name">JaEstic</string>
     <string name="welcomeToJaEstic">¡Bienvenido a JaEstic, siéntase libre de hacer un pedido, Fot-li!</string>
     <string name="signIn">Iniciar Sesión</string>
     <string name="signUp">Registrarse</string>
