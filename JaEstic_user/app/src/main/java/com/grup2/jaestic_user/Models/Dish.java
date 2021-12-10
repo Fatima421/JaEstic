@@ -4,15 +4,16 @@ import java.io.Serializable;
 
 public class Dish implements Serializable {
     // Properties
-    String description, imagePath, name;
+    String description, imagePath, imagePathUsers, name;
     double price;
 
     // Constructors
     public Dish() { }
 
-    public Dish(String description, String imagePath, String name, double price) {
+    public Dish(String description, String imagePath, String imagePathUsers, String name, double price) {
         this.description = description;
         this.imagePath = imagePath;
+        this.imagePathUsers = imagePathUsers;
         this.name = name;
         this.price = price;
     }
@@ -20,12 +21,14 @@ public class Dish implements Serializable {
     // Getters
     public String getDescription() { return description; }
     public String getImagePath() { return imagePath; }
+    public String getImagePathUsers() { return imagePath; }
     public String getName() { return name; }
     public double getPrice() { return price; }
 
     // Setters
     public void setDescription(String description) { this.description = description; }
     public void setImagePath(String imagePath) { this.imagePath = imagePath; }
+    public void setImagePathUsers(String imagePath) { this.imagePath = imagePath; }
     public void setName(String name) { this.name = name; }
     public void setPrice(double price) { this.price = price; }
 }
