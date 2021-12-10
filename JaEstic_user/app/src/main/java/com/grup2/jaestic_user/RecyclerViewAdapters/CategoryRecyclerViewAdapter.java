@@ -18,7 +18,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.Registry;
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.module.AppGlideModule;
+import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -71,6 +73,7 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
             public void onSuccess(Uri uri) {
                 Glide.with(context)
                         .load(uri.toString())
+                        .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
                         .diskCacheStrategy(DiskCacheStrategy.DATA)
                         .into(holder.image);
             }
@@ -80,8 +83,6 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
                 Log.i("IMAGE", e.toString());
             }
         });
-
-
 
         // Adds item object to bundle and sent to Item Details fragments
         bundle.putSerializable("Category", category);
@@ -106,19 +107,4 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
             image = itemView.findViewById(R.id.categoryImage);
         }
     }
-
-    /*
-    @GlideModule
-    public class MyAppGlideModule extends AppGlideModule {
-
-        @Override
-        public void registerComponents(Context context, Glide glide, Registry registry) {
-            // Register FirebaseImageLoader to handle StorageReference
-            registry.append(StorageReference.class, InputStream.class,
-                    new FirebaseImageLoader.Factory());
-        }
-    }
-
-     */
-
 }
