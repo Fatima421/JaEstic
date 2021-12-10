@@ -22,5 +22,6 @@
     <string name="cart_empty">Tu carrito esta vació</string>
     <string name="addtocart">AÑADIR AL PEDIDO</string>
     <string name="quantity">Cantidad:</string>
+    <string name="categoriesTitle">Categorías</string>
 
 </resources>
