@@ -97,6 +97,14 @@
           }
         },
         {
+          "client_id": "942078009683-ce23vpt1sqbi3g9kh9nidstkl0hpkj42.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grup2.jaestic_user",
+            "certificate_hash": "61c2d5ea095cb8bcb311b7db9fd3d4b4e6fde5a7"
+          }
+        },
+        {
           "client_id": "942078009683-k68jaoq6rmqt9cdvf75ugukiapt8vkc4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
