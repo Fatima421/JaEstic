@@ -18,8 +18,12 @@
     <string name="loginFacebook">Continuar con Facebook</string>
     <string name="authFail">Autentificación fallida</string>
     <string name="authSuccess">Se inició sesión correctamente</string>
+    <string name="orders">Pedidos</string>
+    <string name="cart_empty">Tu carrito esta vació</string>
     <string name="addtocart">AÑADIR AL PEDIDO</string>
     <string name="quantity">Cantidad:</string>
     <string name="categoriesTitle">Categorías</string>
-
+    <string name="selectAll">Seleccionar todo</string>
+    <string name="buyNowCart">Comprar ahora</string>
+    <string name="totalPrice">Total</string>
 </resources>
