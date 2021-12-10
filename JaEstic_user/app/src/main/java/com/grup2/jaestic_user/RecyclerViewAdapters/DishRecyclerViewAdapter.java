@@ -64,7 +64,7 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
         holder.price.setText(dish.getPrice() + "€");
 
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-        storageReference.child(dish.getImagePath()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        storageReference.child(dish.getImageUserPath()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 Glide.with(context)

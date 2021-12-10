@@ -9,5 +9,3 @@ t
 Dapp/src/main/java/com/grup2/jaestic_user/Fragments/MainFragment.java,f\9\f9574aa6cff2d59a9f2dff2bbef96c64779d17bf
 l
 <app/src/main/java/com/grup2/jaestic_user/PreLoginScreen.java,4\8\48ccfd03d615aa18332345f93527875280a0d1e4
-{
-Kapp/src/main/java/com/grup2/jaestic_user/Fragments/DishDetailsFragment.java,0\c\0c943f220fa2be62fa511fdeba26e243d1318af5

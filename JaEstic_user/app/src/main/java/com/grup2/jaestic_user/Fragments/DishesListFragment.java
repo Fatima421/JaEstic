@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,9 +24,10 @@ import com.grup2.jaestic_user.RecyclerViewAdapters.DishRecyclerViewAdapter;
 import java.util.ArrayList;
 
 public class DishesListFragment extends Fragment {
+    // Properties
     Bundle bundle;
     Category category;
-    private DatabaseReference dishes;
+    private DatabaseReference dishesDatabase;
     private ArrayList<Dish> arrayDishes =  new ArrayList<Dish>();
 
     @Override
@@ -36,12 +38,21 @@ public class DishesListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflates the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dishes_list, container, false);
+        // Bundle properties
         bundle = getArguments();
         category = (Category) bundle.getSerializable("Category");
-        dishes = FirebaseDatabase.getInstance().getReference("Categories").child(category.getFirebaseKey()).child("Foods");
+        // Firebase properties
+        dishesDatabase = FirebaseDatabase.getInstance().getReference("Categories").child(category.getFirebaseKey()).child("Foods");
 
-        dishes.addValueEventListener(new ValueEventListener() {
+        // Layout properties linked to add logic
+        TextView lblTitle = view.findViewById(R.id.listDishTitle);
+        // Customs layout properties
+        lblTitle.setText(category.getName());
+
+        // Add dishes in an ArrayList and send it to RecyclerView
+        dishesDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
