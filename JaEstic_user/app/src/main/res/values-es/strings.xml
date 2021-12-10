@@ -23,5 +23,7 @@
     <string name="addtocart">AÑADIR AL PEDIDO</string>
     <string name="quantity">Cantidad:</string>
     <string name="categoriesTitle">Categorías</string>
-
+    <string name="selectAll">Seleccionar todo</string>
+    <string name="buyNowCart">Comprar ahora</string>
+    <string name="totalPrice">Total</string>
 </resources>
