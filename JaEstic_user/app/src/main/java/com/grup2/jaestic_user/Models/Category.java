@@ -5,30 +5,30 @@ import java.util.ArrayList;
 
 public class Category implements Serializable {
     // Properties
-    int id;
-    String name, imgUrl;
-    ArrayList<Dish> dishes;
+    String description, imagePath, imagePathUsers, name, firebaseKey;
 
-    // Constructors
+    // Default constructor
     public Category() { }
 
-    public Category(int id, String imgUrl, String name, ArrayList<Dish> dishes) {
-        this.id = id;
-        this.imgUrl = imgUrl;
+    // Specific Constructor
+    public Category(String description, String imagePath, String imagePathUsers, String name) {
+        this.imagePath = imagePath;
+        this.imagePathUsers = imagePathUsers;
         this.name = name;
-        this.dishes = dishes;
+        this.description = description;
     }
 
     // Getters
-    public int getId() { return id; }
-    public String getImgUrl() { return imgUrl; }
+    public String getDescription() { return description; }
+    public String getImagePath() { return imagePath; }
+    public String getImagePathUsers() { return imagePathUsers; }
     public String getName() { return name; }
-    public ArrayList<Dish> getDishes() { return dishes; }
+    public String getFirebaseKey() { return firebaseKey; }
 
     // Setters
-    public void setId(int id) { this.id = id; }
-    public void setImgUrl(String imgUrl) { this.imgUrl = imgUrl; }
+    public void setDescription(String description) { this.description = description; }
+    public void setImagePath(String imagePath) { this.imagePath = imagePath; }
+    public void setImagePathUsers(String imagePathUsers) { this.imagePathUsers = imagePathUsers; }
     public void setName(String name) { this.name = name; }
-    public void setDishes(ArrayList<Dish> dishes) { this.dishes = dishes; }
-
+    public void setFirebaseKey(String firebaseKey) { this.firebaseKey = firebaseKey; }
 }

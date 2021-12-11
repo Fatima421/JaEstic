@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +23,8 @@ public class PreLoginScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SystemClock.sleep(1000);
+        setTheme(R.style.Theme_JaEstic_user);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.prelogin_screen);
         FirebaseApp.initializeApp(this);
