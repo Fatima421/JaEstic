@@ -45,9 +45,9 @@ public class CartFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
-    /*    CheckBox checkBox = v.findViewById(R.id.cartCheckBox);
+        CheckBox checkBox = v.findViewById(R.id.cartCheckBox);
 
-        // Create the categories array list
+        /*// Create the categories array list
         arrayCartItems = new ArrayList<>();
         arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
         arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
@@ -57,6 +57,7 @@ public class CartFragment extends Fragment {
         arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
         arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
         arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
+        */
 
         // Create the RecyclerView
         recyclerView = v.findViewById(R.id.cartRecyclerView);
@@ -80,7 +81,7 @@ public class CartFragment extends Fragment {
                     }
                 }
             }
-        });*/
+        });
 
         return v;
     }
