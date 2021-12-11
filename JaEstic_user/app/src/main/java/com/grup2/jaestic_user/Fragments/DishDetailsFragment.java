@@ -44,7 +44,9 @@ public class DishDetailsFragment extends Fragment {
         lessBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inCart = inCart - 1;
+                if (inCart > 0) {
+                    inCart = inCart - 1;
+                }
                 cartQuantity.setText( String.valueOf(inCart));
             }
         });
