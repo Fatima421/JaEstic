@@ -45,7 +45,7 @@ public class CartFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
-        CheckBox checkBox = v.findViewById(R.id.cartCheckBox);
+    /*    CheckBox checkBox = v.findViewById(R.id.cartCheckBox);
 
         // Create the categories array list
         arrayCartItems = new ArrayList<>();
@@ -80,7 +80,7 @@ public class CartFragment extends Fragment {
                     }
                 }
             }
-        });
+        });*/
 
         return v;
     }

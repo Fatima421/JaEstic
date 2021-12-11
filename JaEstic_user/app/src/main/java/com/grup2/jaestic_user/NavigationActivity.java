@@ -1,11 +1,9 @@
 package com.grup2.jaestic_user;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
-import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -14,9 +12,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.grup2.jaestic_user.Fragments.CartFragment;
 import com.grup2.jaestic_user.Fragments.CategoriesListFragment;
 import com.grup2.jaestic_user.Fragments.MainFragment;
@@ -26,10 +21,11 @@ public class NavigationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SystemClock.sleep(1000);
+        setTheme(R.style.Theme_JaEstic_user);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_navigation);
-
         BottomNavigationView bottomNav = findViewById(R.id.main_menu);
 
         bottomNav.setOnItemSelectedListener(item -> {
