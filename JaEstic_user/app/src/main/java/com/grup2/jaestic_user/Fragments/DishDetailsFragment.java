@@ -20,6 +20,7 @@ import com.grup2.jaestic_user.R;
 
 
 public class DishDetailsFragment extends Fragment {
+    private int inCart = 1;
     public DishDetailsFragment() {
         // Required empty public constructor
     }
@@ -35,7 +36,7 @@ public class DishDetailsFragment extends Fragment {
         TextView ProductDescription = view.findViewById(R.id.ProductDescription);
         TextView price = view.findViewById(R.id.price);
         Button lessBtn = view.findViewById(R.id.less);
-        TextView numQuantity = view.findViewById(R.id.numQuantity);
+        TextView cartQuantity = view.findViewById(R.id.numQuantity);
         Button moreBtn = view.findViewById(R.id.more);
         Button addtocartBtn = view.findViewById(R.id.addtocart);
 
@@ -43,7 +44,8 @@ public class DishDetailsFragment extends Fragment {
         lessBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                inCart = inCart - 1;
+                cartQuantity.setText( String.valueOf(inCart));
             }
         });
 
@@ -51,7 +53,8 @@ public class DishDetailsFragment extends Fragment {
         moreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                inCart = inCart + 1;
+                cartQuantity.setText( String.valueOf(inCart));
             }
         });
 
