@@ -10,4 +10,5 @@
     <color name="black">#000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#DB5240</color>
+    <color name="backgroundCell">#90FFFFFF</color>
 </resources>

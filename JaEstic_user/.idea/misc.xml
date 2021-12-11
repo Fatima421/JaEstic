@@ -3,17 +3,34 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/drawable/custom_border_cell.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/drawable/custom_border_img.xml" value="0.13177083333333334" />
+        <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/drawable/custom_cart_icon.xml" value="0.13177083333333334" />
+        <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/drawable/custom_heart_icon.xml" value="0.13177083333333334" />
+        <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/drawable/custom_img.xml" value="0.13177083333333334" />
+        <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/drawable/error.xml" value="0.13177083333333334" />
+        <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/drawable/gradient_background.xml" value="0.13177083333333334" />
+        <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/drawable/ic_cart.xml" value="0.13177083333333334" />
         <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/layout/activity_main.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/layout/activity_navigation.xml" value="0.22239583333333332" />
         <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/layout/category.xml" value="0.23645833333333333" />
-        <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/layout/dish.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/layout/custom_border_img.xml" value="0.11197916666666667" />
+        <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/layout/dish.xml" value="0.264" />
+        <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/layout/fragment_categories_list.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/layout/fragment_category.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/layout/fragment_dish.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/layout/fragment_dish_details.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/layout/fragment_dishes_list.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/layout/fragment_main.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/layout/fragment_mainscreen.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/layout/mainscreen.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/layout/prelogin_screen.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Neka/AndroidStudioProjects/usuari_grup2/JaEstic_user/app/src/main/res/menu/bottom_navigation.xml" value="0.23645833333333333" />
+        <entry key="app/src/main/res/layout/activity_navigation.xml" value="0.27309782608695654" />
+        <entry key="app/src/main/res/layout/category.xml" value="0.27309782608695654" />
+        <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.27309782608695654" />
+        <entry key="app/src/main/res/layout/fragment_categories_list.xml" value="0.27309782608695654" />
+        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.27309782608695654" />
         <entry key="app/src/main/res/drawable/gradient_background.xml" value="0.371875" />
         <entry key="app/src/main/res/drawable/ic_cart.xml" value="0.371875" />
         <entry key="app/src/main/res/drawable/ic_location_custom.xml" value="0.371875" />
