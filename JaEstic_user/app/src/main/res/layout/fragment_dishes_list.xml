@@ -14,7 +14,8 @@
         <TextView
             android:id="@+id/listDishTitle"
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:fontFamily="@font/helvetica_rounded"
             android:gravity="center_horizontal|center_vertical"
             android:textColor="@color/greyBlue"
@@ -28,6 +29,7 @@
             android:id="@+id/dishRecyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="47dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

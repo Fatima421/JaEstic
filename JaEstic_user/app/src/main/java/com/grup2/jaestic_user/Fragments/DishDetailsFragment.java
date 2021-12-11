@@ -2,65 +2,64 @@ package com.grup2.jaestic_user.Fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.grup2.jaestic_user.LoginScreen;
 import com.grup2.jaestic_user.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DishDetailsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class DishDetailsFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    private int inCart = 1;
     public DishDetailsFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DishDetailsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static DishDetailsFragment newInstance(String param1, String param2) {
-        DishDetailsFragment fragment = new DishDetailsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dish_details, container, false);
+        View view = inflater.inflate(R.layout.fragment_dish_details, container, false);
+
+        // Properties
+        TextView productName = view.findViewById(R.id.productName);
+        TextView ProductDescription = view.findViewById(R.id.ProductDescription);
+        TextView price = view.findViewById(R.id.price);
+        Button lessBtn = view.findViewById(R.id.less);
+        TextView cartQuantity = view.findViewById(R.id.numQuantity);
+        Button moreBtn = view.findViewById(R.id.more);
+        Button addtocartBtn = view.findViewById(R.id.addtocart);
+
+        // If lessBtn Button is clicked
+        lessBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (inCart > 0) {
+                    inCart = inCart - 1;
+                }
+                cartQuantity.setText( String.valueOf(inCart));
+            }
+        });
+
+        // If moreBtn Button is clicked
+        moreBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                inCart = inCart + 1;
+                cartQuantity.setText( String.valueOf(inCart));
+            }
+        });
+
+        return view;
     }
 }
