@@ -11,31 +11,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.grup2.jaestic_user.LoginScreen;
-import com.grup2.jaestic_user.Models.Category;
+import com.grup2.jaestic_user.Models.CartItem;
 import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 
 
 public class DishDetailsFragment extends Fragment {
     private int inCart = 1;
     Bundle bundle;
-    Dish dish;
+    Bundle cartBundle;
+    private Dish dish;
+    ArrayList<CartItem> arrayCartItems;
 
     public DishDetailsFragment() {
         // Required empty public constructor
@@ -62,7 +62,8 @@ public class DishDetailsFragment extends Fragment {
         Button lessBtn = view.findViewById(R.id.less);
         TextView cartQuantity = view.findViewById(R.id.numQuantity);
         Button moreBtn = view.findViewById(R.id.more);
-        Button addtocartBtn = view.findViewById(R.id.addtocart);
+        Button addToCart = view.findViewById(R.id.addtocart);
+        CartFragment cartFragment = new CartFragment();
 
         // To load the image
         ImageView productImage = view.findViewById(R.id.productImage);
@@ -101,6 +102,18 @@ public class DishDetailsFragment extends Fragment {
             public void onClick(View view) {
                 inCart = inCart + 1;
                 cartQuantity.setText( String.valueOf(inCart));
+            }
+        });
+
+        // If add to cart button clicked
+        addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               //arrayCartItems.add(new CartItem(dish, inCart));
+               //bundle.putSerializable("CartItem", (Serializable) arrayCartItems);
+                CartItem cartItem = new CartItem(dish, inCart);
+                cartBundle.putSerializable("CartItem", cartItem);
+                cartFragment.setArguments(cartBundle);
             }
         });
 

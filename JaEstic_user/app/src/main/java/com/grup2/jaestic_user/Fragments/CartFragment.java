@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.grup2.jaestic_user.Models.CartItem;
 import com.grup2.jaestic_user.Models.Category;
 import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
@@ -27,9 +29,11 @@ public class CartFragment extends Fragment {
 
     // Properties
     private DatabaseReference databaseReference;
-    private ArrayList<Dish> arrayCartItems;
+    private ArrayList<CartItem> arrayCartItems = new ArrayList<>();
     private ArrayList<CheckBox> checkBoxes;
     RecyclerView recyclerView;
+    Bundle bundle;
+    CartItem cartItem;
 
     public CartFragment() {
         // Required empty public constructor
@@ -46,6 +50,13 @@ public class CartFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
         CheckBox checkBox = v.findViewById(R.id.cartCheckBox);
+
+
+        // Bundle properties
+        bundle = getArguments();
+        cartItem = (CartItem) bundle.getSerializable("CartItem");
+        arrayCartItems.add(new CartItem(new Dish(), 0));
+        //arrayCartItems.add(cartItem);
 
         /*// Create the categories array list
         arrayCartItems = new ArrayList<>();

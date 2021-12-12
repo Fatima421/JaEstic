@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.grup2.jaestic_user.Fragments.DishesListFragment;
+import com.grup2.jaestic_user.Models.CartItem;
+import com.grup2.jaestic_user.Models.Category;
 import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
 
@@ -21,12 +23,12 @@ import java.util.ArrayList;
 
 public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerViewAdapter.CartViewHolder> {
     // Properties
-    private ArrayList<Dish> arrayCartItems;
+    private ArrayList<CartItem> arrayCartItems;
     private ArrayList<CheckBox> checkBoxes = new ArrayList<>();
     Context context;
 
     // Constructor
-    public CartRecyclerViewAdapter(Context context, ArrayList<Dish> arrayCartItems){
+    public CartRecyclerViewAdapter(Context context, ArrayList<CartItem> arrayCartItems){
         this.context = context;
         this.arrayCartItems = arrayCartItems;
     }
@@ -46,11 +48,14 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
     public void onBindViewHolder(@NonNull CartViewHolder holder, int i) {
         // Bundle properties
         Bundle bundle = new Bundle();
-        DishesListFragment dishesListFragment = new DishesListFragment();
+
+        CartItem cartItem = arrayCartItems.get(i);
+        Dish dish = cartItem.getDish();
 
         // Add checkboxs to the arraylist
         checkBoxes.add(holder.checkBox);
 
+        holder.name.setText(dish.getName());
 
 
         // Sets text inside TextViews
