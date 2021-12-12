@@ -17,5 +17,3 @@ m
 =app/src/main/java/com/grup2/jaestic_user/Models/Category.java,9\0\90b318efb3aeee51c7343d7781b1277b1827cb9c
 {
 Kapp/src/main/java/com/grup2/jaestic_user/Fragments/DishDetailsFragment.java,0\c\0c943f220fa2be62fa511fdeba26e243d1318af5
-~
-Napp/src/main/java/com/grup2/jaestic_user/Fragments/CategoriesListFragment.java,9\3\93ed4f323e3da83231b8e00587936e950160cdff

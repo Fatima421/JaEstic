@@ -49,15 +49,7 @@ public class CartFragment extends Fragment {
 
         // Create the categories array list
         arrayCartItems = new ArrayList<>();
-        /* arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
-        arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
-        arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
-        arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
-        arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
-        arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
-        arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
-        arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
-        */
+        arrayCartItems.add(new Dish("", "", "Pizza", "Pizzaaa", 12.90));
 
         // Create the RecyclerView
         recyclerView = v.findViewById(R.id.cartRecyclerView);
