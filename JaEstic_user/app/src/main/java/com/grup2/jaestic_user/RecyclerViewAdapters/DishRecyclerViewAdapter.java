@@ -92,8 +92,8 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
 
         holder.favorite.setOnClickListener(v -> {
             AppCompatActivity app = (AppCompatActivity) v.getContext();
-            int current = (heartPressed == false) ? R.drawable.ic_heart_empty : R.drawable.ic_heart;
-            heartPressed = (current == R.drawable.ic_heart_empty) ? true : false;
+            int current = (heartPressed == false) ? R.drawable.ic_heart : R.drawable.ic_heart_empty;
+            heartPressed = (current == R.drawable.ic_heart_empty) ? false : true;
             holder.favorite.setImageResource(current);
         });
     }
