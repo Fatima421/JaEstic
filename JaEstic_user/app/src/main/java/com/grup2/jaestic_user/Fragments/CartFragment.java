@@ -47,9 +47,9 @@ public class CartFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
         CheckBox checkBox = v.findViewById(R.id.cartCheckBox);
 
-        /*// Create the categories array list
+        // Create the categories array list
         arrayCartItems = new ArrayList<>();
-        arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
+        /* arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
         arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
         arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
         arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
