@@ -1,6 +1,7 @@
 package com.grup2.jaestic_user.RecyclerViewAdapters;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +20,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.grup2.jaestic_user.DB.CartItemDBHelper;
 import com.grup2.jaestic_user.Fragments.DishesListFragment;
 import com.grup2.jaestic_user.Models.Category;
 import com.grup2.jaestic_user.R;
@@ -28,11 +30,15 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
     // Properties
     private ArrayList<Category> arrayCategories;
     private Context context;
+    private CartItemDBHelper dbHelper;
+    private SQLiteDatabase db;
 
     // Constructor
-    public CategoryRecyclerViewAdapter(ArrayList<Category> arrayCategories, Context c){
+    public CategoryRecyclerViewAdapter(ArrayList<Category> arrayCategories, Context c, CartItemDBHelper dbHelper, SQLiteDatabase db){
         this.arrayCategories = arrayCategories;
         this.context = c;
+        this.dbHelper = dbHelper;
+        this.db = db;
     }
 
     // App LifeCycle
@@ -50,7 +56,7 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int i) {
         // Bundle properties
         Bundle bundle = new Bundle();
-        DishesListFragment dishesListFragment = new DishesListFragment();
+        DishesListFragment dishesListFragment = new DishesListFragment(dbHelper, db);
         // Sets text inside TextViews
         Category category = arrayCategories.get(i);
 

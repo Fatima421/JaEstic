@@ -1,5 +1,6 @@
 package com.grup2.jaestic_user.Fragments;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -22,6 +24,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.grup2.jaestic_user.DB.CartItemDBHelper;
 import com.grup2.jaestic_user.Models.CartItem;
 import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
@@ -37,9 +40,12 @@ public class DishDetailsFragment extends Fragment {
     private Dish dish;
     private CartItem cartItem;
     ArrayList<CartItem> arrayCartItems;
+    private CartItemDBHelper dbHelper;
+    private SQLiteDatabase db;
 
-    public DishDetailsFragment() {
-        // Required empty public constructor
+    public DishDetailsFragment(CartItemDBHelper dbHelper, SQLiteDatabase db) {
+        this.dbHelper = dbHelper;
+        this.db = db;
     }
 
     @Override
@@ -64,9 +70,6 @@ public class DishDetailsFragment extends Fragment {
         TextView cartQuantity = view.findViewById(R.id.numQuantity);
         Button moreBtn = view.findViewById(R.id.more);
         Button addToCart = view.findViewById(R.id.addtocart);
-
-        // Creating cart fragment
-        CartFragment cartFragment = new CartFragment();
 
         // To load the image
         ImageView productImage = view.findViewById(R.id.productImage);
@@ -112,12 +115,10 @@ public class DishDetailsFragment extends Fragment {
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               //arrayCartItems.add(new CartItem(dish, inCart));
-               //bundle.putSerializable("CartItem", (Serializable) arrayCartItems);
-                cartBundle = new Bundle();
+                Toast.makeText(getActivity(), "This is my Toast message!",
+                        Toast.LENGTH_LONG).show();
                 cartItem = new CartItem(dish, inCart);
-                cartBundle.putSerializable("CartItem", cartItem);
-                cartFragment.setArguments(cartBundle);
+                dbHelper.insertCartItem(db, cartItem);
             }
         });
 

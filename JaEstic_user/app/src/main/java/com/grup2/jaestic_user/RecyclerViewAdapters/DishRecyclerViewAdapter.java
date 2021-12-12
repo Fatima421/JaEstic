@@ -1,6 +1,7 @@
 package com.grup2.jaestic_user.RecyclerViewAdapters;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +23,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.grup2.jaestic_user.DB.CartItemDBHelper;
 import com.grup2.jaestic_user.Fragments.DishDetailsFragment;
 import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
@@ -34,11 +36,15 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
     private ArrayList<Dish> arrayDishes;
     boolean heartPressed = false;
     boolean cartPressed = false;
+    private CartItemDBHelper dbHelper;
+    private SQLiteDatabase db;
 
     // Constructor
-    public DishRecyclerViewAdapter(ArrayList<Dish> arrayDishes, Context context) {
+    public DishRecyclerViewAdapter(ArrayList<Dish> arrayDishes, Context context, CartItemDBHelper dbHelper, SQLiteDatabase db) {
         this.arrayDishes = arrayDishes;
         this.context = context;
+        this.dbHelper = dbHelper;
+        this.db = db;
     }
 
     // App LifeCycle
@@ -56,7 +62,7 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
     public void onBindViewHolder(@NonNull DishViewHolder holder, int i) {
         // Bundle properties
         Bundle bundle = new Bundle();
-        DishDetailsFragment dishDetailsFragment = new DishDetailsFragment();
+        DishDetailsFragment dishDetailsFragment = new DishDetailsFragment(dbHelper, db);
         // Sets text inside TextViews
         Dish dish = arrayDishes.get(i);
         holder.name.setText(dish.getName());

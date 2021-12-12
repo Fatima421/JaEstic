@@ -25,4 +25,5 @@
     <string name="selectAll">Select All</string>
     <string name="buyNowCart">Buy now</string>
     <string name="totalPrice">Total</string>
+    <string name="addedItemInCart">You have added the item into the cart!</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.grup2.jaestic_user.Fragments;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.grup2.jaestic_user.DB.CartItemDBHelper;
 import com.grup2.jaestic_user.Models.CartItem;
 import com.grup2.jaestic_user.Models.Category;
 import com.grup2.jaestic_user.Models.Dish;
@@ -34,9 +36,15 @@ public class CartFragment extends Fragment {
     RecyclerView recyclerView;
     Bundle bundle;
     CartItem cartItem;
+    private CartItemDBHelper dbHelper;
+    private SQLiteDatabase db;
 
     public CartFragment() {
         // Required empty public constructor
+    }
+    public CartFragment(CartItemDBHelper dbHelper, SQLiteDatabase db) {
+        this.dbHelper = dbHelper;
+        this.db = db;
     }
 
     public CartFragment(Bundle bundle) {
@@ -56,25 +64,8 @@ public class CartFragment extends Fragment {
         CheckBox checkBox = v.findViewById(R.id.cartCheckBox);
 
 
-        // Bundle properties
-        bundle = getArguments();
-        bundle = new Bundle();
-        //cartItem = (CartItem) getActivity().getIntent().getSerializableExtra("CartItem");
-        cartItem = (CartItem) bundle.getSerializable("CartItem");
-        arrayCartItems.add(new CartItem(new Dish(), 0));
-        arrayCartItems.add(cartItem);
-
-        /*// Create the categories array list
-        arrayCartItems = new ArrayList<>();
-        arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
-        arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
-        arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
-        arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
-        arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
-        arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
-        arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
-        arrayCartItems.add(new Dish(2, "", "Pizza", "", "12,90", (new Category())));
-        */
+        // Get all data of the cart item from the database
+        arrayCartItems = dbHelper.getAllData(db);
 
         // Create the RecyclerView
         recyclerView = v.findViewById(R.id.cartRecyclerView);

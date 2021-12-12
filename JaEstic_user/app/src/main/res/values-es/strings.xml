@@ -26,4 +26,5 @@
     <string name="selectAll">Seleccionar todo</string>
     <string name="buyNowCart">Comprar ahora</string>
     <string name="totalPrice">Total</string>
+    <string name="addedItemInCart">Has añadido el producto en el carrito</string>
 </resources>

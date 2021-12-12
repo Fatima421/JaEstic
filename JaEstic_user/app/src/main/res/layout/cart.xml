@@ -60,6 +60,19 @@
             android:textSize="20dp"
             app:layout_constraintStart_toEndOf="@+id/cmdItemImage"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/cmdItemQuantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="36dp"
+            android:fontFamily="@font/helvetica_rounded"
+            android:text="TextView"
+            android:textColor="@color/greyBlue"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cmdItemPrice" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
