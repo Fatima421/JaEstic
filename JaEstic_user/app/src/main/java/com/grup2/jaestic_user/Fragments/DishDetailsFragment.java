@@ -35,6 +35,7 @@ public class DishDetailsFragment extends Fragment {
     Bundle bundle;
     Bundle cartBundle;
     private Dish dish;
+    private CartItem cartItem;
     ArrayList<CartItem> arrayCartItems;
 
     public DishDetailsFragment() {
@@ -63,6 +64,8 @@ public class DishDetailsFragment extends Fragment {
         TextView cartQuantity = view.findViewById(R.id.numQuantity);
         Button moreBtn = view.findViewById(R.id.more);
         Button addToCart = view.findViewById(R.id.addtocart);
+
+        // Creating cart fragment
         CartFragment cartFragment = new CartFragment();
 
         // To load the image
@@ -111,7 +114,8 @@ public class DishDetailsFragment extends Fragment {
             public void onClick(View view) {
                //arrayCartItems.add(new CartItem(dish, inCart));
                //bundle.putSerializable("CartItem", (Serializable) arrayCartItems);
-                CartItem cartItem = new CartItem(dish, inCart);
+                cartBundle = new Bundle();
+                cartItem = new CartItem(dish, inCart);
                 cartBundle.putSerializable("CartItem", cartItem);
                 cartFragment.setArguments(cartBundle);
             }
@@ -119,4 +123,9 @@ public class DishDetailsFragment extends Fragment {
 
         return view;
     }
+
+    /*
+    public static Bundle getBundle() {
+        return cartBundle;
+    }*/
 }

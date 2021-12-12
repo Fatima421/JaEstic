@@ -14,6 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.grup2.jaestic_user.Fragments.CartFragment;
 import com.grup2.jaestic_user.Fragments.CategoriesListFragment;
+import com.grup2.jaestic_user.Fragments.DishDetailsFragment;
 import com.grup2.jaestic_user.Fragments.MainFragment;
 
 public class NavigationActivity extends AppCompatActivity {

@@ -39,6 +39,10 @@ public class CartFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public CartFragment(Bundle bundle) {
+        this.bundle = bundle;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,9 +58,11 @@ public class CartFragment extends Fragment {
 
         // Bundle properties
         bundle = getArguments();
+        bundle = new Bundle();
+        //cartItem = (CartItem) getActivity().getIntent().getSerializableExtra("CartItem");
         cartItem = (CartItem) bundle.getSerializable("CartItem");
         arrayCartItems.add(new CartItem(new Dish(), 0));
-        //arrayCartItems.add(cartItem);
+        arrayCartItems.add(cartItem);
 
         /*// Create the categories array list
         arrayCartItems = new ArrayList<>();
