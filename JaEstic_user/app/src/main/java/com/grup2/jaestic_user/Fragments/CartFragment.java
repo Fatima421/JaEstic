@@ -1,5 +1,6 @@
 package com.grup2.jaestic_user.Fragments;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,8 @@ import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.grup2.jaestic_user.DB.CartItemDBHelper;
+import com.grup2.jaestic_user.Models.CartItem;
 import com.grup2.jaestic_user.Models.Category;
 import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
@@ -27,12 +31,24 @@ public class CartFragment extends Fragment {
 
     // Properties
     private DatabaseReference databaseReference;
-    private ArrayList<Dish> arrayCartItems;
+    private ArrayList<CartItem> arrayCartItems = new ArrayList<>();
     private ArrayList<CheckBox> checkBoxes;
     RecyclerView recyclerView;
+    Bundle bundle;
+    CartItem cartItem;
+    private CartItemDBHelper dbHelper;
+    private SQLiteDatabase db;
 
     public CartFragment() {
         // Required empty public constructor
+    }
+    public CartFragment(CartItemDBHelper dbHelper, SQLiteDatabase db) {
+        this.dbHelper = dbHelper;
+        this.db = db;
+    }
+
+    public CartFragment(Bundle bundle) {
+        this.bundle = bundle;
     }
 
     @Override
@@ -47,9 +63,9 @@ public class CartFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
         CheckBox checkBox = v.findViewById(R.id.cartCheckBox);
 
-        // Create the categories array list
-        arrayCartItems = new ArrayList<>();
-        arrayCartItems.add(new Dish("", "", "Pizza", "Pizzaaa", 12.90));
+
+        // Get all data of the cart item from the database
+        arrayCartItems = dbHelper.getAllData(db);
 
         // Create the RecyclerView
         recyclerView = v.findViewById(R.id.cartRecyclerView);

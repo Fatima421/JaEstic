@@ -1,6 +1,7 @@
 package com.grup2.jaestic_user.RecyclerViewAdapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,7 +14,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.grup2.jaestic_user.Fragments.DishesListFragment;
+import com.grup2.jaestic_user.Models.CartItem;
+import com.grup2.jaestic_user.Models.Category;
 import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
 
@@ -21,12 +32,12 @@ import java.util.ArrayList;
 
 public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerViewAdapter.CartViewHolder> {
     // Properties
-    private ArrayList<Dish> arrayCartItems;
+    private ArrayList<CartItem> arrayCartItems;
     private ArrayList<CheckBox> checkBoxes = new ArrayList<>();
     Context context;
 
     // Constructor
-    public CartRecyclerViewAdapter(Context context, ArrayList<Dish> arrayCartItems){
+    public CartRecyclerViewAdapter(Context context, ArrayList<CartItem> arrayCartItems){
         this.context = context;
         this.arrayCartItems = arrayCartItems;
     }
@@ -46,16 +57,35 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
     public void onBindViewHolder(@NonNull CartViewHolder holder, int i) {
         // Bundle properties
         Bundle bundle = new Bundle();
-        DishesListFragment dishesListFragment = new DishesListFragment();
+
+        CartItem cartItem = arrayCartItems.get(i);
+        //Dish dish = cartItem.getDish();
 
         // Add checkboxs to the arraylist
         checkBoxes.add(holder.checkBox);
 
+        holder.name.setText(cartItem.getName());
+        holder.price.setText(Double.toString(cartItem.getPrice()));
+        holder.price.setText(holder.price.getText() + "€");
+        holder.quantity.setText("Quantity: "+cartItem.getQuantity());
 
-
-        // Sets text inside TextViews
-        // Category category = arrayCartItems.get(i);
-        // holder.name.setText(category.getName());
+        // To load the image
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+        storageReference.child(cartItem.getImageUserPath()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(context)
+                        .load(uri.toString())
+                        .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(holder.image);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.i("IMAGE", e.toString());
+            }
+        });
     }
 
     public ArrayList<CheckBox> getCheckBoxes() {
@@ -70,6 +100,7 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
     public class CartViewHolder extends RecyclerView.ViewHolder{
         TextView name;
         TextView price;
+        TextView quantity;
         ImageView image;
         CheckBox checkBox;
         public CartViewHolder(@NonNull View itemView) {
@@ -77,6 +108,7 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
             name = itemView.findViewById(R.id.cmdItemName);
             price = itemView.findViewById(R.id.cmdItemPrice);
             image = itemView.findViewById(R.id.cmdItemImage);
+            quantity = itemView.findViewById(R.id.cmdItemQuantity);
             checkBox = itemView.findViewById(R.id.cmdCheckBox);
         }
     }

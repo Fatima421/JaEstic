@@ -1,5 +1,6 @@
 package com.grup2.jaestic_user.Fragments;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.grup2.jaestic_user.DB.CartItemDBHelper;
 import com.grup2.jaestic_user.Models.Category;
 import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
@@ -29,6 +31,13 @@ public class DishesListFragment extends Fragment {
     Category category;
     private DatabaseReference dishesDatabase;
     private ArrayList<Dish> arrayDishes =  new ArrayList<Dish>();
+    private CartItemDBHelper dbHelper;
+    private SQLiteDatabase db;
+
+    public DishesListFragment(CartItemDBHelper dbHelper, SQLiteDatabase db) {
+        this.dbHelper = dbHelper;
+        this.db = db;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,7 +73,7 @@ public class DishesListFragment extends Fragment {
                 }
                 // Creates Recycler View
                 RecyclerView recyclerView = view.findViewById(R.id.dishRecyclerView);
-                DishRecyclerViewAdapter adapter = new DishRecyclerViewAdapter(arrayDishes, getContext());
+                DishRecyclerViewAdapter adapter = new DishRecyclerViewAdapter(arrayDishes, getContext(), dbHelper, db);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 

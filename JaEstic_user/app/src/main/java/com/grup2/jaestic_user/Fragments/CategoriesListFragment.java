@@ -1,5 +1,6 @@
 package com.grup2.jaestic_user.Fragments;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.grup2.jaestic_user.DB.CartItemDBHelper;
 import com.grup2.jaestic_user.Models.Category;
 import com.grup2.jaestic_user.R;
 import com.grup2.jaestic_user.RecyclerViewAdapters.CategoryRecyclerViewAdapter;
@@ -36,6 +38,17 @@ public class CategoriesListFragment extends Fragment {
     private DatabaseReference databaseReference;
     private ArrayList<Category> categories;
     RecyclerView recyclerView;
+    private CartItemDBHelper dbHelper;
+    private SQLiteDatabase db;
+
+    public CategoriesListFragment() {
+        // Required empty public constructor
+    }
+
+    public CategoriesListFragment(CartItemDBHelper dbHelper, SQLiteDatabase db) {
+        this.dbHelper = dbHelper;
+        this.db = db;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,28 +84,7 @@ public class CategoriesListFragment extends Fragment {
                     categories.add(category);
                     Log.i("IMAGE", "onDataChange: "+category.getImagePath());
                 }
-                CategoryRecyclerViewAdapter adapter = new CategoryRecyclerViewAdapter(categories, getContext());
-                recyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w("TAG", "onCancelled:", databaseError.toException());
-            }
-        });
-    }
-
-    private void getImageUrl() {
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot di:dataSnapshot.getChildren()){
-                    Category category=di.getValue(Category.class);
-                    categories.add(category);
-                    Log.i("IMAGE", "onDataChange: "+category.getImagePath());
-                    //  Log.i("value received in string", "onDataChange: "+di.getValue().toString());
-                }
-                CategoryRecyclerViewAdapter adapter = new CategoryRecyclerViewAdapter(categories, getContext());
+                CategoryRecyclerViewAdapter adapter = new CategoryRecyclerViewAdapter(categories, getContext(), dbHelper, db);
                 recyclerView.setAdapter(adapter);
             }
 

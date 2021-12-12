@@ -111,8 +111,6 @@
         android:textColor="@color/greyBlue"
         android:textSize="12sp"
         app:backgroundTint="@color/apricot"
-        app:iconSize="19dp"
-        app:iconTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:strokeColor="@color/greyBlue" />
