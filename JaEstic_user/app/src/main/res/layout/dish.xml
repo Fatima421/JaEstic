@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/custom_border_cell" />
+        app:srcCompat="@drawable/custom_border_cell_transparent" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/listDishImage"
@@ -35,12 +35,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="20dp"
         android:fontFamily="@font/helvetica_rounded"
         android:text="TextView"
         android:textColor="@color/greyBlue"
         android:textSize="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/imgHeart"
+        app:layout_constraintEnd_toEndOf="@+id/cell"
         app:layout_constraintStart_toEndOf="@+id/listDishImage"
         app:layout_constraintTop_toTopOf="@+id/cell" />
 
@@ -66,35 +66,27 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="5dp"
         android:fontFamily="@font/helvetica_rounded"
         android:text="TextView"
         android:textColor="@color/greyBlue"
         android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="@+id/cell"
-        app:layout_constraintEnd_toStartOf="@+id/imgCart"
+        app:layout_constraintEnd_toEndOf="@+id/cell"
         app:layout_constraintStart_toEndOf="@+id/listDishImage" />
 
     <ImageView
         android:id="@+id/imgHeart"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cell"
         app:layout_constraintEnd_toEndOf="@+id/cell"
         app:layout_constraintTop_toTopOf="@+id/cell"
         app:srcCompat="@drawable/ic_heart_empty"
         app:tint="@color/greyBlue" />
 
-    <ImageView
-        android:id="@+id/imgCart"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cell"
-        app:layout_constraintEnd_toEndOf="@+id/cell"
-        app:srcCompat="@drawable/ic_cart_empty"
-        app:tint="@color/greyBlue" />
 </androidx.constraintlayout.widget.ConstraintLayout>

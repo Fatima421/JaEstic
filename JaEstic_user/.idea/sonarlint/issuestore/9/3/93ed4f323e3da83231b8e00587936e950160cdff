@@ -1,9 +1,0 @@
-
->
-java:S1185)"(Remove this method to simply inherit it.(ﬂÏÍØ
-o
-java:S32525"YUse static access with "androidx.recyclerview.widget.LinearLayoutManager" for "VERTICAL".(è≠¡Ö
-Q	java:S125]"<This block of commented-out lines of code should be removed.(ÎÃ∫Î
-F
-java:S1144U"0Remove this unused private "getImageUrl" method.(„™Ÿ˚
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(˝À«ﬂ

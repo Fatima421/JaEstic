@@ -33,7 +33,6 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
     StorageReference storageReference;
     private ArrayList<Dish> arrayDishes;
     boolean heartPressed = false;
-    boolean cartPressed = false;
 
     // Constructor
     public DishRecyclerViewAdapter(ArrayList<Dish> arrayDishes, Context context) {
@@ -62,6 +61,7 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
         holder.name.setText(dish.getName());
         holder.description.setText(dish.getDescription());
         holder.price.setText(dish.getPrice() + "€");
+        holder.favorite.setImageResource(R.drawable.ic_heart_empty);
 
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
         storageReference.child(dish.getImageUserPath()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -92,12 +92,8 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
 
         holder.favorite.setOnClickListener(v -> {
             AppCompatActivity app = (AppCompatActivity) v.getContext();
-            int current = (heartPressed == true) ? R.drawable.ic_heart : R.drawable.ic_heart_empty;
-            holder.favorite.setImageResource(current);
-        });
-        holder.cart.setOnClickListener(v -> {
-            AppCompatActivity app = (AppCompatActivity) v.getContext();
-            int current = (cartPressed == true) ? R.drawable.ic_cart : R.drawable.ic_cart_empty;
+            int current = (heartPressed == false) ? R.drawable.ic_heart_empty : R.drawable.ic_heart;
+            heartPressed = (current == R.drawable.ic_heart_empty) ? true : false;
             holder.favorite.setImageResource(current);
         });
     }
@@ -109,14 +105,13 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
     // Initializes Layout properties that will link with RecyclerView (through Holder)
     public class DishViewHolder extends RecyclerView.ViewHolder{
         TextView name, description, price;
-        ImageView favorite, cart, image;
+        ImageView favorite, image;
         public DishViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.listDishName);
             description = itemView.findViewById(R.id.listDishDescription);
             price = itemView.findViewById(R.id.listDishPrice);
             favorite = itemView.findViewById(R.id.imgHeart);
-            cart = itemView.findViewById(R.id.imgCart);
             image = itemView.findViewById(R.id.listDishImage);
         }
     }

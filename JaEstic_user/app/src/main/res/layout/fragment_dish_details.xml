@@ -9,6 +9,22 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.DishDetailsFragment">
 
+    <ImageView
+        android:id="@+id/detailsCell"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/custom_border_cell_transparent"
+        app:layout_constraintBottom_toTopOf="@+id/addtocart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titledetail"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/titledetail"
         android:layout_width="wrap_content"
@@ -26,62 +42,68 @@
 
     <ImageView
         android:id="@+id/productImage"
-        android:layout_width="0dp"
-        android:layout_height="216dp"
-        android:layout_marginTop="37dp"
-        android:src="@drawable/image_details"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titledetail" />
+        android:layout_width="270dp"
+        android:layout_height="245dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/junk_food"
+        app:layout_constraintEnd_toEndOf="@+id/detailsCell"
+        app:layout_constraintStart_toStartOf="@+id/detailsCell"
+        app:layout_constraintTop_toTopOf="@+id/detailsCell" />
 
     <TextView
         android:id="@+id/productName"
-        android:layout_width="213dp"
+        android:layout_width="0dp"
         android:layout_height="37dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
         android:fontFamily="@font/helvetica_rounded"
         android:gravity="start"
         android:text="Product Name"
         android:textColor="@color/greyBlue"
         android:textSize="22sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/detailsCell"
+        app:layout_constraintStart_toStartOf="@+id/detailsCell"
         app:layout_constraintTop_toBottomOf="@+id/productImage" />
 
     <TextView
         android:id="@+id/ProductDescription"
-        android:layout_width="318dp"
+        android:layout_width="0dp"
         android:layout_height="58dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
         android:fontFamily="@font/helvetica_rounded"
         android:text="Product description"
         android:textColor="@color/greyBlue"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/detailsCell"
+        app:layout_constraintStart_toStartOf="@+id/detailsCell"
         app:layout_constraintTop_toBottomOf="@+id/productName" />
 
     <TextView
         android:id="@+id/price"
-        android:layout_width="213dp"
+        android:layout_width="0dp"
         android:layout_height="37dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
         android:fontFamily="@font/helvetica_rounded"
         android:gravity="start"
         android:text="9,90€"
         android:textColor="@color/greyBlue"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/detailsCell"
+        app:layout_constraintStart_toStartOf="@+id/detailsCell"
         app:layout_constraintTop_toBottomOf="@+id/ProductDescription" />
 
     <Button
         android:id="@+id/addtocart"
         android:layout_width="145dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/helvetica_rounded"
         android:text="@string/addtocart"
@@ -99,22 +121,21 @@
         android:id="@+id/quantity"
         android:layout_width="112dp"
         android:layout_height="22dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="5dp"
         android:fontFamily="@font/helvetica_rounded"
         android:text="@string/quantity"
         android:textColor="@color/greyBlue"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/price" />
+        app:layout_constraintBottom_toTopOf="@+id/numQuantity"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/numQuantity"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="40dp"
         android:fontFamily="@font/helvetica_rounded"
         android:gravity="center"
         android:text="1"
@@ -122,14 +143,13 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/more"
-        app:layout_constraintStart_toEndOf="@+id/less"
-        app:layout_constraintTop_toBottomOf="@+id/quantity" />
+        app:layout_constraintStart_toEndOf="@+id/less" />
 
     <Button
         android:id="@+id/more"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/helvetica_rounded"
         android:text="+"
@@ -148,8 +168,8 @@
         android:id="@+id/less"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/helvetica_rounded"
         android:text="-"
