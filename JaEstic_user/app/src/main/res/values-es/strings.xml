@@ -28,6 +28,9 @@
     <string name="totalPrice">Total</string>
     <string name="addedItemInCart">Has añadido el producto en el carrito</string>
     <string name="searchbar">Buscar</string>
+    <string name="locationbar">Ubicación</string>
+    <string name="titleforrepeat">Para repetir!</string>
+    <string name="titlesales">Top ventas</string>
     <string name="coin">€</string>
 
 </resources>

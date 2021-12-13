@@ -27,6 +27,9 @@
     <string name="totalPrice">Total</string>
     <string name="addedItemInCart">You have added the item into the cart!</string>
     <string name="searchbar">Search</string>
+    <string name="locationbar">Location</string>
+    <string name="titleforrepeat">To repeat!</string>
+    <string name="titlesales">Top sales</string>
     <string name="coin">$</string>
 
 </resources>
