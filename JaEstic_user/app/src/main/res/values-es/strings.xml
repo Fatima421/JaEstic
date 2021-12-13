@@ -26,4 +26,7 @@
     <string name="selectAll">Seleccionar todo</string>
     <string name="buyNowCart">Comprar ahora</string>
     <string name="totalPrice">Total</string>
+    <string name="cartDeleteEmptyToast">"El carrito está vacío"</string>
+    <string name="cartDeleteListToast">"El carrito ha sido vaciado"</string>
+    <string name="cartDeleteItemToast">"El plato ha sido eliminado del carrito"</string>
 </resources>
