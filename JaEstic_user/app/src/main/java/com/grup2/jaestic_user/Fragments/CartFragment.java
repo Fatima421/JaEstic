@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -61,9 +62,11 @@ public class CartFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
+
         // Layout properties linked to add logic
         CheckBox checkBox = v.findViewById(R.id.cartCheckBox);
         FloatingActionButton deleteBtn = v.findViewById(R.id.cartDeleteBtn);
+        TextView totalPriceTextView = v.findViewById(R.id.cartTotalPrice);
 
         // Get all data of the cart item from the database
         arrayCartItems = dbHelper.getAllData(db);
@@ -74,6 +77,9 @@ public class CartFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         checkBoxes = adapter.getCheckBoxes();
+
+        // Customs layout properties
+        updateTotalPrice(totalPriceTextView);
 
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,15 +104,18 @@ public class CartFragment extends Fragment {
                 // checks if there are some dishes in the list
                 if (arrayCartItems.size() != 0) {
                    if (areAllCheckboxsChecked()) {
-                       // Empties cart list
-                       arrayCartItems.clear();
                        checkBox.setChecked(false);
+                       // Empties cart list and database
+                       dbHelper.deleteAllData(db);
+                       arrayCartItems.clear();
                        // Toast warns cart list is deleted
                        Toast.makeText(getContext(), getString(R.string.cartDeleteListToast), Toast.LENGTH_LONG).show();
                    } else {
                        for (int i = 0; i < checkBoxes.size(); i++) {
                            if (checkBoxes.get(i).isChecked()) {
                                checkBoxes.get(i).setChecked(false);
+                               String name = arrayCartItems.get(i).getDish().getName();
+                               dbHelper.deleteDishWhereName(db, name);
                                arrayCartItems.remove(i);
                                // Toast warns cart list is deleted
                                Toast.makeText(getContext(), getString(R.string.cartDeleteItemToast), Toast.LENGTH_LONG).show();
@@ -115,6 +124,7 @@ public class CartFragment extends Fragment {
                    }
                     // Screen updates with current cart list
                     adapter.notifyDataSetChanged();
+                    updateTotalPrice(totalPriceTextView);
                 } else {
                     // Toast warns cart list is already empty
                     Toast.makeText(getContext(), getString(R.string.cartDeleteEmptyToast), Toast.LENGTH_LONG).show();
@@ -127,12 +137,17 @@ public class CartFragment extends Fragment {
     public Boolean areAllCheckboxsChecked() {
         for (int i = 0; i < checkBoxes.size(); i++) {
             if (!checkBoxes.get(i).isChecked()) {
-                Log.i("Jaestic", "Not checked: "+ i + " " + checkBoxes.get(i).isChecked());
                 return false;
             }
-            Log.i("Jaestic", "Checked: " + i + " "+ checkBoxes.get(i).isChecked());
         }
-        Log.i("Jaestic", "ALL CHECKED!");
         return true;
+    }
+
+    public void updateTotalPrice(TextView totalPriceTextView) {
+        double totalPrice = 0.0;
+        for (int i = 0; i < arrayCartItems.size(); i++) {
+           totalPrice = totalPrice + arrayCartItems.get(i).getDish().getPrice();
+        }
+        totalPriceTextView.setText(Double.toString(totalPrice));
     }
 }
