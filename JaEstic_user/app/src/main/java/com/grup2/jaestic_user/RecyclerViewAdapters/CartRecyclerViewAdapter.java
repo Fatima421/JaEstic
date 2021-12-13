@@ -66,8 +66,8 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
 
         holder.name.setText(cartItem.getName());
         holder.price.setText(Double.toString(cartItem.getPrice()));
-        holder.price.setText(holder.price.getText() + "€");
-        holder.quantity.setText("Quantity: "+cartItem.getQuantity());
+        holder.price.setText(holder.price.getText() + context.getString(R.string.coin));
+        holder.quantity.setText(context.getString(R.string.quantity) + " " + cartItem.getQuantity());
 
         // To load the image
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();

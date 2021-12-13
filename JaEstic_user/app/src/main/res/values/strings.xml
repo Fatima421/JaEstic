@@ -26,4 +26,7 @@
     <string name="buyNowCart">Buy now</string>
     <string name="totalPrice">Total</string>
     <string name="addedItemInCart">You have added the item into the cart!</string>
+    <string name="searchbar">Search</string>
+    <string name="coin">$</string>
+
 </resources>

@@ -112,7 +112,7 @@
         android:background="@drawable/round_corners"
         android:drawableStart="@drawable/ic_search"
         android:ems="10"
-        android:hint="Search"
+        android:hint="@string/searchbar"
         android:inputType="textPersonName"
         android:paddingStart="20dp"
         android:paddingEnd="15dp"
