@@ -1,5 +1,6 @@
 package com.grup2.jaestic_user.Fragments;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,10 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.grup2.jaestic_user.DB.CartItemDBHelper;
+import com.grup2.jaestic_user.Models.CartItem;
+import com.grup2.jaestic_user.Models.Category;
 import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
 import com.grup2.jaestic_user.RecyclerViewAdapters.CartRecyclerViewAdapter;
@@ -26,12 +31,24 @@ public class CartFragment extends Fragment {
 
     // Properties
     private DatabaseReference databaseReference;
-    private ArrayList<Dish> arrayCartItems;
+    private ArrayList<CartItem> arrayCartItems = new ArrayList<>();
     private ArrayList<CheckBox> checkBoxes;
     RecyclerView recyclerView;
+    Bundle bundle;
+    CartItem cartItem;
+    private CartItemDBHelper dbHelper;
+    private SQLiteDatabase db;
 
     public CartFragment() {
         // Required empty public constructor
+    }
+    public CartFragment(CartItemDBHelper dbHelper, SQLiteDatabase db) {
+        this.dbHelper = dbHelper;
+        this.db = db;
+    }
+
+    public CartFragment(Bundle bundle) {
+        this.bundle = bundle;
     }
 
     @Override
@@ -48,15 +65,8 @@ public class CartFragment extends Fragment {
         CheckBox checkBox = v.findViewById(R.id.cartCheckBox);
         FloatingActionButton deleteBtn = v.findViewById(R.id.cartDeleteBtn);
 
-        // Create the cartItems array list
-        arrayCartItems = new ArrayList<>();
-        arrayCartItems.add(new Dish("", "", "", "Pizza 1", 12.90));
-        arrayCartItems.add(new Dish("", "", "", "Pizza 2", 10.00));
-        arrayCartItems.add(new Dish("", "", "", "Pizza 3", 1200.90));
-        arrayCartItems.add(new Dish("", "", "", "Pizza 4", 12.90));
-        arrayCartItems.add(new Dish("", "", "", "Pizza 5", 160500.90));
-        arrayCartItems.add(new Dish("", "", "", "Pizza 6", 7.90));
-        arrayCartItems.add(new Dish("", "", "", "Pizza 7", 8.90));
+        // Get all data of the cart item from the database
+        arrayCartItems = dbHelper.getAllData(db);
 
         // Create the RecyclerView
         recyclerView = v.findViewById(R.id.cartRecyclerView);

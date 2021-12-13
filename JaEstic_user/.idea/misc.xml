@@ -42,6 +42,7 @@
         <entry key="app/src/main/res/drawable/round_corners.xml" value="0.371875" />
         <entry key="app/src/main/res/drawable/splash_screen.xml" value="0.10925925925925926" />
         <entry key="app/src/main/res/layout/activity_navigation.xml" value="0.27309782608695654" />
+        <entry key="app/src/main/res/layout/cart.xml" value="0.632088520055325" />
         <entry key="app/src/main/res/layout/category.xml" value="0.3203125" />
         <entry key="app/src/main/res/layout/dish.xml" value="0.2857789855072464" />
         <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.27309782608695654" />
