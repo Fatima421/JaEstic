@@ -64,7 +64,7 @@ public class CartItemDBHelper extends SQLiteOpenHelper {
         ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
         Dish dish;
 
-        //cursor to be able to add all the anime from the db to the array list
+        //cursor to be able to add all the dishes from the db to the array list
         Cursor resultSet = db.rawQuery("Select * from cartItem",null);
         if (resultSet.moveToFirst()) {
             do {
@@ -82,9 +82,15 @@ public class CartItemDBHelper extends SQLiteOpenHelper {
         return cartItems;
     }
 
-    //This function deletes all data from an anime table
+    //This function deletes all data from a cart table
     public void deleteAllData(SQLiteDatabase db) {
         db.execSQL("delete from "+ CartItemDBCommands.CartItemEntry.TABLE_NAME);
+    }
+
+    //This function deletes all data from a cart table
+    public void deleteDishWhereName(SQLiteDatabase db, String name) {
+        db.execSQL("delete from "+ CartItemDBCommands.CartItemEntry.TABLE_NAME +
+                " where " + CartItemDBCommands.CartItemEntry.COLUMN_DISH_NAME_TITLE + " = '" + name +"'");
     }
 
     /*
