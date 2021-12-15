@@ -71,6 +71,7 @@ public class CategoriesListFragment extends Fragment {
         // Create the database reference
         databaseReference = FirebaseDatabase.getInstance().getReference("Categories");
         getImageData();
+
         return v;
     }
 
