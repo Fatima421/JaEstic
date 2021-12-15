@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.grup2.jaestic_user" >
+    package="com.grup2.jaestic_user">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
-        android:requestLegacyExternalStorage="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/SplashTheme" >
+        android:theme="@style/SplashTheme"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".LoginScreen"
             android:exported="false"
@@ -21,17 +21,15 @@
             android:name=".RegisterScreen"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".PreLoginScreen"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".NavigationActivity"
             android:exported="false"
