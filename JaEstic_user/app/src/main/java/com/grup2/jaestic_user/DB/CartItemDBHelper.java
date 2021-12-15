@@ -48,9 +48,9 @@ public class CartItemDBHelper extends SQLiteOpenHelper {
             ContentValues values = new ContentValues();
 
             //Insert the incidence getting all values
-            values.put(CartItemDBCommands.CartItemEntry.COLUMN_DISH_NAME_TITLE, cartItem.getName());
-            values.put(CartItemDBCommands.CartItemEntry.COLUMN_IMAGE_PATH_TITLE, cartItem.getImageUserPath());
-            values.put(CartItemDBCommands.CartItemEntry.COLUMN_PRICE_TITLE, cartItem.getPrice());
+            values.put(CartItemDBCommands.CartItemEntry.COLUMN_DISH_NAME_TITLE, cartItem.getDish().getName());
+            values.put(CartItemDBCommands.CartItemEntry.COLUMN_IMAGE_PATH_TITLE, cartItem.getDish().getImageUserPath());
+            values.put(CartItemDBCommands.CartItemEntry.COLUMN_PRICE_TITLE, cartItem.getDish().getPrice());
             values.put(CartItemDBCommands.CartItemEntry.COLUMN_QUANTITY_TITLE, cartItem.getQuantity());
             db.insert(CartItemDBCommands.CartItemEntry.TABLE_NAME, null, values);
 

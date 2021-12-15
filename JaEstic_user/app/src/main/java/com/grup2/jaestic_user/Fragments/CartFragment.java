@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.grup2.jaestic_user.DB.CartItemDBHelper;
 import com.grup2.jaestic_user.Models.CartItem;
 import com.grup2.jaestic_user.Models.Category;
+import com.grup2.jaestic_user.Models.Command;
 import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
 import com.grup2.jaestic_user.RecyclerViewAdapters.CartRecyclerViewAdapter;
@@ -61,8 +63,10 @@ public class CartFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
-        CheckBox checkBox = v.findViewById(R.id.cartCheckBox);
 
+        // Properties
+        CheckBox checkBox = v.findViewById(R.id.cartCheckBox);
+        Button buyNow = v.findViewById(R.id.buyNowBtn);
 
         // Get all data of the cart item from the database
         arrayCartItems = dbHelper.getAllData(db);
@@ -74,6 +78,7 @@ public class CartFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         checkBoxes = adapter.getCheckBoxes();
 
+        // To select or deselect all items
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,6 +93,21 @@ public class CartFragment extends Fragment {
                         currentCheckBox.setChecked(false);
                     }
                 }
+            }
+        });
+
+        // When buy now button is clicked
+        buyNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                arrayCartItems = dbHelper.getAllData(db);
+                Command command = new Command("hola@gmail.com", arrayCartItems);
+                //recyclerView.setVisibility(View.INVISIBLE);
+
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("Command2");
+                myRef.push().setValue(command);
+
             }
         });
 
