@@ -9,8 +9,6 @@ t
 Dapp/src/main/java/com/grup2/jaestic_user/Fragments/MainFragment.java,f\9\f9574aa6cff2d59a9f2dff2bbef96c64779d17bf
 l
 <app/src/main/java/com/grup2/jaestic_user/PreLoginScreen.java,4\8\48ccfd03d615aa18332345f93527875280a0d1e4
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 p
 @app/src/main/java/com/grup2/jaestic_user/NavigationActivity.java,a\c\ac81867e00b30aea9608bd766b9811076c834d8d
 m
