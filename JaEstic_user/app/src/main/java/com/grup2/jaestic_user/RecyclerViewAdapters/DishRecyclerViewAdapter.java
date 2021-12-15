@@ -92,9 +92,10 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
         dishDetailsFragment.setArguments(bundle);
 
         // When user clicks on item, will navigation to item details fragment
+        // Manage screen back navagation with .addToBackStack(null)
         holder.itemView.setOnClickListener(v -> {
             AppCompatActivity app = (AppCompatActivity) v.getContext();
-            app.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, dishDetailsFragment, "Dish").commit();
+            app.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, dishDetailsFragment, "Dish").addToBackStack(null).commit();
         });
 
         holder.favorite.setOnClickListener(v -> {
