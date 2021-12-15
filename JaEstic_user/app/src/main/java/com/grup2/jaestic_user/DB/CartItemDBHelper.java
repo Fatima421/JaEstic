@@ -93,22 +93,50 @@ public class CartItemDBHelper extends SQLiteOpenHelper {
                 " where " + CartItemDBCommands.CartItemEntry.COLUMN_DISH_NAME_TITLE + " = '" + name +"'");
     }
 
-    /*
-    public void updateData(SQLiteDatabase db, String newAnimeTitle, String newGenre, String newRanking) {
-        Cursor resultSet = db.rawQuery("Select * from anime",null);
-        if (resultSet.moveToFirst()) {
-            do {
-                id = resultSet.getInt(0);
-            } while (resultSet.moveToNext());
-        }
-        resultSet.close();
-        ContentValues values =  new ContentValues();
-        values.put(AnimeEntry.COLUMN_NAME_TITLE, newAnimeTitle);
-        values.put(AnimeEntry.COLUMN_GENRE_TITLE, newGenre);
-        values.put(AnimeEntry.COLUMN_RANKING_TITLE, newRanking);
-
-        db.update(AnimeEntry.TABLE_NAME, values, "ID=" + id, null);
+    public boolean doesDishExists(SQLiteDatabase db, CartItem cartItem) {
+        Cursor cursor = null;
+        String checkQuery = "SELECT " + CartItemDBCommands.CartItemEntry.COLUMN_DISH_NAME_TITLE +
+                " FROM " + CartItemDBCommands.CartItemEntry.TABLE_NAME +
+                " WHERE " + CartItemDBCommands.CartItemEntry.COLUMN_DISH_NAME_TITLE + "= '"+cartItem.getName() + "'";
+        cursor= db.rawQuery(checkQuery,null);
+        boolean exists = (cursor.getCount() > 0);
+        cursor.close();
+        return exists;
     }
 
-     */
+    public Integer getOldQuantity(SQLiteDatabase db, CartItem cartItem) {
+        int quantity = 0;
+        if (db.isOpen()) {
+            Cursor cursor = null;
+            // Gets quantity before modify it
+            final String SQL_GET_QUANTITY = "SELECT " + CartItemDBCommands.CartItemEntry.COLUMN_QUANTITY_TITLE +
+                    " FROM " + CartItemDBCommands.CartItemEntry.TABLE_NAME +
+                    " WHERE " + CartItemDBCommands.CartItemEntry.COLUMN_DISH_NAME_TITLE + "= '" + cartItem.getName() + "'";
+            // SQLite execution (SET where name)
+            cursor= db.rawQuery(SQL_GET_QUANTITY,null);
+
+            if (cursor.moveToFirst()) {
+                quantity = (cursor.getInt(0));
+            }
+            cursor.close();
+        } else {
+            Log.i("Jaestic", "Database is closed");
+        }
+        return quantity;
+    }
+
+
+    public void updateQuantity(SQLiteDatabase db, CartItem cartItem) {
+        if (db.isOpen()) {
+            // Updates dish quantity
+            final String SQL_UPDATE_QUANTITY = "UPDATE " + CartItemDBCommands.CartItemEntry.TABLE_NAME + " SET "
+                    + CartItemDBCommands.CartItemEntry.COLUMN_QUANTITY_TITLE + " = " + (getOldQuantity(db, cartItem)+cartItem.getQuantity())
+                    + " WHERE " + CartItemDBCommands.CartItemEntry.COLUMN_DISH_NAME_TITLE + " = '" + cartItem.getName() + "'";
+            // SQLite execution (SET where name)
+            db.execSQL(SQL_UPDATE_QUANTITY);
+        } else {
+            Log.i("Jaestic", "Database is closed");
+        }
+    }
+
 }
