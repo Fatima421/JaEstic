@@ -78,5 +78,3 @@
         app:layout_constraintBottom_toBottomOf="@+id/cellCart"
         app:layout_constraintStart_toEndOf="@+id/cmdItemPrice" />
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
