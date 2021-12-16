@@ -47,6 +47,8 @@ public class MainFragment extends Fragment {
     private CartItemDBHelper dbHelper;
     private SQLiteDatabase db;
 
+    public MainFragment() {}
+
     public MainFragment(CartItemDBHelper dbHelper, SQLiteDatabase db) {
         this.dbHelper = dbHelper;
         this.db = db;

@@ -1,6 +1,0 @@
-
-\
-java:S1659"FDeclare "imagePath" and all following declarations on a separate line.(§·”¦
-F
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ÿ®¬õÿÿÿÿÿ
