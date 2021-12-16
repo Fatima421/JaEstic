@@ -4,20 +4,29 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.grup2.jaestic_user.DB.CartItemDBHelper;
 import com.grup2.jaestic_user.Models.CartItem;
+import com.grup2.jaestic_user.Models.Category;
+import com.grup2.jaestic_user.Models.Command;
+import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
 import com.grup2.jaestic_user.RecyclerViewAdapters.CartRecyclerViewAdapter;
 
@@ -34,6 +43,8 @@ public class CartFragment extends Fragment {
     CartItem cartItem;
     private CartItemDBHelper dbHelper;
     private SQLiteDatabase db;
+    Fragment fragment;
+    String email = "";
 
     public CartFragment() {
         // Required empty public constructor
@@ -41,6 +52,7 @@ public class CartFragment extends Fragment {
     public CartFragment(CartItemDBHelper dbHelper, SQLiteDatabase db) {
         this.dbHelper = dbHelper;
         this.db = db;
+        this.fragment = this;
     }
 
     public CartFragment(Bundle bundle) {
@@ -58,8 +70,9 @@ public class CartFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
 
-        // Layout properties linked to add logic
+        // Properties
         CheckBox checkBox = v.findViewById(R.id.cartCheckBox);
+        Button buyNow = v.findViewById(R.id.buyNowBtn);
         FloatingActionButton deleteBtn = v.findViewById(R.id.cartDeleteBtn);
         TextView totalPriceTextView = v.findViewById(R.id.cartTotalPrice);
 
@@ -76,6 +89,7 @@ public class CartFragment extends Fragment {
         // Customs layout properties
         updateTotalPrice(totalPriceTextView);
 
+        // To select or deselect all items
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,6 +103,31 @@ public class CartFragment extends Fragment {
                         CheckBox currentCheckBox = checkBoxes.get(i);
                         currentCheckBox.setChecked(false);
                     }
+                }
+            }
+        });
+
+        // When buy now button is clicked
+        buyNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                arrayCartItems = dbHelper.getAllDishes(db);
+                if (arrayCartItems.size() != 0) {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    email = user.getEmail();
+                    Log.i ("email", "" + email);
+                    Command command = new Command(email, arrayCartItems);
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("Command");
+                    myRef.push().setValue(command);
+                    // Empties cart list and database
+                    dbHelper.deleteAllDishes(db);
+                    arrayCartItems.clear();
+                    Toast.makeText(getContext(), getString(R.string.boughtItemsSuccesfully), Toast.LENGTH_LONG).show();
+                    // Screen updates with empty cart list
+                    CartRecyclerViewAdapter adapter = new CartRecyclerViewAdapter(getContext(), arrayCartItems);
+                    recyclerView.setAdapter(adapter);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 }
             }
         });

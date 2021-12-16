@@ -19,10 +19,6 @@ public class CartItem implements Serializable {
     public Dish getDish() {
         return dish;
     }
-    public String getDescription() { return dish.description; }
-    public String getImageUserPath() { return dish.imageUserPath; }
-    public String getName() { return dish.name; }
-    public double getPrice() { return dish.price; }
 
     public void setDish(Dish dish) {
         this.dish = dish;

@@ -115,7 +115,7 @@ public class DishDetailsFragment extends Fragment {
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "This is my Toast message!",
+                Toast.makeText(getActivity(), getString(R.string.addedItemInCart),
                         Toast.LENGTH_LONG).show();
                 cartItem = new CartItem(dish, inCart);
                 if (dbHelper.doesDishExists(db, cartItem)) {
@@ -129,9 +129,4 @@ public class DishDetailsFragment extends Fragment {
 
         return view;
     }
-
-    /*
-    public static Bundle getBundle() {
-        return cartBundle;
-    }*/
 }

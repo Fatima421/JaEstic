@@ -51,9 +51,9 @@ public class CartItemDBHelper extends SQLiteOpenHelper {
             // Creation of the register for insert object with the content values
             ContentValues values = new ContentValues();
             // Insert the incidence getting all values
-            values.put(CartItemEntry.NAME, cartItem.getName());
-            values.put(CartItemEntry.IMAGE_PATH, cartItem.getImageUserPath());
-            values.put(CartItemEntry.PRICE, cartItem.getPrice());
+            values.put(CartItemEntry.NAME, cartItem.getDish().getName());
+            values.put(CartItemEntry.IMAGE_PATH, cartItem.getDish().getImageUserPath());
+            values.put(CartItemEntry.PRICE, cartItem.getDish().getPrice());
             values.put(CartItemEntry.QUANTITY, cartItem.getQuantity());
             // SQLite execution (Insert row)
             db.insert(CartItemEntry.TABLE_NAME, null, values);
@@ -119,7 +119,7 @@ public class CartItemDBHelper extends SQLiteOpenHelper {
         boolean exists = false;
         final String SQL_SELECT_WHERE_NAME = "SELECT " + CartItemEntry.NAME +
                 " FROM " + CartItemEntry.TABLE_NAME +
-                " WHERE " + CartItemEntry.NAME + "= '" + cartItem.getName() + "'";
+                " WHERE " + CartItemEntry.NAME + "= '" + cartItem.getDish().getName() + "'";
         // Checks if database is open
         if (db.isOpen()) {
             Cursor cursor= db.rawQuery(SQL_SELECT_WHERE_NAME,null);
@@ -139,7 +139,7 @@ public class CartItemDBHelper extends SQLiteOpenHelper {
             // Gets quantity before modify it
             final String SQL_GET_QUANTITY = "SELECT " + CartItemEntry.QUANTITY +
                     " FROM " + CartItemEntry.TABLE_NAME +
-                    " WHERE " + CartItemEntry.NAME + "= '" + cartItem.getName() + "'";
+                    " WHERE " + CartItemEntry.NAME + "= '" + cartItem.getDish().getName() + "'";
             // SQLite execution (SET where name)
             Cursor cursor= db.rawQuery(SQL_GET_QUANTITY,null);
             if (cursor.moveToFirst()) {
@@ -159,7 +159,7 @@ public class CartItemDBHelper extends SQLiteOpenHelper {
             // Updates dish quantity
             final String SQL_UPDATE_QUANTITY = "UPDATE " + CartItemEntry.TABLE_NAME + " SET "
                     + CartItemEntry.QUANTITY + " = " + (getOldQuantity(db, cartItem)+cartItem.getQuantity())
-                    + " WHERE " + CartItemEntry.NAME + " = '" + cartItem.getName() + "'";
+                    + " WHERE " + CartItemEntry.NAME + " = '" + cartItem.getDish().getName() + "'";
             // SQLite execution (SET where name)
             db.execSQL(SQL_UPDATE_QUANTITY);
         } else {

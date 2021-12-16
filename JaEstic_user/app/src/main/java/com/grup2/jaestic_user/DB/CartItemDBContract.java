@@ -13,3 +13,21 @@ public class CartItemDBContract {
         public static final String QUANTITY = "quantity";
     }
 }
+
+/*
+    Command
+        1- Fatima421@gmail.com
+            C/asdf
+            Items
+                1 - pizza 3 24
+                2 - fasd
+                3 - asdf
+
+        2- Erik
+            c/asdf
+            Items
+                1-asdf
+                2  - asdf
+
+
+ */
