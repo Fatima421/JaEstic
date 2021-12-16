@@ -28,7 +28,7 @@ public class Category implements Serializable {
     // Setters
     public void setDescription(String description) { this.description = description; }
     public void setImagePath(String imagePath) { this.imagePath = imagePath; }
-    public void setImagePathUsers(String imagePathUsers) { this.imagePathUsers = imagePathUsers; }
+    public void setImageUserPath(String imagePathUsers) { this.imagePathUsers = imagePathUsers; }
     public void setName(String name) { this.name = name; }
     public void setFirebaseKey(String firebaseKey) { this.firebaseKey = firebaseKey; }
 }
