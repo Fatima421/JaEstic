@@ -1,6 +1,7 @@
 package com.grup2.jaestic_user;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 import android.database.sqlite.SQLiteDatabase;
@@ -61,5 +62,29 @@ public class NavigationActivity extends AppCompatActivity {
             return true;
         });
     }
+    @Override
+    public void onUserLeaveHint()
+    {
+        this.finishAndRemoveTask();
+    }
 
+    @Override
+    public void onBackPressed() {
+        BottomNavigationView bottomNav = findViewById(R.id.main_menu);
+        Fragment homeFragment = getSupportFragmentManager().findFragmentByTag("Home");
+        Fragment FoodFragment = getSupportFragmentManager().findFragmentByTag("Food");
+        Fragment CartFragment  = getSupportFragmentManager().findFragmentByTag("Cart");
+        // If Home fragment is on the screen, app will minimize and remove task
+        if (homeFragment != null && homeFragment.isVisible()) {
+            this.finishAndRemoveTask();
+            // If Food fragment or  Cart fragment is on the screen, will back to Main Fragment
+        } else if (FoodFragment != null && FoodFragment.isVisible() || CartFragment != null && CartFragment.isVisible()) {
+            bottomNav.setSelectedItemId(R.id.nav_home);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CategoriesListFragment(dbHelper, db), "List").commit();
+            return;
+        }
+        // If is another fragment, user will redirect to Main fragment (in this case, user needs two taps in back button to minimize app)
+        bottomNav.setSelectedItemId(R.id.nav_home);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MainFragment(), "Home").commit();
+    }
 }
