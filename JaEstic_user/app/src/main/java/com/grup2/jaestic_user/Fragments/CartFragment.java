@@ -4,6 +4,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,6 +42,7 @@ public class CartFragment extends Fragment {
     CartItem cartItem;
     private CartItemDBHelper dbHelper;
     private SQLiteDatabase db;
+    Fragment fragment;
 
     public CartFragment() {
         // Required empty public constructor
@@ -48,6 +50,7 @@ public class CartFragment extends Fragment {
     public CartFragment(CartItemDBHelper dbHelper, SQLiteDatabase db) {
         this.dbHelper = dbHelper;
         this.db = db;
+        this.fragment = this;
     }
 
     public CartFragment(Bundle bundle) {
@@ -107,13 +110,20 @@ public class CartFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 arrayCartItems = dbHelper.getAllData(db);
-                Command command = new Command("hola@gmail.com", arrayCartItems);
-                //recyclerView.setVisibility(View.INVISIBLE);
-
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("Command2");
-                myRef.push().setValue(command);
-
+                if (arrayCartItems.size() != 0) {
+                    Command command = new Command("hola@gmail.com", arrayCartItems);
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("Command");
+                    myRef.push().setValue(command);
+                    // Empties cart list and database
+                    dbHelper.deleteAllData(db);
+                    arrayCartItems.clear();
+                    Toast.makeText(getContext(), getString(R.string.boughtItemsSuccesfully), Toast.LENGTH_LONG).show();
+                    // Screen updates with empty cart list
+                    CartRecyclerViewAdapter adapter = new CartRecyclerViewAdapter(getContext(), arrayCartItems);
+                    recyclerView.setAdapter(adapter);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                }
             }
         });
 

@@ -64,8 +64,8 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
         // Add checkboxs to the arraylist
         checkBoxes.add(holder.checkBox);
 
-        holder.name.setText(cartItem.getName());
-        holder.price.setText(Double.toString(cartItem.getPrice()));
+        holder.name.setText(cartItem.getDish().getName());
+        holder.price.setText(Double.toString(cartItem.getDish().getPrice()));
         holder.price.setText(holder.price.getText() + context.getString(R.string.coin));
         holder.quantity.setText(context.getString(R.string.quantity) + " " + cartItem.getQuantity());
 

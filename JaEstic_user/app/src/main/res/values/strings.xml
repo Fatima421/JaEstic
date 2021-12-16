@@ -34,5 +34,5 @@
     <string name="titleforrepeat">To repeat!</string>
     <string name="titlesales">Top sales</string>
     <string name="coin">$</string>
-
+    <string name="boughtItemsSuccesfully">You have bought successfully!</string>
 </resources>
