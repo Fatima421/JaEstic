@@ -121,7 +121,12 @@ public class DishDetailsFragment extends Fragment {
                 Double totalPrice = dish.getPrice() * inCart;
                 dish.setPrice(totalPrice);
                 cartItem = new CartItem(dish, inCart);
-                dbHelper.insertCartItem(db, cartItem);
+                if (dbHelper.doesDishExists(db, cartItem)) {
+                    cartItem.setQuantity(inCart);
+                    dbHelper.updateQuantity(db, cartItem);
+                } else {
+                    dbHelper.insertDish(db, cartItem);
+                }
             }
         });
 
