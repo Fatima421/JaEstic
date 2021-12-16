@@ -64,14 +64,14 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
         // Add checkboxs to the arraylist
         checkBoxes.add(holder.checkBox);
 
-        holder.name.setText(cartItem.getName());
-        holder.price.setText(Double.toString(cartItem.getPrice()));
+        holder.name.setText(cartItem.getDish().getName());
+        holder.price.setText(Double.toString(cartItem.getDish().getPrice()));
         holder.price.setText(holder.price.getText() + context.getString(R.string.coin));
         holder.quantity.setText(context.getString(R.string.quantity) + " " + cartItem.getQuantity());
 
         // To load the image
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-        storageReference.child(cartItem.getImageUserPath()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        storageReference.child(cartItem.getDish().getImageUserPath()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 Glide.with(context)
