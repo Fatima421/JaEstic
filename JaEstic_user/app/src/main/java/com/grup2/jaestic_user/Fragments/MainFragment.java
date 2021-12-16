@@ -35,6 +35,7 @@ import com.grup2.jaestic_user.RecyclerViewAdapters.MainParaRepetirRecyclerViewHo
 import com.grup2.jaestic_user.RecyclerViewAdapters.MainTopVentasRecyclerViewHoritzontal;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainFragment extends Fragment {
 
@@ -54,6 +55,8 @@ public class MainFragment extends Fragment {
         this.db = db;
     }
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -66,15 +69,10 @@ public class MainFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String email = "";
-        if (user != null) {
-            Log.i ("email", "" + email);
-        }
+        String email = user.getEmail();
 
         ordersDatabase = FirebaseDatabase.getInstance().getReference("Command").child("cartItem");
-
-//        ordersDatabase = FirebaseDatabase.getInstance().getReference("Command").child(category.getFirebaseKey()).child("Foods");
-
+        Log.i ("pepito", "" + Locale.getDefault().getLanguage());
 
         // Add dishes in an ArrayList and send it to RecyclerView
         ordersDatabase.addValueEventListener(new ValueEventListener() {
@@ -85,7 +83,7 @@ public class MainFragment extends Fragment {
                 arrayCartItems.clear();
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
 
-                    if (dataSnapshot.child("email").equals(email)) {
+                    if (dataSnapshot.child("email").getValue().equals(email)) {
                         CartItem cartItem = postSnapshot.getValue(CartItem.class);
                         cartItem.setFirebaseKey(dataSnapshot.getKey());
                         arrayCartItems.add(cartItem);
