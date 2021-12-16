@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.grup2.jaestic_user.DB.CartItemDBHelper;
 import com.grup2.jaestic_user.Models.CartItem;
 import com.grup2.jaestic_user.Models.Category;
@@ -40,6 +44,7 @@ public class CartFragment extends Fragment {
     private CartItemDBHelper dbHelper;
     private SQLiteDatabase db;
     Fragment fragment;
+    String email = "";
 
     public CartFragment() {
         // Required empty public constructor
@@ -106,14 +111,17 @@ public class CartFragment extends Fragment {
         buyNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                arrayCartItems = dbHelper.getAllData(db);
+                arrayCartItems = dbHelper.getAllDishes(db);
                 if (arrayCartItems.size() != 0) {
-                    Command command = new Command("hola@gmail.com", arrayCartItems);
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    email = user.getEmail();
+                    Log.i ("email", "" + email);
+                    Command command = new Command(email, arrayCartItems);
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference myRef = database.getReference("Command");
                     myRef.push().setValue(command);
                     // Empties cart list and database
-                    dbHelper.deleteAllData(db);
+                    dbHelper.deleteAllDishes(db);
                     arrayCartItems.clear();
                     Toast.makeText(getContext(), getString(R.string.boughtItemsSuccesfully), Toast.LENGTH_LONG).show();
                     // Screen updates with empty cart list
