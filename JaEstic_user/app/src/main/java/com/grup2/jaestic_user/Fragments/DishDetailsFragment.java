@@ -122,7 +122,7 @@ public class DishDetailsFragment extends Fragment {
                     cartItem.setQuantity(inCart);
                     dbHelper.updateQuantity(db, cartItem);
                 } else {
-                    dbHelper.insertCartItem(db, cartItem);
+                    dbHelper.insertDish(db, cartItem);
                 }
             }
         });
