@@ -48,7 +48,7 @@ public class DishesListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflates the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_dishes_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
         // Bundle properties
         bundle = getArguments();
         category = (Category) bundle.getSerializable("Category");

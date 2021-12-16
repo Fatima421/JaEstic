@@ -80,6 +80,7 @@
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/helvetica_rounded"
         android:gravity="center"
+        android:paddingEnd="45dp"
         android:text="Google"
         android:textAllCaps="false"
         android:textColor="@color/black"
