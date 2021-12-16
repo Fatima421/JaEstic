@@ -68,15 +68,16 @@ public class DishesListFragment extends Fragment {
                 // whenever data at this location is updated.
                 arrayDishes.clear();
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                    Dish dish = postSnapshot.getValue(Dish.class);
-                    arrayDishes.add(dish);
+                    if (postSnapshot.hasChild("imageUserPath")) {
+                        Dish dish = postSnapshot.getValue(Dish.class);
+                        arrayDishes.add(dish);
+                    }
                 }
                 // Creates Recycler View
                 RecyclerView recyclerView = view.findViewById(R.id.dishRecyclerView);
                 DishRecyclerViewAdapter adapter = new DishRecyclerViewAdapter(arrayDishes, getContext(), dbHelper, db);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
             }
 
             @Override

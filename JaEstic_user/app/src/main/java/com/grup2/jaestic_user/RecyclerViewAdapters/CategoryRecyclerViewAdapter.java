@@ -62,21 +62,25 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
 
         // Reference to an image file in Cloud Storage
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-        storageReference.child(category.getImagePathUsers()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Glide.with(context)
-                        .load(uri.toString())
-                        .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(holder.image);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.i("IMAGE", e.toString());
-            }
-        });
+        if(!category.getImagePathUsers().equals("") || (!category.getImagePath().equals(""))) {
+            storageReference.child(category.getImagePathUsers()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Glide.with(context)
+                            .load(uri.toString())
+                            .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .into(holder.image);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.i("IMAGE", e.toString());
+                }
+            });
+        } else {
+            holder.image.setImageResource(R.drawable.junk_food);
+        }
 
         // Adds item object to bundle and sent to Item Details fragments
         bundle.putSerializable("Category", category);
