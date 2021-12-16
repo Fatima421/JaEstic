@@ -7,22 +7,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.grup2.jaestic_user.DB.CartItemDBHelper;
 import com.grup2.jaestic_user.Models.CartItem;
-import com.grup2.jaestic_user.Models.Category;
-import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
 import com.grup2.jaestic_user.RecyclerViewAdapters.CartRecyclerViewAdapter;
 
@@ -69,7 +64,7 @@ public class CartFragment extends Fragment {
         TextView totalPriceTextView = v.findViewById(R.id.cartTotalPrice);
 
         // Get all data of the cart item from the database
-        arrayCartItems = dbHelper.getAllData(db);
+        arrayCartItems = dbHelper.getAllDishes(db);
 
         // Create the RecyclerView
         recyclerView = v.findViewById(R.id.cartRecyclerView);
@@ -106,7 +101,7 @@ public class CartFragment extends Fragment {
                    if (areAllCheckboxsChecked()) {
                        checkBox.setChecked(false);
                        // Empties cart list and database
-                       dbHelper.deleteAllData(db);
+                       dbHelper.deleteAllDishes(db);
                        arrayCartItems.clear();
                        // Toast warns cart list is deleted
                        Toast.makeText(getContext(), getString(R.string.cartDeleteListToast), Toast.LENGTH_LONG).show();

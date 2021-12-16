@@ -118,7 +118,12 @@ public class DishDetailsFragment extends Fragment {
                 Toast.makeText(getActivity(), "This is my Toast message!",
                         Toast.LENGTH_LONG).show();
                 cartItem = new CartItem(dish, inCart);
-                dbHelper.insertCartItem(db, cartItem);
+                if (dbHelper.doesDishExists(db, cartItem)) {
+                    cartItem.setQuantity(inCart);
+                    dbHelper.updateQuantity(db, cartItem);
+                } else {
+                    dbHelper.insertDish(db, cartItem);
+                }
             }
         });
 
