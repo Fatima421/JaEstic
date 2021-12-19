@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:tag="OrderDetails"
+    android:background="@drawable/gradient_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.OrderDetailsFragment">
+
+    <ImageView
+        android:id="@+id/detailsCell"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/custom_border_cell_transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titledetail"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/titledetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/helvetica_rounded"
+        android:gravity="center"
+        android:text="@string/commandTitle"
+        android:textColor="@color/greyBlue"
+        android:textSize="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageOrderPlaceHolder"
+        android:layout_width="228dp"
+        android:layout_height="205dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/junk_food"
+        app:layout_constraintEnd_toEndOf="@+id/detailsCell"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/detailsCell"
+        app:layout_constraintTop_toTopOf="@+id/detailsCell"
+        app:srcCompat="@drawable/command" />
+
+    <TextView
+        android:id="@+id/textOrderReference"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/helvetica_rounded"
+        android:gravity="start"
+        android:text="Order: ADDFDFGSD"
+        android:textColor="@color/greyBlue"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/detailsCell"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/detailsCell"
+        app:layout_constraintTop_toBottomOf="@+id/imageOrderPlaceHolder" />
+
+    <TextView
+        android:id="@+id/textTotalQuantity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/heebo"
+        android:text="Quantity: 5"
+        android:textColor="@color/greyBlue"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/detailsCell"
+        app:layout_constraintStart_toStartOf="@+id/detailsCell"
+        app:layout_constraintTop_toBottomOf="@+id/textOrderReference" />
+
+    <TextView
+        android:id="@+id/orderDetailTotalPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/heebo"
+        android:gravity="start"
+        android:text="9,90€"
+        android:textColor="@color/greyBlue"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/detailsCell"
+        app:layout_constraintEnd_toEndOf="@+id/detailsCell"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/detailsCell"
+        app:layout_constraintTop_toTopOf="@+id/detailsCell"
+        app:layout_constraintVertical_bias="0.964" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/orderRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/orderDetailTotalPrice"
+        app:layout_constraintEnd_toEndOf="@+id/detailsCell"
+        app:layout_constraintStart_toStartOf="@+id/detailsCell"
+        app:layout_constraintTop_toBottomOf="@+id/textTotalQuantity" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

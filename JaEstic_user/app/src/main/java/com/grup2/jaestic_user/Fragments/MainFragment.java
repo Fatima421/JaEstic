@@ -13,17 +13,18 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.grup2.jaestic_user.Models.CartItem;
 import com.grup2.jaestic_user.Models.Command;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.grup2.jaestic_user.R;
-import com.grup2.jaestic_user.RecyclerViewAdapters.RepeatOrderRecyclerViewAdapter;
+import com.grup2.jaestic_user.RecyclerViewAdapters.LastOrderRecyclerViewAdapter;
 import java.util.ArrayList;
 
 public class MainFragment extends Fragment {
     private DatabaseReference ordersDatabase;
-    private DatabaseReference dishDatabase;
-    private ArrayList<Command> arrayCommands =  new ArrayList<Command>();
+    private LinearLayoutManager horizontalLayout;
+    Bundle bundle;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,12 +36,12 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+        ArrayList<Command> arrayCommands = new ArrayList<Command>();
         // Get current user information: e-mail
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentEmail = user.getEmail();
         // Firebase
         ordersDatabase = FirebaseDatabase.getInstance().getReference("Command");
-        dishDatabase = FirebaseDatabase.getInstance().getReference("Command").child("cartItem").child("dish");
 
         // Add dishes in an ArrayList and send it to RecyclerView
         ordersDatabase.addValueEventListener(new ValueEventListener() {
@@ -54,14 +55,29 @@ public class MainFragment extends Fragment {
                     // Only add commands from current user
                     if (command.getEmail().equals(currentEmail)) {
                         arrayCommands.add(command);
+                        command.setFirebaseKey(postSnapshot.getKey());
+                        double totalPrice = 0.0;
+                        int totalQuantity = 0;
+                        for (int i = 0; i < command.getCartItem().size(); i++) {
+                            CartItem cartItem = command.getCartItem().get(i);
+                            totalPrice = totalPrice + (cartItem.getQuantity() * cartItem.getDish().getPrice());
+                            totalQuantity = totalQuantity + cartItem.getQuantity();
+                        }
+                        command.setTotalPrice(totalPrice);
+                        command.setTotalQuantity(totalQuantity);
                     }
                 }
 
                 // Creates Recycler View "Top Ventas"
                 RecyclerView orderRecyclerView = view.findViewById(R.id.lastOrdersRecyclerView);
-                RepeatOrderRecyclerViewAdapter adapter = new RepeatOrderRecyclerViewAdapter(getContext(), arrayCommands);
+                LastOrderRecyclerViewAdapter adapter = new LastOrderRecyclerViewAdapter(getContext(), arrayCommands);
                 orderRecyclerView.setAdapter(adapter);
-                orderRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                horizontalLayout
+                        = new LinearLayoutManager(
+                        getContext(),
+                        LinearLayoutManager.HORIZONTAL,
+                        false);
+                orderRecyclerView.setLayoutManager(horizontalLayout);
             }
 
             @Override

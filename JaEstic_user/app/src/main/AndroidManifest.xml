@@ -14,15 +14,15 @@
         android:theme="@style/SplashTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".LoginScreen"
+            android:name=".LoginActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".RegisterScreen"
+            android:name=".RegisterActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".PreLoginScreen"
+            android:name=".PreLoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

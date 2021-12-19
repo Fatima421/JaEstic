@@ -5,6 +5,9 @@ import java.util.ArrayList;
 
 public class Command implements Serializable {
     String email;
+    String firebaseKey;
+    double totalPrice;
+    int totalQuantity;
     ArrayList<CartItem> cartItem;
 
     public Command() {
@@ -13,6 +16,30 @@ public class Command implements Serializable {
     public Command(String email, ArrayList<CartItem> cartItem) {
         this.email = email;
         this.cartItem = cartItem;
+    }
+
+    public int getTotalQuantity() {
+        return totalQuantity;
+    }
+
+    public void setTotalQuantity(int totalQuantity) {
+        this.totalQuantity = totalQuantity;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public String getFirebaseKey() {
+        return firebaseKey;
+    }
+
+    public void setFirebaseKey(String firebaseKey) {
+        this.firebaseKey = firebaseKey;
     }
 
     public String getEmail() {

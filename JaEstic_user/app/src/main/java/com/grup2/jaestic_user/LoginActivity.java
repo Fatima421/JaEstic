@@ -25,7 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class LoginScreen extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     // Global properties
     private FirebaseAuth mFirebaseAuth;
     private GoogleSignInClient mGoogleSignInClient;
@@ -35,10 +35,10 @@ public class LoginScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_screen);
+        setContentView(R.layout.activity_login);
 
         // Creating an intent to be able to go to RegisterScreen
-        Intent goToRegisterScreen = new Intent(this, RegisterScreen.class);
+        Intent goToRegisterScreen = new Intent(this, RegisterActivity.class);
         Intent goToMainScreen = new Intent(this, NavigationActivity.class);
 
 
@@ -73,19 +73,19 @@ public class LoginScreen extends AppCompatActivity {
 
                 if (!email.equals("") && !password.equals("")) {
                     mFirebaseAuth.signInWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(LoginScreen.this, new OnCompleteListener<AuthResult>() {
+                            .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         // Sign in success, update UI with the signed-in user's information
-                                        Toast.makeText(LoginScreen.this, getString(R.string.authSuccess),
+                                        Toast.makeText(LoginActivity.this, getString(R.string.authSuccess),
                                                 Toast.LENGTH_LONG).show();
 
                                         startActivity(goToMainScreen);
                                         finish();
                                     } else {
                                         // If sign in fails, display a message to the user.
-                                        Toast.makeText(LoginScreen.this, getString(R.string.authFail),
+                                        Toast.makeText(LoginActivity.this, getString(R.string.authFail),
                                                 Toast.LENGTH_LONG).show();
                                     }
                                 }
@@ -98,18 +98,18 @@ public class LoginScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mFirebaseAuth.sendPasswordResetEmail(emailText.toString())
-                    .addOnCompleteListener(LoginScreen.this, new OnCompleteListener<Void>() {
+                    .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(LoginScreen.this, "Reset link sent to your email",
+                                Toast.makeText(LoginActivity.this, "Reset link sent to your email",
                                         Toast.LENGTH_LONG).show();
 
                                 startActivity(goToMainScreen);
                                 finish();
                             } else {
                                 // If sign in fails, display a message to the user.
-                                Toast.makeText(LoginScreen.this, "Unable to send reset mail",
+                                Toast.makeText(LoginActivity.this, "Unable to send reset mail",
                                         Toast.LENGTH_LONG).show();
                             }
                         }
@@ -192,6 +192,6 @@ public class LoginScreen extends AppCompatActivity {
     private void updateUI(FirebaseUser user) {
         Intent goToMainScreen = new Intent(this, NavigationActivity.class);
         startActivity(goToMainScreen);
-        LoginScreen.this.finish();
+        LoginActivity.this.finish();
     }
 }

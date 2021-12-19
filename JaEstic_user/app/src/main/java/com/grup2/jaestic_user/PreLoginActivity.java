@@ -7,13 +7,12 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class PreLoginScreen extends AppCompatActivity {
+public class PreLoginActivity extends AppCompatActivity {
 
     // Global properties
     private FirebaseAuth mAuth;
@@ -26,7 +25,7 @@ public class PreLoginScreen extends AppCompatActivity {
         SystemClock.sleep(1000);
         setTheme(R.style.Theme_JaEstic_user);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.prelogin_screen);
+        setContentView(R.layout.activity_prelogin);
         FirebaseApp.initializeApp(this);
 
         // Properties
@@ -37,8 +36,8 @@ public class PreLoginScreen extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         // Creating an intent to be able to go to another screen
-        goToRegisterScreen = new Intent(this, RegisterScreen.class);
-        goToLoginScreen = new Intent(this, LoginScreen.class);
+        goToRegisterScreen = new Intent(this, RegisterActivity.class);
+        goToLoginScreen = new Intent(this, LoginActivity.class);
 
         // If signUp button is clicked change to register screen
         signUpBtn.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +70,6 @@ public class PreLoginScreen extends AppCompatActivity {
     private void updateUI(FirebaseUser user) {
         Intent goToMainScreen = new Intent(this, NavigationActivity.class);
         startActivity(goToMainScreen);
-        PreLoginScreen.this.finish();
+        PreLoginActivity.this.finish();
     }
 }

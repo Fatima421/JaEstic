@@ -20,7 +20,6 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.grup2.jaestic_user.DB.CartItemDBHelper;
@@ -51,7 +50,7 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
     @Override
     public DishViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Inflates the layout for this fragment
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.dish, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_dish, parent, false);
         DishViewHolder holder = new DishViewHolder(view);
         return holder;
     }

@@ -32,7 +32,9 @@
     <string name="searchbar">Buscar</string>
     <string name="locationbar">Ubicación</string>
     <string name="titleLastOrders">Últimos Pedidos</string>
+    <string name="subTitleLastOrders">Clic para más detalles</string>
     <string name="coin">€</string>
     <string name="boughtItemsSuccesfully">Has comprado correctamente!</string>
-    <string name="commandTitle">Comandas</string>
+    <string name="commandTitle">Pedido</string>
+    <string name="commandBody">Pedido:</string>
 </resources>

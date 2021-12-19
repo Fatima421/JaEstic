@@ -22,10 +22,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.grup2.jaestic_user.Fragments.DishesListFragment;
 import com.grup2.jaestic_user.Models.CartItem;
-import com.grup2.jaestic_user.Models.Category;
-import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
 
 import java.util.ArrayList;
@@ -47,7 +44,7 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
     @Override
     public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Inflates the layout for this fragment
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cart, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cart, parent, false);
         CartViewHolder holder = new CartViewHolder(view);
         return holder;
     }
