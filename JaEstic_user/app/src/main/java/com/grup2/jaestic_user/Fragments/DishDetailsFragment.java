@@ -64,8 +64,7 @@ public class DishDetailsFragment extends Fragment {
         TextView productDescription = view.findViewById(R.id.ProductDescription);
         productDescription.setText(dish.getDescription());
         TextView price = view.findViewById(R.id.price);
-        price.setText(Double.toString(dish.getPrice()));
-        price.setText(price.getText() + "€");
+        price.setText(dish.getPrice() + getContext().getString(R.string.coin));
         Button lessBtn = view.findViewById(R.id.less);
         TextView cartQuantity = view.findViewById(R.id.numQuantity);
         Button moreBtn = view.findViewById(R.id.more);
@@ -98,6 +97,7 @@ public class DishDetailsFragment extends Fragment {
                 if (inCart > 0) {
                     inCart = inCart - 1;
                 }
+                price.setText((dish.getPrice() * inCart) + getContext().getString(R.string.coin));
                 cartQuantity.setText( String.valueOf(inCart));
             }
         });
@@ -108,6 +108,7 @@ public class DishDetailsFragment extends Fragment {
             public void onClick(View view) {
                 inCart = inCart + 1;
                 cartQuantity.setText( String.valueOf(inCart));
+                price.setText((dish.getPrice() * inCart) + getContext().getString(R.string.coin));
             }
         });
 
@@ -117,6 +118,8 @@ public class DishDetailsFragment extends Fragment {
             public void onClick(View view) {
                 Toast.makeText(getActivity(), getString(R.string.addedItemInCart),
                         Toast.LENGTH_LONG).show();
+                Double totalPrice = dish.getPrice() * inCart;
+                dish.setPrice(totalPrice);
                 cartItem = new CartItem(dish, inCart);
                 if (dbHelper.doesDishExists(db, cartItem)) {
                     cartItem.setQuantity(inCart);

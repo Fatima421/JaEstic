@@ -182,6 +182,6 @@ public class CartFragment extends Fragment {
         for (int i = 0; i < arrayCartItems.size(); i++) {
            totalPrice = totalPrice + arrayCartItems.get(i).getDish().getPrice();
         }
-        totalPriceTextView.setText(Double.toString(totalPrice));
+        totalPriceTextView.setText(totalPrice + getContext().getString(R.string.coin));
     }
 }
