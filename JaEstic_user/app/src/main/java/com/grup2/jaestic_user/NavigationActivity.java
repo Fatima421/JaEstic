@@ -48,7 +48,7 @@ public class NavigationActivity extends AppCompatActivity {
 
             switch (item.getItemId()) {
                 case R.id.nav_home:
-                    selectedFragment = new MainFragment(dbHelper, db);
+                    selectedFragment = new MainFragment();
                     break;
 
                 case R.id.nav_food:
