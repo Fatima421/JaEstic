@@ -4,7 +4,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,19 +12,24 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.grup2.jaestic_user.DB.CartItemDBHelper;
 import com.grup2.jaestic_user.Models.CartItem;
 import com.grup2.jaestic_user.Models.Category;
+import com.grup2.jaestic_user.Models.Command;
 import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
 import com.grup2.jaestic_user.RecyclerViewAdapters.CartRecyclerViewAdapter;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CartFragment extends Fragment {
@@ -38,6 +43,8 @@ public class CartFragment extends Fragment {
     CartItem cartItem;
     private CartItemDBHelper dbHelper;
     private SQLiteDatabase db;
+    Fragment fragment;
+    String email = "";
 
     public CartFragment() {
         // Required empty public constructor
@@ -45,6 +52,7 @@ public class CartFragment extends Fragment {
     public CartFragment(CartItemDBHelper dbHelper, SQLiteDatabase db) {
         this.dbHelper = dbHelper;
         this.db = db;
+        this.fragment = this;
     }
 
     public CartFragment(Bundle bundle) {
@@ -61,11 +69,15 @@ public class CartFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
-        CheckBox checkBox = v.findViewById(R.id.cartCheckBox);
 
+        // Properties
+        CheckBox checkBox = v.findViewById(R.id.cartCheckBox);
+        Button buyNow = v.findViewById(R.id.buyNowBtn);
+        FloatingActionButton deleteBtn = v.findViewById(R.id.cartDeleteBtn);
+        TextView totalPriceTextView = v.findViewById(R.id.cartTotalPrice);
 
         // Get all data of the cart item from the database
-        arrayCartItems = dbHelper.getAllData(db);
+        arrayCartItems = dbHelper.getAllDishes(db);
 
         // Create the RecyclerView
         recyclerView = v.findViewById(R.id.cartRecyclerView);
@@ -74,6 +86,10 @@ public class CartFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         checkBoxes = adapter.getCheckBoxes();
 
+        // Customs layout properties
+        updateTotalPrice(totalPriceTextView);
+
+        // To select or deselect all items
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,6 +107,81 @@ public class CartFragment extends Fragment {
             }
         });
 
+        // When buy now button is clicked
+        buyNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                arrayCartItems = dbHelper.getAllDishes(db);
+                if (arrayCartItems.size() != 0) {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    email = user.getEmail();
+                    Log.i ("email", "" + email);
+                    Command command = new Command(email, arrayCartItems);
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("Command");
+                    myRef.push().setValue(command);
+                    // Empties cart list and database
+                    dbHelper.deleteAllDishes(db);
+                    arrayCartItems.clear();
+                    Toast.makeText(getContext(), getString(R.string.boughtItemsSuccesfully), Toast.LENGTH_LONG).show();
+                    // Screen updates with empty cart list
+                    CartRecyclerViewAdapter adapter = new CartRecyclerViewAdapter(getContext(), arrayCartItems);
+                    recyclerView.setAdapter(adapter);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                }
+            }
+        });
+
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // checks if there are some dishes in the list
+                if (arrayCartItems.size() != 0) {
+                   if (areAllCheckboxsChecked()) {
+                       checkBox.setChecked(false);
+                       // Empties cart list and database
+                       dbHelper.deleteAllDishes(db);
+                       arrayCartItems.clear();
+                       // Toast warns cart list is deleted
+                       Toast.makeText(getContext(), getString(R.string.cartDeleteListToast), Toast.LENGTH_LONG).show();
+                   } else {
+                       for (int i = 0; i < checkBoxes.size(); i++) {
+                           if (checkBoxes.get(i).isChecked()) {
+                               checkBoxes.get(i).setChecked(false);
+                               String name = arrayCartItems.get(i).getDish().getName();
+                               dbHelper.deleteDishWhereName(db, name);
+                               arrayCartItems.remove(i);
+                               // Toast warns cart list is deleted
+                               Toast.makeText(getContext(), getString(R.string.cartDeleteItemToast), Toast.LENGTH_LONG).show();
+                           }
+                       }
+                   }
+                    // Screen updates with current cart list
+                    adapter.notifyDataSetChanged();
+                    updateTotalPrice(totalPriceTextView);
+                } else {
+                    // Toast warns cart list is already empty
+                    Toast.makeText(getContext(), getString(R.string.cartDeleteEmptyToast), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
         return v;
+    }
+    public Boolean areAllCheckboxsChecked() {
+        for (int i = 0; i < checkBoxes.size(); i++) {
+            if (!checkBoxes.get(i).isChecked()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void updateTotalPrice(TextView totalPriceTextView) {
+        double totalPrice = 0.0;
+        for (int i = 0; i < arrayCartItems.size(); i++) {
+           totalPrice = totalPrice + arrayCartItems.get(i).getDish().getPrice();
+        }
+        totalPriceTextView.setText(totalPrice + getContext().getString(R.string.coin));
     }
 }

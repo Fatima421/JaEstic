@@ -35,7 +35,6 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
     StorageReference storageReference;
     private ArrayList<Dish> arrayDishes;
     boolean heartPressed = false;
-    boolean cartPressed = false;
     private CartItemDBHelper dbHelper;
     private SQLiteDatabase db;
 
@@ -71,30 +70,37 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
         holder.favorite.setImageResource(R.drawable.ic_heart_empty);
 
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-        storageReference.child(dish.getImageUserPath()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Glide.with(context)
-                        .load(uri.toString())
-                        .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(holder.image);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.i("IMAGE", e.toString());
-            }
-        });
+        if((!dish.getImageUserPath().equals("")) || (!dish.getImagePath().equals(""))) {
+            storageReference.child(dish.getImageUserPath()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Glide.with(context)
+                            .load(uri.toString())
+                            .placeholder(R.drawable.junk_food)
+                            .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .into(holder.image);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.i("IMAGE", e.toString());
+                }
+            });
+        } else {
+            holder.image.setImageResource(R.drawable.junk_food);
+        }
+
 
         // Adds item object to bundle and sent to Item Details fragments
         bundle.putSerializable("Dish", dish);
         dishDetailsFragment.setArguments(bundle);
 
         // When user clicks on item, will navigation to item details fragment
+        // Manage screen back navagation with .addToBackStack(null)
         holder.itemView.setOnClickListener(v -> {
             AppCompatActivity app = (AppCompatActivity) v.getContext();
-            app.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, dishDetailsFragment, "Dish").commit();
+            app.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, dishDetailsFragment, "Dish").addToBackStack(null).commit();
         });
 
         holder.favorite.setOnClickListener(v -> {

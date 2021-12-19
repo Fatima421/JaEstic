@@ -71,6 +71,7 @@ public class CategoriesListFragment extends Fragment {
         // Create the database reference
         databaseReference = FirebaseDatabase.getInstance().getReference("Categories");
         getImageData();
+
         return v;
     }
 
@@ -78,11 +79,12 @@ public class CategoriesListFragment extends Fragment {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot di:dataSnapshot.getChildren()){
+                for (DataSnapshot di:dataSnapshot.getChildren()) {
                     Category category=di.getValue(Category.class);
-                    category.setFirebaseKey(di.getKey());
-                    categories.add(category);
-                    Log.i("IMAGE", "onDataChange: "+category.getImagePath());
+                    if (di.hasChild("imagePathUsers")) {
+                        category.setFirebaseKey(di.getKey());
+                        categories.add(category);
+                    }
                 }
                 CategoryRecyclerViewAdapter adapter = new CategoryRecyclerViewAdapter(categories, getContext(), dbHelper, db);
                 recyclerView.setAdapter(adapter);

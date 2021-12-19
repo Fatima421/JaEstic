@@ -4,7 +4,6 @@
     <string name="welcomeToJaEstic">¡Bienvenido a JaEstic, siéntase libre de hacer un pedido, Fot-li!</string>
     <string name="signIn">Iniciar Sesión</string>
     <string name="signUp">Registrarse</string>
-
     <string name="methodEmail">Continuar con email</string>
     <string name="detail">Detalles</string>
     <string name="login">Iniciar Sesión</string>
@@ -26,5 +25,14 @@
     <string name="selectAll">Seleccionar todo</string>
     <string name="buyNowCart">Comprar ahora</string>
     <string name="totalPrice">Total</string>
-    <string name="addedItemInCart">Has añadido el producto en el carrito</string>
+    <string name="addedItemInCart">Has añadido el producto al carrito</string>
+    <string name="cartDeleteEmptyToast">"El carrito está vacío"</string>
+    <string name="cartDeleteListToast">"El carrito ha sido vaciado"</string>
+    <string name="cartDeleteItemToast">"El plato ha sido eliminado del carrito"</string>
+    <string name="searchbar">Buscar</string>
+    <string name="locationbar">Ubicación</string>
+    <string name="titleforrepeat">Para repetir!</string>
+    <string name="titlesales">Top ventas</string>
+    <string name="coin">€</string>
+    <string name="boughtItemsSuccesfully">Has comprado correctamente!</string>
 </resources>

@@ -26,8 +26,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.grup2.jaestic_user.Models.CartItem;
 import com.grup2.jaestic_user.Models.User;
+
+
+import java.util.ArrayList;
 
 public class RegisterScreen extends AppCompatActivity {
     // Global properties
@@ -83,9 +88,16 @@ public class RegisterScreen extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d(TAG, "createUserWithEmail:success");
-                                        FirebaseUser user = mFirebaseAuth.getCurrentUser();
                                         startActivity(new Intent(RegisterScreen.this, NavigationActivity.class));
                                         //updateUI(user);
+
+                                        User users = new User(email, name);
+                                        //recyclerView.setVisibility(View.INVISIBLE);
+
+                                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                        DatabaseReference regRef = database.getReference("Users");
+                                        regRef.push().setValue(users);
+
                                     } else {
                                         // If sign in fails, display a message to the user.
                                         Log.w(TAG, "createUserWithEmail:failure", task.getException());
