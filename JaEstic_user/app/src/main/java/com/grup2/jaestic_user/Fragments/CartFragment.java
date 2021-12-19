@@ -115,7 +115,6 @@ public class CartFragment extends Fragment {
                 if (arrayCartItems.size() != 0) {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     email = user.getEmail();
-                    Log.i ("email", "" + email);
                     Command command = new Command(email, arrayCartItems);
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference myRef = database.getReference("Command");
@@ -128,6 +127,7 @@ public class CartFragment extends Fragment {
                     CartRecyclerViewAdapter adapter = new CartRecyclerViewAdapter(getContext(), arrayCartItems);
                     recyclerView.setAdapter(adapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    setPriceText(totalPriceTextView, 0.0);
                 }
             }
         });
@@ -168,7 +168,7 @@ public class CartFragment extends Fragment {
 
         return v;
     }
-    public Boolean areAllCheckboxsChecked() {
+    private Boolean areAllCheckboxsChecked() {
         for (int i = 0; i < checkBoxes.size(); i++) {
             if (!checkBoxes.get(i).isChecked()) {
                 return false;
@@ -177,11 +177,18 @@ public class CartFragment extends Fragment {
         return true;
     }
 
-    public void updateTotalPrice(TextView totalPriceTextView) {
+    private void updateTotalPrice(TextView totalPriceTextView) {
         double totalPrice = 0.0;
         for (int i = 0; i < arrayCartItems.size(); i++) {
            totalPrice = totalPrice + (arrayCartItems.get(i).getDish().getPrice() * arrayCartItems.get(i).getQuantity());
         }
-        totalPriceTextView.setText(totalPrice + getContext().getString(R.string.coin));
+        setPriceText(totalPriceTextView, totalPrice);
+
+    }
+
+    private void setPriceText(TextView totalPriceTextView, double totalPrice) {
+        String totalPriceString = String.format("%.2f %s",
+                                                totalPrice, getContext().getString(R.string.coin));
+        totalPriceTextView.setText(totalPriceString);
     }
 }

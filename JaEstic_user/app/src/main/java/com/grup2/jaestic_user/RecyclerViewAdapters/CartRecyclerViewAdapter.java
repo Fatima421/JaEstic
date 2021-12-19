@@ -64,27 +64,33 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
         checkBoxes.add(holder.checkBox);
 
         holder.name.setText(cartItem.getDish().getName());
-        holder.price.setText(Double.toString(cartItem.getQuantity() * cartItem.getDish().getPrice()));
-        holder.price.setText(holder.price.getText() + context.getString(R.string.coin));
+        String priceString = String.format("%.2f %s",
+                (cartItem.getDish().getPrice() * cartItem.getQuantity()), context.getString(R.string.coin));
+
+        holder.price.setText(priceString);
         holder.quantity.setText(context.getString(R.string.quantity) + " " + cartItem.getQuantity());
 
         // To load the image
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-        storageReference.child(cartItem.getDish().getImageUserPath()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Glide.with(context)
-                        .load(uri.toString())
-                        .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(holder.image);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.i("IMAGE", e.toString());
-            }
-        });
+        if((!cartItem.getDish().getImageUserPath().equals("")) || (!cartItem.getDish().getImagePath().equals(""))) {
+            storageReference.child(cartItem.getDish().getImageUserPath()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Glide.with(context)
+                            .load(uri.toString())
+                            .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .into(holder.image);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.i("IMAGE", e.toString());
+                }
+            });
+        } else {
+            holder.image.setImageResource(R.drawable.junk_food);
+        }
     }
 
     public ArrayList<CheckBox> getCheckBoxes() {
