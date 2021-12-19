@@ -25,8 +25,6 @@ import com.grup2.jaestic_user.DB.CartItemDBHelper;
 import com.grup2.jaestic_user.Models.CartItem;
 import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
-import java.util.ArrayList;
-
 
 public class DishDetailsFragment extends Fragment {
     private int inCart = 1;
@@ -64,7 +62,7 @@ public class DishDetailsFragment extends Fragment {
         // Custom view properties
         productName.setText(dish.getName());
         productDescription.setText(dish.getDescription());
-        price.setText(dish.getPrice() + getContext().getString(R.string.coin));
+        setPriceAndQuantity(price, cartQuantity, originalPrice, 1);
 
         // To load the image
         ImageView productImage = view.findViewById(R.id.productImage);
@@ -93,8 +91,7 @@ public class DishDetailsFragment extends Fragment {
                 if (inCart > 1) {
                     inCart = inCart - 1;
                 }
-                price.setText((dish.getPrice() * inCart) + getContext().getString(R.string.coin));
-                cartQuantity.setText("" + inCart);
+                setPriceAndQuantity(price, cartQuantity, (dish.getPrice() * inCart), inCart);
             }
         });
 
@@ -103,8 +100,7 @@ public class DishDetailsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 inCart = inCart + 1;
-                cartQuantity.setText("" + inCart);
-                price.setText((dish.getPrice() * inCart) + getContext().getString(R.string.coin));
+                setPriceAndQuantity(price, cartQuantity, (dish.getPrice() * inCart), inCart);
             }
         });
 
@@ -112,24 +108,28 @@ public class DishDetailsFragment extends Fragment {
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), getString(R.string.addedItemInCart),
-                        Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), getString(R.string.addedItemInCart), Toast.LENGTH_LONG).show();
                 Double totalPrice = dish.getPrice() * inCart;
                 dish.setPrice(totalPrice);
                 cartItem = new CartItem(dish, inCart);
                 if (dbHelper.doesDishExists(db, cartItem)) {
                     cartItem.setQuantity(inCart);
-                    dbHelper.updateQuantity(db, cartItem);
+                    dbHelper.updateQuantityAndPrice(db, cartItem, dish);
                 } else {
                     dbHelper.insertDish(db, cartItem);
                 }
                 inCart = 1;
-                cartQuantity.setText("" + inCart);
                 dish.setPrice(originalPrice);
-                price.setText(dish.getPrice() + getContext().getString(R.string.coin));
+                setPriceAndQuantity(price, cartQuantity, dish.getPrice(), inCart);
             }
         });
 
         return view;
+    }
+    private void setPriceAndQuantity(TextView tvPrice, TextView tvQuantity, Double price, int quantity) {
+        String priceString = String.format("%.2f %s",
+                                            price, getContext().getString(R.string.coin));
+        tvPrice.setText(priceString);
+        tvQuantity.setText("" + quantity);
     }
 }
