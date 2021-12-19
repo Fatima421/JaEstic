@@ -152,38 +152,16 @@ public class CartItemDBHelper extends SQLiteOpenHelper {
         return quantity;
     }
 
-    // Gets price before modify it
-    public Integer getOldPrice(SQLiteDatabase db, CartItem cartItem) {
-        int price = 0;
-        // Checks if database is open
-        if (db.isOpen()) {
-            // Gets quantity before modify it
-            final String SQL_GET_PRICE = "SELECT " + CartItemEntry.PRICE +
-                    " FROM " + CartItemEntry.TABLE_NAME +
-                    " WHERE " + CartItemEntry.NAME + "= '" + cartItem.getDish().getName() + "'";
-            // SQLite execution (SET where name)
-            Cursor cursor= db.rawQuery(SQL_GET_PRICE,null);
-            if (cursor.moveToFirst()) {
-                price = (cursor.getInt(0));
-            }
-            cursor.close();
-        } else {
-            Log.i(TAGLOG, CLOSEDDB);
-        }
-        return price;
-    }
-
     // Get old quantity and add it to new quantity
-    public void updateQuantityAndPrice(SQLiteDatabase db, CartItem cartItem, Dish dish) {
+    public void updateQuantity(SQLiteDatabase db, CartItem cartItem) {
         // Checks if database is open
         if (db.isOpen()) {
             // Updates dish quantity
-            final String SQL_UPDATE_QUANTITY_AND_PRICE = "UPDATE " + CartItemEntry.TABLE_NAME + " SET "
-                    + CartItemEntry.QUANTITY + " = " + (getOldQuantity(db, cartItem)+cartItem.getQuantity()) + ", "
-                    + CartItemEntry.PRICE + " = " + (getOldPrice(db, cartItem) + dish.getPrice())
+            final String SQL_UPDATE_QUANTITY = "UPDATE " + CartItemEntry.TABLE_NAME + " SET "
+                    + CartItemEntry.QUANTITY + " = " + (getOldQuantity(db, cartItem)+cartItem.getQuantity())
                     + " WHERE " + CartItemEntry.NAME + " = '" + cartItem.getDish().getName() + "'";
             // SQLite execution (SET where name)
-            db.execSQL(SQL_UPDATE_QUANTITY_AND_PRICE);
+            db.execSQL(SQL_UPDATE_QUANTITY);
         } else {
             Log.i(TAGLOG, CLOSEDDB);
         }

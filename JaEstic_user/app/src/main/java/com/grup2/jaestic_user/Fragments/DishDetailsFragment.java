@@ -109,12 +109,10 @@ public class DishDetailsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), getString(R.string.addedItemInCart), Toast.LENGTH_LONG).show();
-                Double totalPrice = dish.getPrice() * inCart;
-                dish.setPrice(totalPrice);
                 cartItem = new CartItem(dish, inCart);
                 if (dbHelper.doesDishExists(db, cartItem)) {
                     cartItem.setQuantity(inCart);
-                    dbHelper.updateQuantityAndPrice(db, cartItem, dish);
+                    dbHelper.updateQuantity(db, cartItem);
                 } else {
                     dbHelper.insertDish(db, cartItem);
                 }
