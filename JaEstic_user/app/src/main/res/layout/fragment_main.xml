@@ -7,13 +7,14 @@
     android:background="@drawable/gradient_background">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/topVentasRecyclerView"
+        android:id="@+id/lastOrdersRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTopVentas" />
+        app:layout_constraintTop_toBottomOf="@+id/titleLastOrders" />
 
     <EditText
         android:id="@+id/editTextLocation"
@@ -30,33 +31,22 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textParaRepetir"
+        android:id="@+id/titleLastOrders"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/titleforrepeat"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextLocation" />
-
-    <TextView
-        android:id="@+id/textTopVentas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="@string/titlesales"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/helvetica_rounded"
+        android:text="@string/titleLastOrders"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/paraRepetirRecyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageBanner" />
 
     <ImageView
-        android:id="@+id/imageComidaPortada"
+        android:id="@+id/imageBanner"
         android:layout_width="match_parent"
         android:layout_height="306dp"
         android:layout_marginTop="-150dp"
@@ -68,7 +58,7 @@
         app:srcCompat="@drawable/ic_comida_portada" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imageUserIcon"
         android:layout_width="59dp"
         android:layout_height="58dp"
         android:layout_marginStart="16dp"
@@ -80,7 +70,7 @@
         app:srcCompat="@drawable/ic_persona" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imageJaEsticIcon"
         android:layout_width="35dp"
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
@@ -92,18 +82,6 @@
         app:layout_constraintTop_toTopOf="@+id/editTextLocation"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_location" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/paraRepetirRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textParaRepetir">
-
-    </androidx.recyclerview.widget.RecyclerView>
 
     <EditText
         android:id="@+id/editTextSearch"
@@ -121,14 +99,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/lanImage"
+        android:id="@+id/imageFlagIcon"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/imageUserIcon"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/en" />
 
