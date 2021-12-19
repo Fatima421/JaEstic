@@ -20,19 +20,17 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.grup2.jaestic_user.Models.CartItem;
 import com.grup2.jaestic_user.Models.Command;
 import com.grup2.jaestic_user.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class MainTopVentasRecyclerViewHoritzontal extends RecyclerView.Adapter<MainTopVentasRecyclerViewHoritzontal.TopVentasViewHolder> {
+public class RepeatOrderRecyclerViewAdapter extends RecyclerView.Adapter<RepeatOrderRecyclerViewAdapter.RepeatOrderViewHolder> {
     private Context context;
     private ArrayList<Command> arrayCommands;
 
     // data is passed into the constructor
-    public MainTopVentasRecyclerViewHoritzontal(Context context, ArrayList<Command> arrayCommands) {
+    public RepeatOrderRecyclerViewAdapter(Context context, ArrayList<Command> arrayCommands) {
         this.context = context;
         this.arrayCommands = arrayCommands;
     }
@@ -40,19 +38,19 @@ public class MainTopVentasRecyclerViewHoritzontal extends RecyclerView.Adapter<M
     // inflates the row layout from xml when needed
     @Override
     @NonNull
-    public TopVentasViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main_top_ventas, parent, false);
-        TopVentasViewHolder holder = new TopVentasViewHolder(view);
+    public RepeatOrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main_to_repeat, parent, false);
+        RepeatOrderViewHolder holder = new RepeatOrderViewHolder(view);
         return holder;
     }
 
     // binds the data to the view and textview in each row
     @Override
-    public void onBindViewHolder(@NonNull TopVentasViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RepeatOrderViewHolder holder, int position) {
+        // Getting the command
         Command command = arrayCommands.get(position);
-       // holder.foodImage.setBackgroundColor(context.getResources().getColor(R.color.red));
-       // holder.foodName.setText("Pedido " + cartItem.getFirebaseKey());
 
+        // Getting all the cart items
         for (int i = 0; i < command.getCartItem().size(); i++) {
             // Set name of the dish in the command
             holder.foodName.setText(command.getCartItem().get(i).getDish().getName());
@@ -90,14 +88,14 @@ public class MainTopVentasRecyclerViewHoritzontal extends RecyclerView.Adapter<M
     }
 
     // stores and recycles views as they are scrolled off screen
-    public class TopVentasViewHolder extends RecyclerView.ViewHolder {
+    public class RepeatOrderViewHolder extends RecyclerView.ViewHolder {
         ImageView foodImage;
         TextView foodName;
 
-        public TopVentasViewHolder(@NonNull View itemView) {
+        public RepeatOrderViewHolder(@NonNull View itemView) {
             super(itemView);
-            foodImage = itemView.findViewById(R.id.foodImatgeItem2);
-            foodName = itemView.findViewById(R.id.foodNameItem2);
+            foodImage = itemView.findViewById(R.id.foodImatgeItemMain);
+            foodName = itemView.findViewById(R.id.foodNameItemMain);
         }
     }
 }

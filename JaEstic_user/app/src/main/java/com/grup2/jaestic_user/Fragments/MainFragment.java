@@ -1,12 +1,9 @@
 package com.grup2.jaestic_user.Fragments;
 
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,8 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,20 +18,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.grup2.jaestic_user.DB.CartItemDBHelper;
-import com.grup2.jaestic_user.Models.CartItem;
 import com.grup2.jaestic_user.Models.Category;
 import com.grup2.jaestic_user.Models.Command;
-import com.grup2.jaestic_user.Models.Dish;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.grup2.jaestic_user.R;
-import com.grup2.jaestic_user.RecyclerViewAdapters.CategoryRecyclerViewAdapter;
-import com.grup2.jaestic_user.RecyclerViewAdapters.DishRecyclerViewAdapter;
 import com.grup2.jaestic_user.RecyclerViewAdapters.MainParaRepetirRecyclerViewHoritzontal;
-import com.grup2.jaestic_user.RecyclerViewAdapters.MainTopVentasRecyclerViewHoritzontal;
+import com.grup2.jaestic_user.RecyclerViewAdapters.RepeatOrderRecyclerViewAdapter;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class MainFragment extends Fragment {
 
@@ -91,7 +81,7 @@ public class MainFragment extends Fragment {
 
                 // Creates Recycler View "Top Ventas"
                 RecyclerView orderRecyclerView = view.findViewById(R.id.topVentasRecyclerView);
-                MainTopVentasRecyclerViewHoritzontal adapter = new MainTopVentasRecyclerViewHoritzontal(getContext(), arrayCommands);
+                RepeatOrderRecyclerViewAdapter adapter = new RepeatOrderRecyclerViewAdapter(getContext(), arrayCommands);
                 orderRecyclerView.setAdapter(adapter);
                 orderRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             }
@@ -139,7 +129,7 @@ public class MainFragment extends Fragment {
 //    //    adapterParaRepetir.setClickListener(this);
 //        recyclerView.setAdapter(adapterParaRepetir);
 //
-//        adapterTopVentas = new MainTopVentasRecyclerViewHoritzontal(this.getActivity(), viewColors2, foodNames2);
+//        adapterTopVentas = new RepeatOrderRecyclerViewAdapter(this.getActivity(), viewColors2, foodNames2);
 //   //     adapterTopVentas.setClickListener(this);
 //        recyclerView2.setAdapter(adapterTopVentas);
 //
