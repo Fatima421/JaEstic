@@ -84,6 +84,9 @@ public class MainParaRepetirRecyclerViewHoritzontal extends RecyclerView.Adapter
                 Glide.with(context)
                         .load(uri.toString())
                         .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
+                        .apply(new RequestOptions()
+                                .placeholder(R.drawable.junk_food)
+                        )
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(holder.image);
             }

@@ -25,6 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.grup2.jaestic_user.DB.CartItemDBHelper;
 import com.grup2.jaestic_user.Models.CartItem;
 import com.grup2.jaestic_user.Models.Category;
+import com.grup2.jaestic_user.Models.Command;
 import com.grup2.jaestic_user.Models.Dish;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,7 +44,7 @@ public class MainFragment extends Fragment {
     Category category;
     private DatabaseReference ordersDatabase;
 //    private DatabaseReference lastOrderDatabase;
-    private ArrayList<CartItem> arrayCartItems =  new ArrayList<CartItem>();
+    private ArrayList<Command> arrayCommands =  new ArrayList<Command>();
 
     private CartItemDBHelper dbHelper;
     private SQLiteDatabase db;
@@ -70,8 +71,8 @@ public class MainFragment extends Fragment {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String email = user.getEmail();
 
-        ordersDatabase = FirebaseDatabase.getInstance().getReference("Command").child("cartItem");
-        Log.i ("pepito", "" + Locale.getDefault().getLanguage());
+       // ordersDatabase = FirebaseDatabase.getInstance().getReference("Command").child("cartItem");
+        ordersDatabase = FirebaseDatabase.getInstance().getReference("Command");
 
         // Add dishes in an ArrayList and send it to RecyclerView
         ordersDatabase.addValueEventListener(new ValueEventListener() {
@@ -79,19 +80,18 @@ public class MainFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                arrayCartItems.clear();
+                arrayCommands.clear();
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
 
-                    if (dataSnapshot.child("email").getValue().equals(email)) {
-                        CartItem cartItem = postSnapshot.getValue(CartItem.class);
-                        cartItem.setFirebaseKey(dataSnapshot.getKey());
-                        arrayCartItems.add(cartItem);
-                    }
+                 //   if (dataSnapshot.child("email").getValue().equals(email)) {
+                        Command command = postSnapshot.getValue(Command.class);
+                        arrayCommands.add(command);
+                 //   }
                 }
 
                 // Creates Recycler View "Top Ventas"
                 RecyclerView orderRecyclerView = view.findViewById(R.id.topVentasRecyclerView);
-                MainTopVentasRecyclerViewHoritzontal adapter = new MainTopVentasRecyclerViewHoritzontal(getContext(), arrayCartItems);
+                MainTopVentasRecyclerViewHoritzontal adapter = new MainTopVentasRecyclerViewHoritzontal(getContext(), arrayCommands);
                 orderRecyclerView.setAdapter(adapter);
                 orderRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             }
