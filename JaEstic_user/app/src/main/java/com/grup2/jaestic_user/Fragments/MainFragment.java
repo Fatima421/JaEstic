@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,11 +27,7 @@ import com.grup2.jaestic_user.RecyclerViewAdapters.RepeatOrderRecyclerViewAdapte
 import java.util.ArrayList;
 
 public class MainFragment extends Fragment {
-
-    Bundle bundle;
-    Category category;
     private DatabaseReference ordersDatabase;
-//    private DatabaseReference lastOrderDatabase;
     private ArrayList<Command> arrayCommands =  new ArrayList<Command>();
 
     private CartItemDBHelper dbHelper;
@@ -58,7 +53,7 @@ public class MainFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String email = user.getEmail();
+        String currentEmail = user.getEmail();
 
        // ordersDatabase = FirebaseDatabase.getInstance().getReference("Command").child("cartItem");
         ordersDatabase = FirebaseDatabase.getInstance().getReference("Command");
@@ -71,11 +66,10 @@ public class MainFragment extends Fragment {
                 // whenever data at this location is updated.
                 arrayCommands.clear();
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-
-                 //   if (dataSnapshot.child("email").getValue().equals(email)) {
-                        Command command = postSnapshot.getValue(Command.class);
+                    Command command = postSnapshot.getValue(Command.class);
+                    if (command.getEmail().equals(currentEmail)) {
                         arrayCommands.add(command);
-                 //   }
+                    }
                 }
 
                 // Creates Recycler View "Top Ventas"
@@ -94,45 +88,4 @@ public class MainFragment extends Fragment {
         return view;
     }
 }
-
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        // Inflate the layout for this fragment
-//       View view = inflater.inflate(R.layout.fragment_main, container, false);
-//
-//        // data to populate the RecyclerView with
-//        ArrayList<Integer> viewColors = new ArrayList<>();
-//        viewColors.add(Color.BLUE);
-//
-//        ArrayList<String> foodNames = new ArrayList<>();
-//        foodNames.add("Hamburguesas");
-//
-//        // data to populate the RecyclerView with
-//        ArrayList<Integer> viewColors2 = new ArrayList<>();
-//        viewColors2.add(Color.BLUE);
-//
-//        ArrayList<String> foodNames2 = new ArrayList<>();
-//        foodNames2.add("Hamburguesas");
-//
-//
-//        LinearLayoutManager horizontalLayoutManager
-//                = new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false);
-//        recyclerView.setLayoutManager(horizontalLayoutManager);
-//
-//        LinearLayoutManager horizontalLayoutManager2
-//                = new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false);
-//        recyclerView2.setLayoutManager(horizontalLayoutManager2);
-//
-//        adapterParaRepetir = new MainParaRepetirRecyclerViewHoritzontal(this.getActivity(), viewColors, foodNames);
-//    //    adapterParaRepetir.setClickListener(this);
-//        recyclerView.setAdapter(adapterParaRepetir);
-//
-//        adapterTopVentas = new RepeatOrderRecyclerViewAdapter(this.getActivity(), viewColors2, foodNames2);
-//   //     adapterTopVentas.setClickListener(this);
-//        recyclerView2.setAdapter(adapterTopVentas);
-//
-//       return view;
-//    }
-//
 
