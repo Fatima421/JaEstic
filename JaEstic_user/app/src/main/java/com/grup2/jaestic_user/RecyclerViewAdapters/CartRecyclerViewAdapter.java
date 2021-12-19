@@ -65,7 +65,8 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
 
         holder.name.setText(cartItem.getDish().getName());
         String priceString = String.format("%.2f %s",
-                                            cartItem.getDish().getPrice(), context.getString(R.string.coin));
+                (cartItem.getDish().getPrice() * cartItem.getQuantity()), context.getString(R.string.coin));
+
         holder.price.setText(priceString);
         holder.quantity.setText(context.getString(R.string.quantity) + " " + cartItem.getQuantity());
 
