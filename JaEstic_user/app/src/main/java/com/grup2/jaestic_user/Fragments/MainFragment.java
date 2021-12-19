@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 public class MainFragment extends Fragment {
     private DatabaseReference ordersDatabase;
+    private DatabaseReference dishDatabase;
     private ArrayList<Command> arrayCommands =  new ArrayList<Command>();
 
     @Override
@@ -39,6 +40,7 @@ public class MainFragment extends Fragment {
         String currentEmail = user.getEmail();
         // Firebase
         ordersDatabase = FirebaseDatabase.getInstance().getReference("Command");
+        dishDatabase = FirebaseDatabase.getInstance().getReference("Command").child("cartItem").child("dish");
 
         // Add dishes in an ArrayList and send it to RecyclerView
         ordersDatabase.addValueEventListener(new ValueEventListener() {

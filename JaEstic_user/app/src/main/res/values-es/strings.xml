@@ -34,4 +34,5 @@
     <string name="titleLastOrders">Últimos Pedidos</string>
     <string name="coin">€</string>
     <string name="boughtItemsSuccesfully">Has comprado correctamente!</string>
+    <string name="commandTitle">Comandas</string>
 </resources>

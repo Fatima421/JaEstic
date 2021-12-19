@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.grup2.jaestic_user.Models.CartItem;
+import com.grup2.jaestic_user.Models.Category;
 import com.grup2.jaestic_user.Models.Command;
 import com.grup2.jaestic_user.R;
 
@@ -29,7 +30,6 @@ import java.util.ArrayList;
 public class RepeatOrderRecyclerViewAdapter extends RecyclerView.Adapter<RepeatOrderRecyclerViewAdapter.RepeatOrderViewHolder> {
     private Context context;
     private ArrayList<Command> arrayCommands;
-    private ArrayList<CartItem> cartItems;
     Command command;
 
     // data is passed into the constructor
@@ -38,9 +38,6 @@ public class RepeatOrderRecyclerViewAdapter extends RecyclerView.Adapter<RepeatO
         this.arrayCommands = arrayCommands;
         for (int i = 0; i < arrayCommands.size(); i++) {
             this.command = arrayCommands.get(i);
-        }
-        for (int i = 0; i < command.getCartItem().size(); i++) {
-            this.cartItems = arrayCommands.get(i).getCartItem();
         }
     }
 
@@ -57,15 +54,21 @@ public class RepeatOrderRecyclerViewAdapter extends RecyclerView.Adapter<RepeatO
     @Override
     public void onBindViewHolder(@NonNull RepeatOrderViewHolder holder, int position) {
         // Getting the command
-        Command command = arrayCommands.get(position);
-        CartItem cartItem = cartItems.get(position);
+        command = arrayCommands.get(position);
 
+        holder.foodName.setText("Command nr. "+ position);
+        holder.foodImage.setImageResource(R.drawable.command);
+        for (int i = 0; i < command.getCartItem().size(); i++) {
+            holder.foodPrice.setText(command.getCartItem().get(i).getDish().getName());
+        }
+
+        /*
         // Getting all the cart items
         for (int i = 0; i < command.getCartItem().size(); i++) {
             // Set name of the dish in the command
             holder.foodName.setText(command.getCartItem().get(i).getDish().getName());
 
-            Log.i("a", ".................."+ command.getCartItem().get(i).getDish().getName());
+            Log.i("a", ".................."+ holder.foodName.getText());
 
             // Set price of the dish in the command
             holder.foodPrice.setText((Double.toString(command.getCartItem().get(i).getDish().getPrice())) + "€");
@@ -94,12 +97,14 @@ public class RepeatOrderRecyclerViewAdapter extends RecyclerView.Adapter<RepeatO
                 holder.foodImage.setImageResource(R.drawable.junk_food);
             }
         }
+
+         */
     }
 
     // total number of rows
     @Override
     public int getItemCount() {
-        return cartItems.size();
+        return arrayCommands.size();
     }
 
     // stores and recycles views as they are scrolled off screen

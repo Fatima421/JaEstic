@@ -34,4 +34,5 @@
     <string name="titleLastOrders">Last Orders</string>
     <string name="coin">$</string>
     <string name="boughtItemsSuccesfully">You have bought successfully!</string>
+    <string name="commandTitle">Commands</string>
 </resources>
