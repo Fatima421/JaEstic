@@ -66,7 +66,9 @@ public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerVi
         Dish dish = arrayDishes.get(i);
         holder.name.setText(dish.getName());
         holder.description.setText(dish.getDescription());
-        holder.price.setText(dish.getPrice() + "€");
+        String priceString = String.format("%.2f %s",
+                dish.getPrice(), context.getString(R.string.coin));
+        holder.price.setText(priceString);
         holder.favorite.setImageResource(R.drawable.ic_heart_empty);
 
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
