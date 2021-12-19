@@ -71,21 +71,25 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
 
         // To load the image
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-        storageReference.child(cartItem.getDish().getImageUserPath()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Glide.with(context)
-                        .load(uri.toString())
-                        .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(holder.image);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.i("IMAGE", e.toString());
-            }
-        });
+        if((!cartItem.getDish().getImageUserPath().equals("")) || (!cartItem.getDish().getImagePath().equals(""))) {
+            storageReference.child(cartItem.getDish().getImageUserPath()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Glide.with(context)
+                            .load(uri.toString())
+                            .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .into(holder.image);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.i("IMAGE", e.toString());
+                }
+            });
+        } else {
+            holder.image.setImageResource(R.drawable.junk_food);
+        }
     }
 
     public ArrayList<CheckBox> getCheckBoxes() {
