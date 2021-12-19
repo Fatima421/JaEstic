@@ -55,6 +55,9 @@ public class RepeatOrderRecyclerViewAdapter extends RecyclerView.Adapter<RepeatO
             // Set name of the dish in the command
             holder.foodName.setText(command.getCartItem().get(i).getDish().getName());
 
+            // Set price of the dish in the command
+            holder.foodPrice.setText((Double.toString(command.getCartItem().get(i).getDish().getPrice())) + "€");
+
             // Reference to an image file in Cloud Storage
             StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -91,11 +94,13 @@ public class RepeatOrderRecyclerViewAdapter extends RecyclerView.Adapter<RepeatO
     public class RepeatOrderViewHolder extends RecyclerView.ViewHolder {
         ImageView foodImage;
         TextView foodName;
+        TextView foodPrice;
 
         public RepeatOrderViewHolder(@NonNull View itemView) {
             super(itemView);
             foodImage = itemView.findViewById(R.id.foodImatgeItemMain);
             foodName = itemView.findViewById(R.id.foodNameItemMain);
+            foodPrice = itemView.findViewById(R.id.foodPrice);
         }
     }
 }

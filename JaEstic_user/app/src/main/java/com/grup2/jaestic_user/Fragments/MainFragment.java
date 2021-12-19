@@ -72,7 +72,7 @@ public class MainFragment extends Fragment {
                     }
                 }
 
-                // Creates Recycler View "Top Ventas"
+                // Creates Recycler View
                 RecyclerView orderRecyclerView = view.findViewById(R.id.topVentasRecyclerView);
                 RepeatOrderRecyclerViewAdapter adapter = new RepeatOrderRecyclerViewAdapter(getContext(), arrayCommands);
                 orderRecyclerView.setAdapter(adapter);
