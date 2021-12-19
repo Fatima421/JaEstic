@@ -180,8 +180,8 @@ public class CartFragment extends Fragment {
     public void updateTotalPrice(TextView totalPriceTextView) {
         double totalPrice = 0.0;
         for (int i = 0; i < arrayCartItems.size(); i++) {
-           totalPrice = totalPrice + arrayCartItems.get(i).getDish().getPrice();
+           totalPrice = totalPrice + (arrayCartItems.get(i).getDish().getPrice() * arrayCartItems.get(i).getQuantity());
         }
-        totalPriceTextView.setText(Double.toString(totalPrice));
+        totalPriceTextView.setText(totalPrice + getContext().getString(R.string.coin));
     }
 }

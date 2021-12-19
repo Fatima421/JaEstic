@@ -59,13 +59,12 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
         Bundle bundle = new Bundle();
 
         CartItem cartItem = arrayCartItems.get(i);
-        //Dish dish = cartItem.getDish();
 
         // Add checkboxs to the arraylist
         checkBoxes.add(holder.checkBox);
 
         holder.name.setText(cartItem.getDish().getName());
-        holder.price.setText(Double.toString(cartItem.getDish().getPrice()));
+        holder.price.setText(Double.toString(cartItem.getQuantity() * cartItem.getDish().getPrice()));
         holder.price.setText(holder.price.getText() + context.getString(R.string.coin));
         holder.quantity.setText(context.getString(R.string.quantity) + " " + cartItem.getQuantity());
 
