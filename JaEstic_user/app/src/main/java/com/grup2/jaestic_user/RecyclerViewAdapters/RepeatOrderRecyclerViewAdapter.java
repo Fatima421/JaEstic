@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.grup2.jaestic_user.Models.CartItem;
 import com.grup2.jaestic_user.Models.Command;
 import com.grup2.jaestic_user.R;
 
@@ -28,11 +29,19 @@ import java.util.ArrayList;
 public class RepeatOrderRecyclerViewAdapter extends RecyclerView.Adapter<RepeatOrderRecyclerViewAdapter.RepeatOrderViewHolder> {
     private Context context;
     private ArrayList<Command> arrayCommands;
+    private ArrayList<CartItem> cartItems;
+    Command command;
 
     // data is passed into the constructor
     public RepeatOrderRecyclerViewAdapter(Context context, ArrayList<Command> arrayCommands) {
         this.context = context;
         this.arrayCommands = arrayCommands;
+        for (int i = 0; i < arrayCommands.size(); i++) {
+            this.command = arrayCommands.get(i);
+        }
+        for (int i = 0; i < command.getCartItem().size(); i++) {
+            this.cartItems = arrayCommands.get(i).getCartItem();
+        }
     }
 
     // inflates the row layout from xml when needed
@@ -49,11 +58,14 @@ public class RepeatOrderRecyclerViewAdapter extends RecyclerView.Adapter<RepeatO
     public void onBindViewHolder(@NonNull RepeatOrderViewHolder holder, int position) {
         // Getting the command
         Command command = arrayCommands.get(position);
+        CartItem cartItem = cartItems.get(position);
 
         // Getting all the cart items
         for (int i = 0; i < command.getCartItem().size(); i++) {
             // Set name of the dish in the command
             holder.foodName.setText(command.getCartItem().get(i).getDish().getName());
+
+            Log.i("a", ".................."+ command.getCartItem().get(i).getDish().getName());
 
             // Set price of the dish in the command
             holder.foodPrice.setText((Double.toString(command.getCartItem().get(i).getDish().getPrice())) + "€");
@@ -87,7 +99,7 @@ public class RepeatOrderRecyclerViewAdapter extends RecyclerView.Adapter<RepeatO
     // total number of rows
     @Override
     public int getItemCount() {
-        return arrayCommands.size();
+        return cartItems.size();
     }
 
     // stores and recycles views as they are scrolled off screen
