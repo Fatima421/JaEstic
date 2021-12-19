@@ -1,49 +1,29 @@
 package com.grup2.jaestic_user.Fragments;
 
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.grup2.jaestic_user.DB.CartItemDBHelper;
-import com.grup2.jaestic_user.Models.CartItem;
-import com.grup2.jaestic_user.Models.Category;
 import com.grup2.jaestic_user.Models.Command;
-import com.grup2.jaestic_user.Models.Dish;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.grup2.jaestic_user.R;
-import com.grup2.jaestic_user.RecyclerViewAdapters.CategoryRecyclerViewAdapter;
-import com.grup2.jaestic_user.RecyclerViewAdapters.DishRecyclerViewAdapter;
-import com.grup2.jaestic_user.RecyclerViewAdapters.MainParaRepetirRecyclerViewHoritzontal;
 import com.grup2.jaestic_user.RecyclerViewAdapters.MainTopVentasRecyclerViewHoritzontal;
-
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class MainFragment extends Fragment {
-
-    Bundle bundle;
-    Category category;
     private DatabaseReference ordersDatabase;
-//    private DatabaseReference lastOrderDatabase;
     private ArrayList<Command> arrayCommands =  new ArrayList<Command>();
 
     private CartItemDBHelper dbHelper;
@@ -69,7 +49,7 @@ public class MainFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String email = user.getEmail();
+        String currentEmail = user.getEmail();
 
        // ordersDatabase = FirebaseDatabase.getInstance().getReference("Command").child("cartItem");
         ordersDatabase = FirebaseDatabase.getInstance().getReference("Command");
@@ -82,11 +62,10 @@ public class MainFragment extends Fragment {
                 // whenever data at this location is updated.
                 arrayCommands.clear();
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-
-                 //   if (dataSnapshot.child("email").getValue().equals(email)) {
-                        Command command = postSnapshot.getValue(Command.class);
+                    Command command = postSnapshot.getValue(Command.class);
+                    if (command.getEmail().equals(currentEmail)) {
                         arrayCommands.add(command);
-                 //   }
+                    }
                 }
 
                 // Creates Recycler View "Top Ventas"
