@@ -6,6 +6,7 @@ public class CartItem implements Serializable {
     // Properties
     Dish dish;
     int quantity;
+    String firebaseKey;
 
     // Constructor
     public CartItem() {}
@@ -19,10 +20,12 @@ public class CartItem implements Serializable {
     public Dish getDish() {
         return dish;
     }
+    public String getFirebaseKey() { return  firebaseKey; }
 
     public void setDish(Dish dish) {
         this.dish = dish;
     }
+    public void setFirebaseKey(String firebaseKey) { this.firebaseKey = firebaseKey; }
 
     public int getQuantity() {
         return quantity;

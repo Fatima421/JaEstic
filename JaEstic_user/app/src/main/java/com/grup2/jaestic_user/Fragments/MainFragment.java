@@ -1,119 +1,92 @@
 package com.grup2.jaestic_user.Fragments;
 
-import android.graphics.Color;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.grup2.jaestic_user.Models.CartItem;
+import com.grup2.jaestic_user.Models.Command;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.grup2.jaestic_user.R;
-import com.grup2.jaestic_user.RecyclerViewAdapters.MainParaRepetirRecyclerViewHoritzontal;
-import com.grup2.jaestic_user.RecyclerViewAdapters.MainTopVentasRecyclerViewHoritzontal;
-
+import com.grup2.jaestic_user.RecyclerViewAdapters.LastOrderRecyclerViewAdapter;
 import java.util.ArrayList;
 
 public class MainFragment extends Fragment {
-
-    private MainParaRepetirRecyclerViewHoritzontal adapterParaRepetir;
-    private MainTopVentasRecyclerViewHoritzontal adapterTopVentas;
-
-    public MainFragment() {
-        // Required empty public constructor
-    }
+    private DatabaseReference ordersDatabase;
+    private LinearLayoutManager horizontalLayout;
+    Bundle bundle;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+            super.onCreate(savedInstanceState);
+        }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+        ArrayList<Command> arrayCommands = new ArrayList<Command>();
+        // Get current user information: e-mail
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            String email = user.getEmail();
-            Log.i ("email", "" + email);
-        }
+        String currentEmail = user.getEmail();
+        // Firebase
+        ordersDatabase = FirebaseDatabase.getInstance().getReference("Command");
 
-        // data to populate the RecyclerView with
-        ArrayList<Integer> viewColors = new ArrayList<>();
-        viewColors.add(Color.BLUE);
-        viewColors.add(Color.YELLOW);
-        viewColors.add(Color.MAGENTA);
-        viewColors.add(Color.RED);
-        viewColors.add(Color.BLACK);
-        viewColors.add(Color.GREEN);
-        viewColors.add(Color.CYAN);
-        viewColors.add(Color.GRAY);
-        viewColors.add(Color.DKGRAY);
+        // Add dishes in an ArrayList and send it to RecyclerView
+        ordersDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                arrayCommands.clear();
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Command command = postSnapshot.getValue(Command.class);
+                    // Only add commands from current user
+                    if (command.getEmail().equals(currentEmail)) {
+                        arrayCommands.add(command);
+                        command.setFirebaseKey(postSnapshot.getKey());
+                        double totalPrice = 0.0;
+                        int totalQuantity = 0;
+                        for (int i = 0; i < command.getCartItem().size(); i++) {
+                            CartItem cartItem = command.getCartItem().get(i);
+                            totalPrice = totalPrice + (cartItem.getQuantity() * cartItem.getDish().getPrice());
+                            totalQuantity = totalQuantity + cartItem.getQuantity();
+                        }
+                        command.setTotalPrice(totalPrice);
+                        command.setTotalQuantity(totalQuantity);
+                    }
+                }
 
-        ArrayList<String> foodNames = new ArrayList<>();
-        foodNames.add("Hamburguesas");
-        foodNames.add("Frankfurt");
-        foodNames.add("Sushi");
-        foodNames.add("China");
-        foodNames.add("Tacos");
-        foodNames.add("Vegetariano");
-        foodNames.add("Vegano");
-        foodNames.add("Celiaco");
-        foodNames.add("Bocatas");
+                // Creates Recycler View "Top Ventas"
+                RecyclerView orderRecyclerView = view.findViewById(R.id.lastOrdersRecyclerView);
+                LastOrderRecyclerViewAdapter adapter = new LastOrderRecyclerViewAdapter(getContext(), arrayCommands);
+                orderRecyclerView.setAdapter(adapter);
+                horizontalLayout
+                        = new LinearLayoutManager(
+                        getContext(),
+                        LinearLayoutManager.HORIZONTAL,
+                        false);
+                orderRecyclerView.setLayoutManager(horizontalLayout);
+            }
 
-        // data to populate the RecyclerView with
-        ArrayList<Integer> viewColors2 = new ArrayList<>();
-        viewColors2.add(Color.BLUE);
-        viewColors2.add(Color.YELLOW);
-        viewColors2.add(Color.MAGENTA);
-        viewColors2.add(Color.RED);
-        viewColors2.add(Color.BLACK);
-        viewColors2.add(Color.GREEN);
-        viewColors2.add(Color.CYAN);
-        viewColors2.add(Color.GRAY);
-        viewColors2.add(Color.DKGRAY);
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w("JaEstic", "Failed to read value.", error.toException());
+            }
+        });
 
-        ArrayList<String> foodNames2 = new ArrayList<>();
-        foodNames2.add("Hamburguesas");
-        foodNames2.add("Frankfurt");
-        foodNames2.add("Sushi");
-        foodNames2.add("China");
-        foodNames2.add("Tacos");
-        foodNames2.add("Vegetariano");
-        foodNames2.add("Vegano");
-        foodNames2.add("Celiaco");
-        foodNames2.add("Bocatas");
-
-        // set up the RecyclerView
-        RecyclerView recyclerView = view.findViewById(R.id.paraRepetirRecyclerView);
-        RecyclerView recyclerView2 = view.findViewById(R.id.topVentasRecyclerView);
-
-        LinearLayoutManager horizontalLayoutManager
-                = new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(horizontalLayoutManager);
-
-        LinearLayoutManager horizontalLayoutManager2
-                = new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView2.setLayoutManager(horizontalLayoutManager2);
-
-        adapterParaRepetir = new MainParaRepetirRecyclerViewHoritzontal(this.getActivity(), viewColors, foodNames);
-    //    adapterParaRepetir.setClickListener(this);
-        recyclerView.setAdapter(adapterParaRepetir);
-
-        adapterTopVentas = new MainTopVentasRecyclerViewHoritzontal(this.getActivity(), viewColors2, foodNames2);
-   //     adapterTopVentas.setClickListener(this);
-        recyclerView2.setAdapter(adapterTopVentas);
-
-       return view;
+        return view;
     }
-
-
 }
+

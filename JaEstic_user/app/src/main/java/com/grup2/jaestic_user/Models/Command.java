@@ -1,9 +1,13 @@
 package com.grup2.jaestic_user.Models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Command {
+public class Command implements Serializable {
     String email;
+    String firebaseKey;
+    double totalPrice;
+    int totalQuantity;
     ArrayList<CartItem> cartItem;
 
     public Command() {
@@ -12,6 +16,30 @@ public class Command {
     public Command(String email, ArrayList<CartItem> cartItem) {
         this.email = email;
         this.cartItem = cartItem;
+    }
+
+    public int getTotalQuantity() {
+        return totalQuantity;
+    }
+
+    public void setTotalQuantity(int totalQuantity) {
+        this.totalQuantity = totalQuantity;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public String getFirebaseKey() {
+        return firebaseKey;
+    }
+
+    public void setFirebaseKey(String firebaseKey) {
+        this.firebaseKey = firebaseKey;
     }
 
     public String getEmail() {
@@ -30,21 +58,3 @@ public class Command {
         this.cartItem = cartItem;
     }
 }
-
-/*
-    Command
-        1- Fatima421@gmail.com
-            C/asdf
-            Items
-                1 - pizza 3 24
-                2 - fasd
-                3 - asdf
-
-        2- Erik
-            c/asdf
-            Items
-                1-asdf
-                2  - asdf
-
-
- */

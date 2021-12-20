@@ -12,13 +12,11 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -28,13 +26,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.grup2.jaestic_user.Models.CartItem;
 import com.grup2.jaestic_user.Models.User;
 
-
-import java.util.ArrayList;
-
-public class RegisterScreen extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
     // Global properties
     private FirebaseAuth mFirebaseAuth;
     private GoogleSignInClient mGoogleSignInClient;
@@ -44,7 +38,7 @@ public class RegisterScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_screen);
+        setContentView(R.layout.activity_register);
 
         // Properties
         Button signUpGoogleBtn = findViewById(R.id.signUpGoogleBtn);
@@ -82,13 +76,13 @@ public class RegisterScreen extends AppCompatActivity {
                 // If fields are empty create a user
                 if (!email.isEmpty() && !password.isEmpty()) {
                     mFirebaseAuth.createUserWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(RegisterScreen.this, new OnCompleteListener<AuthResult>() {
+                            .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d(TAG, "createUserWithEmail:success");
-                                        startActivity(new Intent(RegisterScreen.this, NavigationActivity.class));
+                                        startActivity(new Intent(RegisterActivity.this, NavigationActivity.class));
                                         //updateUI(user);
 
                                         User users = new User(email, name);
@@ -101,7 +95,7 @@ public class RegisterScreen extends AppCompatActivity {
                                     } else {
                                         // If sign in fails, display a message to the user.
                                         Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                        Toast.makeText(RegisterScreen.this, "Authentication failed.",
+                                        Toast.makeText(RegisterActivity.this, "Authentication failed.",
                                                 Toast.LENGTH_SHORT).show();
                                         //updateUI(null);
                                     }
@@ -119,7 +113,7 @@ public class RegisterScreen extends AppCompatActivity {
                 .requestEmail()
                 .build();
 
-        mGoogleSignInClient = GoogleSignIn.getClient(RegisterScreen.this, gso);
+        mGoogleSignInClient = GoogleSignIn.getClient(RegisterActivity.this, gso);
 
 
 
@@ -184,6 +178,6 @@ public class RegisterScreen extends AppCompatActivity {
     private void updateUI(FirebaseUser user) {
         Intent goToMainScreen = new Intent(this, NavigationActivity.class);
         startActivity(goToMainScreen);
-        RegisterScreen.this.finish();
+        RegisterActivity.this.finish();
     }
 }

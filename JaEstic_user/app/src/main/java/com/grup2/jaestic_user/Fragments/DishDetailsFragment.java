@@ -51,9 +51,9 @@ public class DishDetailsFragment extends Fragment {
         Double originalPrice = dish.getPrice();
 
         // View Properties
-        TextView productName = view.findViewById(R.id.productName);
-        TextView productDescription = view.findViewById(R.id.ProductDescription);
-        TextView price = view.findViewById(R.id.price);
+        TextView productName = view.findViewById(R.id.textOrderReference);
+        TextView productDescription = view.findViewById(R.id.textTotalQuantity);
+        TextView price = view.findViewById(R.id.orderDetailTotalPrice);
         Button lessBtn = view.findViewById(R.id.less);
         TextView cartQuantity = view.findViewById(R.id.numQuantity);
         Button moreBtn = view.findViewById(R.id.more);
@@ -65,7 +65,7 @@ public class DishDetailsFragment extends Fragment {
         setPriceAndQuantity(price, cartQuantity, originalPrice, 1);
 
         // To load the image
-        ImageView productImage = view.findViewById(R.id.productImage);
+        ImageView productImage = view.findViewById(R.id.imageOrderPlaceHolder);
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
         storageReference.child(dish.getImageUserPath()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override

@@ -31,8 +31,10 @@
     <string name="cartDeleteItemToast">"El plato ha sido eliminado del carrito"</string>
     <string name="searchbar">Buscar</string>
     <string name="locationbar">Ubicación</string>
-    <string name="titleforrepeat">Para repetir!</string>
-    <string name="titlesales">Top ventas</string>
+    <string name="titleLastOrders">Últimos Pedidos</string>
+    <string name="subTitleLastOrders">Clic para más detalles</string>
     <string name="coin">€</string>
     <string name="boughtItemsSuccesfully">Has comprado correctamente!</string>
+    <string name="commandTitle">Pedido</string>
+    <string name="commandBody">Pedido:</string>
 </resources>

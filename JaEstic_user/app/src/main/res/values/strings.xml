@@ -31,8 +31,10 @@
     <string name="cartDeleteItemToast">"Dish is deleted from the cart"</string>
     <string name="searchbar">Search</string>
     <string name="locationbar">Location</string>
-    <string name="titleforrepeat">To repeat!</string>
-    <string name="titlesales">Top sales</string>
+    <string name="titleLastOrders">Last Orders</string>
+    <string name="subTitleLastOrders">Click for more details</string>
     <string name="coin">$</string>
     <string name="boughtItemsSuccesfully">You have bought successfully!</string>
+    <string name="commandTitle">Order</string>
+    <string name="commandBody">Order:</string>
 </resources>
