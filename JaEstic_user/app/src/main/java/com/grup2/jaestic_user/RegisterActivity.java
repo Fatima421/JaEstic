@@ -73,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                     pwdText.requestFocus();
                 }
 
-                // If fields are empty create a user
+                // If fields aren't empty create a user
                 if (!email.isEmpty() && !password.isEmpty()) {
                     mFirebaseAuth.createUserWithEmailAndPassword(email, password)
                             .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {

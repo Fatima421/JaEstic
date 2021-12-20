@@ -22,10 +22,13 @@ import com.grup2.jaestic_user.RecyclerViewAdapters.LastOrderRecyclerViewAdapter;
 import java.util.ArrayList;
 
 public class MainFragment extends Fragment {
+    // Properties
     private DatabaseReference ordersDatabase;
     private LinearLayoutManager horizontalLayout;
-    Bundle bundle;
+    private ArrayList<Command> arrayCommands = new ArrayList<>();
+    private FirebaseUser user;
 
+    // App LifeCycle
     @Override
     public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -36,9 +39,9 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
-        ArrayList<Command> arrayCommands = new ArrayList<Command>();
+
         // Get current user information: e-mail
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
         String currentEmail = user.getEmail();
         // Firebase
         ordersDatabase = FirebaseDatabase.getInstance().getReference("Command");
@@ -85,7 +88,6 @@ public class MainFragment extends Fragment {
                 Log.w("JaEstic", "Failed to read value.", error.toException());
             }
         });
-
         return view;
     }
 }

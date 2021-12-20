@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // If Sign In with email button is clicked
+        // Sign In if email button is clicked
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

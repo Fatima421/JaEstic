@@ -9,7 +9,6 @@ import android.util.Log;
 import com.grup2.jaestic_user.Models.CartItem;
 import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.DB.CartItemDBContract.*;
-
 import java.util.ArrayList;
 
 public class CartItemDBHelper extends SQLiteOpenHelper {

@@ -1,40 +1,34 @@
 package com.grup2.jaestic_user.Fragments;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.grup2.jaestic_user.DB.CartItemDBHelper;
 import com.grup2.jaestic_user.Models.CartItem;
 import com.grup2.jaestic_user.Models.Command;
-import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
-import com.grup2.jaestic_user.RecyclerViewAdapters.CartRecyclerViewAdapter;
-import com.grup2.jaestic_user.RecyclerViewAdapters.DishRecyclerViewAdapter;
 import com.grup2.jaestic_user.RecyclerViewAdapters.OrderDetailsRecyclerViewAdapter;
 
 import java.util.ArrayList;
 
 public class OrderDetailsFragment extends Fragment {
-    Bundle bundle;
-    Command command;
+    // Properties
+    private Bundle bundle;
+    private Command command;
     private DatabaseReference cartItemDatabase;
 
+    // Constructors
     public OrderDetailsFragment() { }
 
     @Override
@@ -54,12 +48,10 @@ public class OrderDetailsFragment extends Fragment {
         TextView totalPriceTextView = view.findViewById(R.id.orderDetailTotalPrice);
         ImageView imageOrder = view.findViewById(R.id.imageOrderPlaceHolder);
 
-
         // Bundle properties
         bundle = getArguments();
         command = (Command) bundle.getSerializable("Order");
         cartItemDatabase = FirebaseDatabase.getInstance().getReference("Command").child(""+command.getFirebaseKey()).child("cartItem");
-
 
         // Customs View Properties
         orderReferenceTextView.setText(getContext().getString(R.string.commandBody) + " " + command.getFirebaseKey());

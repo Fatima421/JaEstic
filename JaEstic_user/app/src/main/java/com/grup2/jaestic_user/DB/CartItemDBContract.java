@@ -1,9 +1,9 @@
 package com.grup2.jaestic_user.DB;
 
 import android.provider.BaseColumns;
-
 public class CartItemDBContract {
     private CartItemDBContract() { }
+    // SQLite Table
     public static class CartItemEntry implements BaseColumns {
         public static final String TABLE_NAME ="cartItem";
         public static final String ID = "id";

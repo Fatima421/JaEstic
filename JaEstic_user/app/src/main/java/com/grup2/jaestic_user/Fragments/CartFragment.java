@@ -2,13 +2,9 @@ package com.grup2.jaestic_user.Fragments;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +12,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,41 +19,30 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.grup2.jaestic_user.DB.CartItemDBHelper;
 import com.grup2.jaestic_user.Models.CartItem;
-import com.grup2.jaestic_user.Models.Category;
 import com.grup2.jaestic_user.Models.Command;
-import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
 import com.grup2.jaestic_user.RecyclerViewAdapters.CartRecyclerViewAdapter;
-
 import java.util.ArrayList;
 
 public class CartFragment extends Fragment {
 
     // Properties
-    private DatabaseReference databaseReference;
     private ArrayList<CartItem> arrayCartItems = new ArrayList<>();
     private ArrayList<CheckBox> checkBoxes;
-    RecyclerView recyclerView;
-    Bundle bundle;
-    CartItem cartItem;
     private CartItemDBHelper dbHelper;
     private SQLiteDatabase db;
-    Fragment fragment;
-    String email = "";
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
 
-    public CartFragment() {
-        // Required empty public constructor
-    }
+    // Constructors
+    public CartFragment() { }
+
     public CartFragment(CartItemDBHelper dbHelper, SQLiteDatabase db) {
         this.dbHelper = dbHelper;
         this.db = db;
-        this.fragment = this;
     }
 
-    public CartFragment(Bundle bundle) {
-        this.bundle = bundle;
-    }
-
+    // APP LifeCycle
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,24 +53,23 @@ public class CartFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
-
-        // Properties
+        // View Properties
         CheckBox checkBox = v.findViewById(R.id.cartCheckBox);
         Button buyNow = v.findViewById(R.id.buyNowBtn);
         FloatingActionButton deleteBtn = v.findViewById(R.id.cartDeleteBtn);
         TextView totalPriceTextView = v.findViewById(R.id.cartTotalPrice);
+        RecyclerView recyclerView;recyclerView = v.findViewById(R.id.cartRecyclerView);
 
         // Get all data of the cart item from the database
         arrayCartItems = dbHelper.getAllDishes(db);
 
         // Create the RecyclerView
-        recyclerView = v.findViewById(R.id.cartRecyclerView);
         CartRecyclerViewAdapter adapter = new CartRecyclerViewAdapter(getContext(), arrayCartItems);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         checkBoxes = adapter.getCheckBoxes();
 
-        // Customs layout properties
+        // Customs view properties
         updateTotalPrice(totalPriceTextView);
 
         // To select or deselect all items
@@ -114,10 +97,10 @@ public class CartFragment extends Fragment {
                 arrayCartItems = dbHelper.getAllDishes(db);
                 if (arrayCartItems.size() != 0) {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    email = user.getEmail();
+                    String email = user.getEmail();
                     Command command = new Command(email, arrayCartItems);
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference myRef = database.getReference("Command");
+                    database = FirebaseDatabase.getInstance();
+                    myRef = database.getReference("Command");
                     myRef.push().setValue(command);
                     // Empties cart list and database
                     dbHelper.deleteAllDishes(db);
@@ -132,6 +115,7 @@ public class CartFragment extends Fragment {
             }
         });
 
+        // When delete button is pressed
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -168,6 +152,7 @@ public class CartFragment extends Fragment {
 
         return v;
     }
+    // Check if all checkboxs are checked
     private Boolean areAllCheckboxsChecked() {
         for (int i = 0; i < checkBoxes.size(); i++) {
             if (!checkBoxes.get(i).isChecked()) {
@@ -177,13 +162,13 @@ public class CartFragment extends Fragment {
         return true;
     }
 
+    // Custom Total Price TextView
     private void updateTotalPrice(TextView totalPriceTextView) {
         double totalPrice = 0.0;
         for (int i = 0; i < arrayCartItems.size(); i++) {
            totalPrice = totalPrice + (arrayCartItems.get(i).getDish().getPrice() * arrayCartItems.get(i).getQuantity());
         }
         setPriceText(totalPriceTextView, totalPrice);
-
     }
 
     private void setPriceText(TextView totalPriceTextView, double totalPrice) {

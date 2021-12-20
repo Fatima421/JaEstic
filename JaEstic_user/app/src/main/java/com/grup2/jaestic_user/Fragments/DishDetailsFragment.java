@@ -28,17 +28,20 @@ import com.grup2.jaestic_user.R;
 
 public class DishDetailsFragment extends Fragment {
     private int inCart = 1;
-    Bundle bundle;
+    private StorageReference storageReference;
+    private Bundle bundle;
     private Dish dish;
     private CartItem cartItem;
     private CartItemDBHelper dbHelper;
     private SQLiteDatabase db;
 
+    // Constructor
     public DishDetailsFragment(CartItemDBHelper dbHelper, SQLiteDatabase db) {
         this.dbHelper = dbHelper;
         this.db = db;
     }
 
+    // App LifeCycle
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,7 +69,7 @@ public class DishDetailsFragment extends Fragment {
 
         // To load the image
         ImageView productImage = view.findViewById(R.id.imageOrderPlaceHolder);
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+        storageReference = FirebaseStorage.getInstance().getReference();
         storageReference.child(dish.getImageUserPath()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -124,6 +127,8 @@ public class DishDetailsFragment extends Fragment {
 
         return view;
     }
+
+    // Customs Price and Quantity TextViews
     private void setPriceAndQuantity(TextView tvPrice, TextView tvQuantity, Double price, int quantity) {
         String priceString = String.format("%.2f %s",
                                             price, getContext().getString(R.string.coin));

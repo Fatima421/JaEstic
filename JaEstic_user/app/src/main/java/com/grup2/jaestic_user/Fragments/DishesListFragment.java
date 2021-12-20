@@ -5,13 +5,11 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,15 +20,14 @@ import com.grup2.jaestic_user.Models.Category;
 import com.grup2.jaestic_user.Models.Dish;
 import com.grup2.jaestic_user.R;
 import com.grup2.jaestic_user.RecyclerViewAdapters.DishRecyclerViewAdapter;
-
 import java.util.ArrayList;
 
 public class DishesListFragment extends Fragment {
     // Properties
-    Bundle bundle;
-    Category category;
+    private Bundle bundle;
+    private Category category;
     private DatabaseReference dishesDatabase;
-    private ArrayList<Dish> arrayDishes =  new ArrayList<Dish>();
+    private ArrayList<Dish> arrayDishes =  new ArrayList<>();
     private CartItemDBHelper dbHelper;
     private SQLiteDatabase db;
 
@@ -52,7 +49,7 @@ public class DishesListFragment extends Fragment {
         // Bundle properties
         bundle = getArguments();
         category = (Category) bundle.getSerializable("Category");
-        // Firebase properties
+        // Firebase reference
         dishesDatabase = FirebaseDatabase.getInstance().getReference("Categories").child(category.getFirebaseKey()).child("Foods");
 
         // Layout properties linked to add logic
@@ -79,13 +76,11 @@ public class DishesListFragment extends Fragment {
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             }
-
             @Override
             public void onCancelled(DatabaseError error) {
                 Log.w("JaEstic", "Failed to read value.", error.toException());
             }
         });
-
         return view;
     }
 }
