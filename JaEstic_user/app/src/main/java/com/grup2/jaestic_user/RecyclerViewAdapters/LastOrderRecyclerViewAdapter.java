@@ -2,6 +2,7 @@ package com.grup2.jaestic_user.RecyclerViewAdapters;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +25,6 @@ public class LastOrderRecyclerViewAdapter extends RecyclerView.Adapter<LastOrder
     private Context context;
     private ArrayList<Command> arrayOrders;
     Command order;
-    OrderDetailsFragment orderDetailsFragment = new OrderDetailsFragment();
-    Bundle bundle = new Bundle();
 
     // data is passed into the constructor
     public LastOrderRecyclerViewAdapter(Context context, ArrayList<Command> arrayOrders) {
@@ -45,8 +44,11 @@ public class LastOrderRecyclerViewAdapter extends RecyclerView.Adapter<LastOrder
     // binds the data to the view and textview in each row
     @Override
     public void onBindViewHolder(@NonNull LastOrderViewHolder holder, int position) {
+        Bundle bundle = new Bundle();
+        OrderDetailsFragment orderDetailsFragment = new OrderDetailsFragment();
         // Getting the command
         order = arrayOrders.get(position);
+
         holder.orderName.setText(context.getString(R.string.commandBody) + " " + (position+1));
         String totalPriceString = String.format("%.2f %s",
                                                 order.getTotalPrice(), context.getString(R.string.coin));
