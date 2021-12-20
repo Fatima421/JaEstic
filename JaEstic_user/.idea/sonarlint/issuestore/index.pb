@@ -5,8 +5,6 @@ i
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 l
 <app/src/main/java/com/grup2/jaestic_user/PreLoginScreen.java,4\8\48ccfd03d615aa18332345f93527875280a0d1e4
-p
-@app/src/main/java/com/grup2/jaestic_user/NavigationActivity.java,a\c\ac81867e00b30aea9608bd766b9811076c834d8d
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 @

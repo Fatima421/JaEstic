@@ -30,8 +30,8 @@ import java.util.ArrayList;
 
 public class DishRecyclerViewAdapter extends RecyclerView.Adapter<DishRecyclerViewAdapter.DishViewHolder> {
     // Properties
-    Context context;
-    StorageReference storageReference;
+    private Context context;
+    private StorageReference storageReference;
     private ArrayList<Dish> arrayDishes;
     boolean heartPressed = false;
     private CartItemDBHelper dbHelper;

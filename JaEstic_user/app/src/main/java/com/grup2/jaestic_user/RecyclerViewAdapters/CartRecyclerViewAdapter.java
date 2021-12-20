@@ -31,7 +31,7 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
     // Properties
     private ArrayList<CartItem> arrayCartItems;
     private ArrayList<CheckBox> checkBoxes = new ArrayList<>();
-    Context context;
+    private Context context;
 
     // Constructor
     public CartRecyclerViewAdapter(Context context, ArrayList<CartItem> arrayCartItems){

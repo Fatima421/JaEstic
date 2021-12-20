@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class LastOrderRecyclerViewAdapter extends RecyclerView.Adapter<LastOrderRecyclerViewAdapter.LastOrderViewHolder> {
     private Context context;
     private ArrayList<Command> arrayOrders;
-    Command order;
+    private Command order;
 
     // data is passed into the constructor
     public LastOrderRecyclerViewAdapter(Context context, ArrayList<Command> arrayOrders) {

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class OrderDetailsRecyclerViewAdapter extends RecyclerView.Adapter<OrderDetailsRecyclerViewAdapter.OrderViewHolder> {
     // Properties
-    Context context;
+    private Context context;
     private ArrayList<CartItem> arrayDishes;
 
     // Constructor

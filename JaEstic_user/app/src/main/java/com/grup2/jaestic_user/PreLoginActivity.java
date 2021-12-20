@@ -16,8 +16,8 @@ public class PreLoginActivity extends AppCompatActivity {
 
     // Global properties
     private FirebaseAuth mAuth;
-    Intent goToRegisterScreen;
-    Intent goToLoginScreen;
+    private Intent goToRegisterScreen;
+    private Intent goToLoginScreen;
 
 
     @Override
